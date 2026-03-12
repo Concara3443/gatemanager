@@ -1,3 +1,0 @@
-MODEL=RC-7 Dash 7
-ENG_TYPE=T
-ENG_NUM=4

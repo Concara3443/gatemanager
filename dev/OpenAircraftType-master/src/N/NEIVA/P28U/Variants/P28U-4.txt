@@ -1,3 +1,0 @@
-MODEL=EMB-711ST Corisco 2 Turbo
-ENG_TYPE=P
-ENG_NUM=1

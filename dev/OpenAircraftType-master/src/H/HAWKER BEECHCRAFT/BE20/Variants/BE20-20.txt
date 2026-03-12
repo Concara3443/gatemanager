@@ -1,3 +1,0 @@
-MODEL=King Air 200
-ENG_TYPE=T
-ENG_NUM=2

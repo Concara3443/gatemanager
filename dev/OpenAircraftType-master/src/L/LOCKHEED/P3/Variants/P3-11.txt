@@ -1,3 +1,0 @@
-MODEL=L-685 Orion
-ENG_TYPE=T
-ENG_NUM=4

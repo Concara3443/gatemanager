@@ -1,3 +1,0 @@
-MODEL=LN-27 Furio
-ENG_TYPE=P
-ENG_NUM=1

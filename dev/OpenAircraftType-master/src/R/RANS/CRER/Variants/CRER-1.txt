@@ -1,3 +1,0 @@
-MODEL=S-7 Courier
-ENG_TYPE=P
-ENG_NUM=1

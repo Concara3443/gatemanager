@@ -1,3 +1,0 @@
-MODEL=MM-1 Midget Mustang
-ENG_TYPE=P
-ENG_NUM=1

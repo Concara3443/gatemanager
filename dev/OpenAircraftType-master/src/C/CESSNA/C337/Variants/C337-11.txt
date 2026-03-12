@@ -1,3 +1,0 @@
-MODEL=T337H Turbo Super Skymaster
-ENG_TYPE=P
-ENG_NUM=2

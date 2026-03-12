@@ -1,3 +1,0 @@
-MODEL=MC-130 Hercules
-ENG_TYPE=T
-ENG_NUM=4

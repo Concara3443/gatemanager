@@ -1,3 +1,0 @@
-MODEL=VH-55 Esquilo
-ENG_TYPE=T
-ENG_NUM=2

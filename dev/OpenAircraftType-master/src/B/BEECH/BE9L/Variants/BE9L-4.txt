@@ -1,3 +1,0 @@
-MODEL=90 (E90) King Air
-ENG_TYPE=T
-ENG_NUM=2

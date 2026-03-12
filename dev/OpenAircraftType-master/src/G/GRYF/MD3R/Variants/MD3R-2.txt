@@ -1,3 +1,0 @@
-MODEL=MD-3 SportRider
-ENG_TYPE=P
-ENG_NUM=1

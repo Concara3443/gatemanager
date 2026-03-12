@@ -1,3 +1,0 @@
-MODEL=C-47J Skytrain
-ENG_TYPE=P
-ENG_NUM=2

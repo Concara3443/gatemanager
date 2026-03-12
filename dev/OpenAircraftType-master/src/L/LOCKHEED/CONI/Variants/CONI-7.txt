@@ -1,3 +1,0 @@
-MODEL=RC-121 Constellation
-ENG_TYPE=P
-ENG_NUM=4

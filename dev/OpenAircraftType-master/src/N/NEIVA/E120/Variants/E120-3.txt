@@ -1,3 +1,0 @@
-MODEL=EMB-120 Brasilia
-ENG_TYPE=T
-ENG_NUM=2

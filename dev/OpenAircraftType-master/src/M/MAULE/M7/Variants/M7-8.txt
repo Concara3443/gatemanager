@@ -1,3 +1,0 @@
-MODEL=MX-7-160 Sportplane
-ENG_TYPE=P
-ENG_NUM=1

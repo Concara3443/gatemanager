@@ -1,3 +1,0 @@
-MODEL=F-2B Fighter Replica
-ENG_TYPE=P
-ENG_NUM=1

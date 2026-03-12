@@ -1,3 +1,0 @@
-MODEL=Statesman (200)
-ENG_TYPE=J
-ENG_NUM=4

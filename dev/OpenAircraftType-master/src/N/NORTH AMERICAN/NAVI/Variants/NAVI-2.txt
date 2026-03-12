@@ -1,3 +1,0 @@
-MODEL=NA-154 Navion
-ENG_TYPE=P
-ENG_NUM=1

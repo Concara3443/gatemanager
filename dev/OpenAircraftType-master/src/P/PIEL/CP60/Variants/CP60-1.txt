@@ -1,3 +1,0 @@
-MODEL=CP-601 Diamant
-ENG_TYPE=P
-ENG_NUM=1

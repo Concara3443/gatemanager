@@ -1,3 +1,0 @@
-MODEL=Cloudster
-ENG_TYPE=P
-ENG_NUM=1

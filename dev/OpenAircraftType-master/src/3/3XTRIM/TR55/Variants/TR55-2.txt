@@ -1,3 +1,0 @@
-MODEL=3X-55 Trener
-ENG_TYPE=P
-ENG_NUM=1

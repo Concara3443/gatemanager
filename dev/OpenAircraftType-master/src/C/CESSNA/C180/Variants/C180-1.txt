@@ -1,3 +1,0 @@
-MODEL=180 Skywagon 180
-ENG_TYPE=P
-ENG_NUM=1

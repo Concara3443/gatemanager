@@ -1,3 +1,0 @@
-MODEL=NF-16 Fighting Falcon
-ENG_TYPE=J
-ENG_NUM=1

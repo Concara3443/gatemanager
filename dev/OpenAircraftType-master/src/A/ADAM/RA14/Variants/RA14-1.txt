@@ -1,3 +1,0 @@
-MODEL=RA-14 Loisirs
-ENG_TYPE=P
-ENG_NUM=1

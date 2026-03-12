@@ -1,3 +1,0 @@
-MODEL=U-7 Seneca
-ENG_TYPE=P
-ENG_NUM=2

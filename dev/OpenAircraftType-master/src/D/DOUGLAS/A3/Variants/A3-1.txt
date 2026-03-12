@@ -1,3 +1,0 @@
-MODEL=ERA-3 Skywarrior
-ENG_TYPE=J
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=H-36 Dimona
-ENG_TYPE=P
-ENG_NUM=1

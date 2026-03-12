@@ -1,3 +1,0 @@
-MODEL=HK-36 Turbo Xtreme
-ENG_TYPE=P
-ENG_NUM=1

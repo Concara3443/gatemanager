@@ -1,3 +1,0 @@
-MODEL=Duke
-ENG_TYPE=P
-ENG_NUM=2

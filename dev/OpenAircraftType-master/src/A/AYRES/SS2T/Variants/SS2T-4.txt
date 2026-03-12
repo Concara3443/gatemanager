@@ -1,3 +1,0 @@
-MODEL=S-2R-T15 Turbo Thrush
-ENG_TYPE=T
-ENG_NUM=1

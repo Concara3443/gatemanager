@@ -1,3 +1,0 @@
-MODEL=MS-501 Criquet
-ENG_TYPE=P
-ENG_NUM=1

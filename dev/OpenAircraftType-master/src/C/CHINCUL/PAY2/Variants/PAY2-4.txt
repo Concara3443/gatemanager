@@ -1,3 +1,0 @@
-MODEL=PA-A-31T-620 Cheyenne 2
-ENG_TYPE=T
-ENG_NUM=2

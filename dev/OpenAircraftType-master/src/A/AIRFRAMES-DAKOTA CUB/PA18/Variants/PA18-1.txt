@@ -1,3 +1,0 @@
-MODEL=S-18 Super 18
-ENG_TYPE=P
-ENG_NUM=1

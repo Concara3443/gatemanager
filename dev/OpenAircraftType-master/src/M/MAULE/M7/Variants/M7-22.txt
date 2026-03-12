@@ -1,3 +1,0 @@
-MODEL=Super Rocket (M-7/MT-7)
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=C-275 Luciole
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=TH-1F Iroquois
-ENG_TYPE=T
-ENG_NUM=1

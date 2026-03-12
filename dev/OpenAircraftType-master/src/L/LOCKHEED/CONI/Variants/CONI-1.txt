@@ -1,3 +1,0 @@
-MODEL=Constellation
-ENG_TYPE=P
-ENG_NUM=4

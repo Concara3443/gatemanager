@@ -1,3 +1,0 @@
-MODEL=DA-42 Twin Turbo
-ENG_TYPE=P
-ENG_NUM=2

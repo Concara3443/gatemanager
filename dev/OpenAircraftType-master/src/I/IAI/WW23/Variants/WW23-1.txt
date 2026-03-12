@@ -1,3 +1,0 @@
-MODEL=Westwind (1123)
-ENG_TYPE=J
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=BN-2T Turbine Islander
-ENG_TYPE=T
-ENG_NUM=2

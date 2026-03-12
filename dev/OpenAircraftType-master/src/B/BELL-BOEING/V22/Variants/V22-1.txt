@@ -1,3 +1,0 @@
-MODEL=CV-22 Osprey
-ENG_TYPE=T
-ENG_NUM=2

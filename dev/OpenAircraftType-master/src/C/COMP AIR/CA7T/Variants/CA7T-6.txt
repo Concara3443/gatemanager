@@ -1,3 +1,0 @@
-MODEL=Comp Air 7T
-ENG_TYPE=T
-ENG_NUM=1

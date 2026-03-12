@@ -1,3 +1,0 @@
-MODEL=TS-8 Bies
-ENG_TYPE=P
-ENG_NUM=1

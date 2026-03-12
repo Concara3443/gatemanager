@@ -1,3 +1,0 @@
-MODEL=SPn Utility Jet
-ENG_TYPE=J
-ENG_NUM=2

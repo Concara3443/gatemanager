@@ -1,3 +1,0 @@
-MODEL=Piper Jet
-ENG_TYPE=J
-ENG_NUM=1

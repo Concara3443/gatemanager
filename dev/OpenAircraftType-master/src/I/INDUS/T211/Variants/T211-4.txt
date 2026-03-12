@@ -1,3 +1,0 @@
-MODEL=T-211 Thorpedo
-ENG_TYPE=P
-ENG_NUM=1

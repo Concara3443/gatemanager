@@ -1,3 +1,0 @@
-MODEL=S-10 Aeropony
-ENG_TYPE=P
-ENG_NUM=1

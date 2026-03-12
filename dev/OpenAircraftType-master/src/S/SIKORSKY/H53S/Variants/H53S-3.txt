@@ -1,3 +1,0 @@
-MODEL=CH-53E Super Stallion
-ENG_TYPE=T
-ENG_NUM=3

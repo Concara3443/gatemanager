@@ -1,3 +1,0 @@
-MODEL=RD-03 Edelweiss
-ENG_TYPE=P
-ENG_NUM=1

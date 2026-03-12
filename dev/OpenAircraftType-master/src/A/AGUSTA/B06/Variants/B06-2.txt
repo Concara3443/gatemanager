@@ -1,3 +1,0 @@
-MODEL=Hkp6 JetRanger
-ENG_TYPE=T
-ENG_NUM=1

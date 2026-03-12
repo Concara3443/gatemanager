@@ -1,3 +1,0 @@
-MODEL=A36 Bonanza 36
-ENG_TYPE=P
-ENG_NUM=1

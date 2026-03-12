@@ -1,3 +1,0 @@
-MODEL=VP-2 Volksplane
-ENG_TYPE=P
-ENG_NUM=1

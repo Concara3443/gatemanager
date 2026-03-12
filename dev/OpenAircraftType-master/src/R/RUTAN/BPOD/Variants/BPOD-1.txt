@@ -1,3 +1,0 @@
-MODEL=BiPod
-ENG_TYPE=E
-ENG_NUM=4

@@ -1,3 +1,0 @@
-MODEL=KC-130 Karnaf
-ENG_TYPE=T
-ENG_NUM=4

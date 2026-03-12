@@ -1,3 +1,0 @@
-MODEL=Shahed OH-78
-ENG_TYPE=T
-ENG_NUM=1

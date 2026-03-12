@@ -1,3 +1,0 @@
-MODEL=A-500 CarbonAero
-ENG_TYPE=P
-ENG_NUM=2

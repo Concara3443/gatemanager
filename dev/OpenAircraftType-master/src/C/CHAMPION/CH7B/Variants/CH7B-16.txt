@@ -1,3 +1,0 @@
-MODEL=7KC Olympia
-ENG_TYPE=P
-ENG_NUM=1

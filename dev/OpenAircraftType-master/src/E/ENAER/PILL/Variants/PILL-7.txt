@@ -1,3 +1,0 @@
-MODEL=T-35C Pill�n
-ENG_TYPE=P
-ENG_NUM=1

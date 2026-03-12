@@ -1,3 +1,0 @@
-MODEL=P-60 Minacro
-ENG_TYPE=P
-ENG_NUM=1

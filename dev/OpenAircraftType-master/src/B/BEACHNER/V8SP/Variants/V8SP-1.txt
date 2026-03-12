@@ -1,3 +1,0 @@
-MODEL=V-8 Special
-ENG_TYPE=P
-ENG_NUM=1

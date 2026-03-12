@@ -1,3 +1,0 @@
-MODEL=CH-53D Sea Stallion
-ENG_TYPE=T
-ENG_NUM=2

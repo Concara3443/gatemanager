@@ -1,3 +1,0 @@
-MODEL=U-5 Twin Courier
-ENG_TYPE=P
-ENG_NUM=2

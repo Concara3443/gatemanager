@@ -1,3 +1,0 @@
-MODEL=406 Combat Scout
-ENG_TYPE=T
-ENG_NUM=1

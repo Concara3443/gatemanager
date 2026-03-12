@@ -1,3 +1,0 @@
-MODEL=DA-20 Evolution
-ENG_TYPE=P
-ENG_NUM=1

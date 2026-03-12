@@ -1,3 +1,0 @@
-MODEL=Columbia 350
-ENG_TYPE=P
-ENG_NUM=1

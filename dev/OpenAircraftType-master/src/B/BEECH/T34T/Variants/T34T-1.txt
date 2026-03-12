@@ -1,3 +1,0 @@
-MODEL=Turbo Mentor
-ENG_TYPE=T
-ENG_NUM=1

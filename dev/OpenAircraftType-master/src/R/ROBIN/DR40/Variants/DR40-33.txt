@@ -1,3 +1,0 @@
-MODEL=Ecoflyer
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=CP-615 Super Diamant
-ENG_TYPE=P
-ENG_NUM=1

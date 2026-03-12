@@ -1,3 +1,0 @@
-MODEL=CP-319 Emeraude
-ENG_TYPE=P
-ENG_NUM=1

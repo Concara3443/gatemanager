@@ -1,3 +1,0 @@
-MODEL=DA-22 Speed Katana
-ENG_TYPE=P
-ENG_NUM=1

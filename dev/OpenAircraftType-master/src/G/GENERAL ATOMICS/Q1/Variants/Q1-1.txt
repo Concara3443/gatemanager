@@ -1,3 +1,0 @@
-MODEL=MQ-1 Warrior
-ENG_TYPE=P
-ENG_NUM=1

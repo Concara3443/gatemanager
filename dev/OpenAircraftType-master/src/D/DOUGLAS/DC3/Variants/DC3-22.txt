@@ -1,3 +1,0 @@
-MODEL=R4D-7 Skytrain
-ENG_TYPE=P
-ENG_NUM=2

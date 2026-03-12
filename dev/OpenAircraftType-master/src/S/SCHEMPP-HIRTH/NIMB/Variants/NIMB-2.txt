@@ -1,3 +1,0 @@
-MODEL=Nimbus 2M
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=SN-601 Corvette
-ENG_TYPE=J
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=CHK-91 Chang-Gong 91
-ENG_TYPE=P
-ENG_NUM=1

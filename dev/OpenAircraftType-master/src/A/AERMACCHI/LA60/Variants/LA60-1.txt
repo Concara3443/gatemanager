@@ -1,3 +1,0 @@
-MODEL=AL-60 Conestoga
-ENG_TYPE=P
-ENG_NUM=1

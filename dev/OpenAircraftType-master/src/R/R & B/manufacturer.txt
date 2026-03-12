@@ -1,2 +1,0 @@
-NAME=R & B
-COMPANY=R & B

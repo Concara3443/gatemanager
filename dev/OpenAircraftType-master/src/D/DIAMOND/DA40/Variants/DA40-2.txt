@@ -1,3 +1,0 @@
-MODEL=Club Star
-ENG_TYPE=P
-ENG_NUM=1

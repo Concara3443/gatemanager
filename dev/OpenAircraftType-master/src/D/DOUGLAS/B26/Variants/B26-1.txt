@@ -1,3 +1,0 @@
-MODEL=B-26 Invader
-ENG_TYPE=P
-ENG_NUM=2

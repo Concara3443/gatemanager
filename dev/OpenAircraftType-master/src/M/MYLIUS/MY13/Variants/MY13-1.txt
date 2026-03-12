@@ -1,3 +1,0 @@
-MODEL=MY-103 Mistral
-ENG_TYPE=P
-ENG_NUM=1

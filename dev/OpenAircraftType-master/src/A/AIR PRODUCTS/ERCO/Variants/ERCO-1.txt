@@ -1,3 +1,0 @@
-MODEL=F-1 Aircoupe
-ENG_TYPE=P
-ENG_NUM=1

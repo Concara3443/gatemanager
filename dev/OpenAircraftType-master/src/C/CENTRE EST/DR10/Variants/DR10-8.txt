@@ -1,3 +1,0 @@
-MODEL=DR-1051 Sicile Record
-ENG_TYPE=P
-ENG_NUM=1

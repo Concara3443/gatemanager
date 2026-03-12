@@ -1,3 +1,0 @@
-MODEL=CH-400 Skyrocket
-ENG_TYPE=P
-ENG_NUM=1

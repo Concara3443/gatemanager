@@ -1,3 +1,0 @@
-MODEL=EMB-200 Ipanema
-ENG_TYPE=P
-ENG_NUM=1

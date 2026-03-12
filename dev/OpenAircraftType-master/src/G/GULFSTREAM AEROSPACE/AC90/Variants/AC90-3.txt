@@ -1,3 +1,0 @@
-MODEL=Jetprop Commander 900
-ENG_TYPE=T
-ENG_NUM=2

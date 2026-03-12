@@ -1,3 +1,0 @@
-MODEL=Courser Commander
-ENG_TYPE=P
-ENG_NUM=2

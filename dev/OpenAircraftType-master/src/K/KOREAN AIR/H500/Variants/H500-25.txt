@@ -1,3 +1,0 @@
-MODEL=520MK Black Tiger
-ENG_TYPE=T
-ENG_NUM=1

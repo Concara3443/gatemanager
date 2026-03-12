@@ -1,3 +1,0 @@
-MODEL=7FC Tri-Traveler
-ENG_TYPE=P
-ENG_NUM=1

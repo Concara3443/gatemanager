@@ -1,3 +1,0 @@
-MODEL=FL-3 Aviastarlet
-ENG_TYPE=P
-ENG_NUM=1

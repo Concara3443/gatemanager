@@ -1,3 +1,0 @@
-MODEL=210 Centurion
-ENG_TYPE=P
-ENG_NUM=1

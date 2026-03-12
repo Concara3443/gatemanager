@@ -1,3 +1,0 @@
-MODEL=8500 Sportster
-ENG_TYPE=P
-ENG_NUM=1

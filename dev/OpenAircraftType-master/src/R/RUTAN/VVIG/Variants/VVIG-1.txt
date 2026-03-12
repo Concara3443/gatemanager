@@ -1,3 +1,0 @@
-MODEL=27 VariViggen
-ENG_TYPE=P
-ENG_NUM=1

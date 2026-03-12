@@ -1,3 +1,0 @@
-MODEL=AS-565 Panther
-ENG_TYPE=T
-ENG_NUM=2

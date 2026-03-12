@@ -1,3 +1,0 @@
-MODEL=SA-2-37 Condor
-ENG_TYPE=P
-ENG_NUM=1

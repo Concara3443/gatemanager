@@ -1,3 +1,0 @@
-MODEL=Super Emeraude (CP-1310/1315/1330)
-ENG_TYPE=P
-ENG_NUM=1

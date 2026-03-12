@@ -1,3 +1,0 @@
-MODEL=Guardian
-ENG_TYPE=T
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=KZ-2 Traener
-ENG_TYPE=P
-ENG_NUM=1

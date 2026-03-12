@@ -1,3 +1,0 @@
-MODEL=TG-14 Super Ximango
-ENG_TYPE=P
-ENG_NUM=1

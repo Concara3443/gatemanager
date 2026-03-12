@@ -1,3 +1,0 @@
-MODEL=C-38 Airmaster
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=EC-6 Criquet
-ENG_TYPE=P
-ENG_NUM=1

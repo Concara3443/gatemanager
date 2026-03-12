@@ -1,3 +1,0 @@
-MODEL=D-139 Parandeh Abi
-ENG_TYPE=P
-ENG_NUM=1

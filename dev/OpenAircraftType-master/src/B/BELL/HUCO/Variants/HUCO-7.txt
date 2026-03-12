@@ -1,3 +1,0 @@
-MODEL=TH-1S HueyCobra
-ENG_TYPE=T
-ENG_NUM=1

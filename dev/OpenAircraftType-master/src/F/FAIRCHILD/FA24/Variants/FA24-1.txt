@@ -1,3 +1,0 @@
-MODEL=F-24 Argus
-ENG_TYPE=P
-ENG_NUM=1

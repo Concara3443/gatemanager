@@ -1,3 +1,0 @@
-MODEL=Buddy Baby Lakes
-ENG_TYPE=P
-ENG_NUM=1

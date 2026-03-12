@@ -1,3 +1,0 @@
-MODEL=PA-28-201T Turbo Dakota
-ENG_TYPE=P
-ENG_NUM=1

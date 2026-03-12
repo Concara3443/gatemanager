@@ -1,3 +1,0 @@
-MODEL=717-200 Business Express
-ENG_TYPE=J
-ENG_NUM=2

@@ -1,6 +1,0 @@
-MODEL=Thunder Mustang
-ICAO=TMUS
-CLASS=L
-WAKE=L
-ENG_TYPE=P
-ENG_NUM=1

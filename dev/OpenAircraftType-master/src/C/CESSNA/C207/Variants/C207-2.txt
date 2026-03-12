@@ -1,3 +1,0 @@
-MODEL=207 Stationair 8
-ENG_TYPE=P
-ENG_NUM=1

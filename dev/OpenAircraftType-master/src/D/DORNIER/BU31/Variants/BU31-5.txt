@@ -1,3 +1,0 @@
-MODEL=DoB�-131 Lerche
-ENG_TYPE=P
-ENG_NUM=1

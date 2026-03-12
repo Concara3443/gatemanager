@@ -1,3 +1,0 @@
-MODEL=HC-130J Hercules
-ENG_TYPE=T
-ENG_NUM=4

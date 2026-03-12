@@ -1,3 +1,0 @@
-MODEL=Sling 2
-ENG_TYPE=P
-ENG_NUM=1

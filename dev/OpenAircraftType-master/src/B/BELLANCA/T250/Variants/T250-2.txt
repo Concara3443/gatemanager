@@ -1,3 +1,0 @@
-MODEL=T-250 Aries
-ENG_TYPE=P
-ENG_NUM=1

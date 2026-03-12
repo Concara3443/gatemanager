@@ -1,3 +1,0 @@
-MODEL=681 Hawk Commander
-ENG_TYPE=T
-ENG_NUM=2

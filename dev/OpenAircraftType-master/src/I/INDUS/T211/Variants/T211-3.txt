@@ -1,3 +1,0 @@
-MODEL=T-211 Sport E
-ENG_TYPE=P
-ENG_NUM=1

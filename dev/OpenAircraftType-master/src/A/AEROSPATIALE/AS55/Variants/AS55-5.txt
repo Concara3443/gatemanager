@@ -1,3 +1,0 @@
-MODEL=TwinStar
-ENG_TYPE=T
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=M-20D Master
-ENG_TYPE=P
-ENG_NUM=1

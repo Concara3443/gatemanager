@@ -1,3 +1,0 @@
-MODEL=EMB-710 Carioca
-ENG_TYPE=P
-ENG_NUM=1

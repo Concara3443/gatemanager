@@ -1,3 +1,0 @@
-MODEL=Comp Air 8
-ENG_TYPE=T
-ENG_NUM=1

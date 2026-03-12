@@ -1,3 +1,0 @@
-MODEL=Il-18 Bizon
-ENG_TYPE=T
-ENG_NUM=4

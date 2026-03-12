@@ -1,3 +1,0 @@
-MODEL=DC-7 Seven Seas
-ENG_TYPE=P
-ENG_NUM=4

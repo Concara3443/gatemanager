@@ -1,3 +1,0 @@
-MODEL=TU206 Turbo Staionair 6
-ENG_TYPE=P
-ENG_NUM=1

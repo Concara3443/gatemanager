@@ -1,3 +1,0 @@
-MODEL=Swift
-ENG_TYPE=J
-ENG_NUM=1

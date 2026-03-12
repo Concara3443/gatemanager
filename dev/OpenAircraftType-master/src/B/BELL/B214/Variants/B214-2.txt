@@ -1,3 +1,0 @@
-MODEL=214C BigLifter
-ENG_TYPE=T
-ENG_NUM=1

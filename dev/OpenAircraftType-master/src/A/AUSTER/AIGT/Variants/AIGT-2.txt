@@ -1,3 +1,0 @@
-MODEL=J-5K Aiglet Trainer
-ENG_TYPE=P
-ENG_NUM=1

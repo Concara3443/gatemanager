@@ -1,3 +1,0 @@
-MODEL=Super Emeraude (CP-320/325/328)
-ENG_TYPE=P
-ENG_NUM=1

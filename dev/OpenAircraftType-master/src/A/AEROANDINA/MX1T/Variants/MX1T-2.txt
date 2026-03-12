@@ -1,3 +1,0 @@
-MODEL=MXP-150 Kimbaya
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=L-182 Hercules
-ENG_TYPE=T
-ENG_NUM=4

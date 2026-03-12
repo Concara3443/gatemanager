@@ -1,3 +1,0 @@
-MODEL=MH-90 Enforcer
-ENG_TYPE=T
-ENG_NUM=2

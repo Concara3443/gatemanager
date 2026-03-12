@@ -1,3 +1,0 @@
-MODEL=W-10 Tailwind
-ENG_TYPE=P
-ENG_NUM=1

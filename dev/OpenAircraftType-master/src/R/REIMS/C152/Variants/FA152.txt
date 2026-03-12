@@ -1,1 +1,0 @@
-MODEL=FA152 Aerobat

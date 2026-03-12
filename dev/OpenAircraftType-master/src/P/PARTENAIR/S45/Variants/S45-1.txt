@@ -1,3 +1,0 @@
-MODEL=S-45 Mystere
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=Twin Comanche
-ENG_TYPE=P
-ENG_NUM=2

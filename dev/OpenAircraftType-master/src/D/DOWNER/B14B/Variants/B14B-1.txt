@@ -1,3 +1,0 @@
-MODEL=Bellanca 260
-ENG_TYPE=P
-ENG_NUM=1

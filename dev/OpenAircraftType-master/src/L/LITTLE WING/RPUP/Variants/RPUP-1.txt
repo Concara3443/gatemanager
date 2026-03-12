@@ -1,3 +1,0 @@
-MODEL=LW-5 Roto-Pup
-ENG_TYPE=P
-ENG_NUM=1

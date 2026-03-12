@@ -1,3 +1,0 @@
-MODEL=Antares DLR-H2
-ENG_TYPE=E
-ENG_NUM=1

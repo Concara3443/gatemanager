@@ -1,3 +1,0 @@
-MODEL=LR-2 Super King Air 350
-ENG_TYPE=T
-ENG_NUM=2

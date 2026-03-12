@@ -1,3 +1,0 @@
-MODEL=PB4Y Privateer
-ENG_TYPE=P
-ENG_NUM=4

@@ -1,3 +1,0 @@
-MODEL=T-23 Uirapuru
-ENG_TYPE=P
-ENG_NUM=1

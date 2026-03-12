@@ -1,3 +1,0 @@
-MODEL=OH-58 Kiowa
-ENG_TYPE=T
-ENG_NUM=1

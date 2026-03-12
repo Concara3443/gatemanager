@@ -1,3 +1,0 @@
-MODEL=Gulfstream G100
-ENG_TYPE=J
-ENG_NUM=2

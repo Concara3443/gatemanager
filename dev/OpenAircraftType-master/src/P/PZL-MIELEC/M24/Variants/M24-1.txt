@@ -1,3 +1,0 @@
-MODEL=M-24 Dromader Super
-ENG_TYPE=P
-ENG_NUM=1

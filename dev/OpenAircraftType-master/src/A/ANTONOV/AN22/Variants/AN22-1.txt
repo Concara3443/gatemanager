@@ -1,3 +1,0 @@
-MODEL=Antheus
-ENG_TYPE=T
-ENG_NUM=4

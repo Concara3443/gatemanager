@@ -1,3 +1,0 @@
-MODEL=KC-130R Hercules
-ENG_TYPE=T
-ENG_NUM=4

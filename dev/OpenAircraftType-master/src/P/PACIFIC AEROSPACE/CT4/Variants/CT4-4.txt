@@ -1,3 +1,0 @@
-MODEL=CT-4 Akala
-ENG_TYPE=P
-ENG_NUM=1

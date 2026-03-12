@@ -1,3 +1,0 @@
-MODEL=14 Bellanca 260B
-ENG_TYPE=P
-ENG_NUM=1

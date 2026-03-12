@@ -1,3 +1,0 @@
-MODEL=TH-57 SeaRanger
-ENG_TYPE=T
-ENG_NUM=1

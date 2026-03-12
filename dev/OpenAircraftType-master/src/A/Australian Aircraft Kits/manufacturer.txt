@@ -1,2 +1,0 @@
-NAME=Australian Aircraft Kits
-COMPANY=Australian Aircraft Kits

@@ -1,3 +1,0 @@
-MODEL=Dragon Rapide
-ENG_TYPE=P
-ENG_NUM=2

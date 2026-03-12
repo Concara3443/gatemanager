@@ -1,3 +1,0 @@
-MODEL=CP-65 Collegiate
-ENG_TYPE=P
-ENG_NUM=1

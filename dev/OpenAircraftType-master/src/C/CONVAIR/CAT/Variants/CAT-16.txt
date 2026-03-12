@@ -1,3 +1,0 @@
-MODEL=A-10 Catalina
-ENG_TYPE=P
-ENG_NUM=2

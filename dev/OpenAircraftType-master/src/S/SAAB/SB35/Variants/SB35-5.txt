@@ -1,3 +1,0 @@
-MODEL=Sk35 Draken
-ENG_TYPE=J
-ENG_NUM=1

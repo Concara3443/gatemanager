@@ -1,3 +1,0 @@
-MODEL=177 Cardinal
-ENG_TYPE=P
-ENG_NUM=1

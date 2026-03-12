@@ -1,6 +1,0 @@
-MODEL=B-1 Snipe Commander
-ICAO=CLB1
-CLASS=L
-WAKE=L
-ENG_TYPE=P
-ENG_NUM=1

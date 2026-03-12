@@ -1,3 +1,0 @@
-MODEL=H-425 Haitun
-ENG_TYPE=T
-ENG_NUM=2

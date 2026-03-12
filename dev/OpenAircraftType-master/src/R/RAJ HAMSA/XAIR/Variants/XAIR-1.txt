@@ -1,3 +1,0 @@
-MODEL=X-AIR F Gumnam
-ENG_TYPE=P
-ENG_NUM=1

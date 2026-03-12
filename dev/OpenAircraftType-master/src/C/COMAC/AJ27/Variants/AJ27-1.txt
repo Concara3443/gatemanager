@@ -1,3 +1,0 @@
-MODEL=ARJ-21-700 Xiangfeng
-ENG_TYPE=J
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=Panther Plus
-ENG_TYPE=P
-ENG_NUM=1

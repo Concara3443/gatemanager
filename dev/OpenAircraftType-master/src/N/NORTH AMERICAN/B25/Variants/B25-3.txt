@@ -1,3 +1,0 @@
-MODEL=TB-25 Mitchell
-ENG_TYPE=P
-ENG_NUM=2

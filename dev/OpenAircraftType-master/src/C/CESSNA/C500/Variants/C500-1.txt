@@ -1,3 +1,0 @@
-MODEL=500 Citation 1
-ENG_TYPE=J
-ENG_NUM=2

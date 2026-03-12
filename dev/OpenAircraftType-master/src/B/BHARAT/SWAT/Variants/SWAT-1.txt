@@ -1,3 +1,0 @@
-MODEL=LT-2 Swati
-ENG_TYPE=P
-ENG_NUM=1

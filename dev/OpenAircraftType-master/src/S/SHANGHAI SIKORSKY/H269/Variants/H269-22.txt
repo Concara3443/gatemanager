@@ -1,3 +1,0 @@
-MODEL=Shen 3
-ENG_TYPE=P
-ENG_NUM=1

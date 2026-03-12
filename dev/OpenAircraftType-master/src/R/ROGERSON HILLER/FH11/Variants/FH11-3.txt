@@ -1,3 +1,0 @@
-MODEL=RH-1100 Pegasus
-ENG_TYPE=T
-ENG_NUM=1

@@ -1,6 +1,0 @@
-MODEL=636 Snobird Adventurer
-ICAO=SNAD
-CLASS=G
-WAKE=L
-ENG_TYPE=P
-ENG_NUM=1

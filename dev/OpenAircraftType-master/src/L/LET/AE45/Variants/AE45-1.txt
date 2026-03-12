@@ -1,3 +1,0 @@
-MODEL=Super Aero 145
-ENG_TYPE=P
-ENG_NUM=2

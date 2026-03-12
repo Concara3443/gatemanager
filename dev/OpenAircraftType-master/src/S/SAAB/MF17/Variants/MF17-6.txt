@@ -1,3 +1,0 @@
-MODEL=T-17 Supporter
-ENG_TYPE=P
-ENG_NUM=1

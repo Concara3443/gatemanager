@@ -1,3 +1,0 @@
-MODEL=GY-100 Bagheera
-ENG_TYPE=P
-ENG_NUM=1

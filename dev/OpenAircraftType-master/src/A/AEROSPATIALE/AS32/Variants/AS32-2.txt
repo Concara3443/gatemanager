@@ -1,3 +1,0 @@
-MODEL=AS-332C Super Puma
-ENG_TYPE=T
-ENG_NUM=2

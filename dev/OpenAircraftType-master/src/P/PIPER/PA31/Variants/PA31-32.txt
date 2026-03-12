@@ -1,3 +1,0 @@
-MODEL=PA-31P-425 Pressurized Navajo
-ENG_TYPE=P
-ENG_NUM=2

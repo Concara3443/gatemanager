@@ -1,3 +1,0 @@
-MODEL=MP-205 Busard
-ENG_TYPE=P
-ENG_NUM=1

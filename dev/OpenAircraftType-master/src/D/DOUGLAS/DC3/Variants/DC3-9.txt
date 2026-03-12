@@ -1,3 +1,0 @@
-MODEL=C-117A Skytrooper
-ENG_TYPE=P
-ENG_NUM=2

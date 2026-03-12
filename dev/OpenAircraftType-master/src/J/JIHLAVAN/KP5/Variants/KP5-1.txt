@@ -1,3 +1,0 @@
-MODEL=Rapid 500
-ENG_TYPE=P
-ENG_NUM=1

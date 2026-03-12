@@ -1,3 +1,0 @@
-MODEL=LM-5 Aviastar
-ENG_TYPE=P
-ENG_NUM=1

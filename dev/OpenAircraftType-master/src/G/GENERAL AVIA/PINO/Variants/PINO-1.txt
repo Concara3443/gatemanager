@@ -1,3 +1,0 @@
-MODEL=F-22 Pinguino Sprint
-ENG_TYPE=P
-ENG_NUM=1

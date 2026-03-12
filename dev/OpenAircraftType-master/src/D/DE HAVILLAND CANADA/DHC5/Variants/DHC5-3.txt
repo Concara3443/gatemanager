@@ -1,3 +1,0 @@
-MODEL=CC-115 Buffalo
-ENG_TYPE=T
-ENG_NUM=2

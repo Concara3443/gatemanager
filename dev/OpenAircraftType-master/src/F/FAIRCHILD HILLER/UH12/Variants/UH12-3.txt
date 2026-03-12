@@ -1,3 +1,0 @@
-MODEL=OH-23 Raven
-ENG_TYPE=P
-ENG_NUM=1

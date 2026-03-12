@@ -1,3 +1,0 @@
-MODEL=S-11 Instructor
-ENG_TYPE=P
-ENG_NUM=1

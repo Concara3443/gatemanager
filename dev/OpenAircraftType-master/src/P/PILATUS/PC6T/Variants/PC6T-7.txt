@@ -1,3 +1,0 @@
-MODEL=PC-6C Turbo-Porter
-ENG_TYPE=T
-ENG_NUM=1

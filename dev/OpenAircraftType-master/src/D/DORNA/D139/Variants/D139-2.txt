@@ -1,3 +1,0 @@
-MODEL=D-139 Free Bird
-ENG_TYPE=P
-ENG_NUM=1

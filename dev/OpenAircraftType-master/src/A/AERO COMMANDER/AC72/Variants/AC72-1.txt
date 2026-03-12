@@ -1,3 +1,0 @@
-MODEL=Alti Cruiser
-ENG_TYPE=P
-ENG_NUM=2

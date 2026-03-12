@@ -1,3 +1,0 @@
-MODEL=7GCBC Citabria High Country Explorer
-ENG_TYPE=P
-ENG_NUM=1

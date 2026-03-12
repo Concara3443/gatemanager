@@ -1,3 +1,0 @@
-MODEL=D-139 Blue Bird
-ENG_TYPE=P
-ENG_NUM=1

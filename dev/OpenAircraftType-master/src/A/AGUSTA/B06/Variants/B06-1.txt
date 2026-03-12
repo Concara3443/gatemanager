@@ -1,3 +1,0 @@
-MODEL=AB-206 LongRanger
-ENG_TYPE=T
-ENG_NUM=1

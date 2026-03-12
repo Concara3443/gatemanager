@@ -1,3 +1,0 @@
-MODEL=G-5SP Gulfstream G500
-ENG_TYPE=J
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=T206 Turbo Stationair
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=150 Commuter
-ENG_TYPE=P
-ENG_NUM=1

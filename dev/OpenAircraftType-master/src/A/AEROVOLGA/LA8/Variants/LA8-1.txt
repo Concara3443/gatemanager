@@ -1,3 +1,0 @@
-MODEL=Flagman
-ENG_TYPE=P
-ENG_NUM=2

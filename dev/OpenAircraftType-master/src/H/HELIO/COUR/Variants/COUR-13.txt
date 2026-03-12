@@ -1,3 +1,0 @@
-MODEL=U-10 Super Courier
-ENG_TYPE=P
-ENG_NUM=1

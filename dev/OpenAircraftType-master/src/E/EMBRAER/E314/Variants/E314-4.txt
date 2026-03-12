@@ -1,3 +1,0 @@
-MODEL=EMB-312H Super Tucano
-ENG_TYPE=T
-ENG_NUM=1

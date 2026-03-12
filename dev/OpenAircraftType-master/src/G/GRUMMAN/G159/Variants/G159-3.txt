@@ -1,3 +1,0 @@
-MODEL=TC-4 Academe
-ENG_TYPE=T
-ENG_NUM=2

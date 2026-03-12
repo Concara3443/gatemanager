@@ -1,3 +1,0 @@
-MODEL=M-1 Cuauhtemoc
-ENG_TYPE=P
-ENG_NUM=1

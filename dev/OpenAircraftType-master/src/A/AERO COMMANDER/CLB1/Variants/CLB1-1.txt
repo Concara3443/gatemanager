@@ -1,3 +1,0 @@
-MODEL=B-1 Ag Commander
-ENG_TYPE=P
-ENG_NUM=1

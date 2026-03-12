@@ -1,3 +1,0 @@
-MODEL=C-87 Liberator Express
-ENG_TYPE=P
-ENG_NUM=4

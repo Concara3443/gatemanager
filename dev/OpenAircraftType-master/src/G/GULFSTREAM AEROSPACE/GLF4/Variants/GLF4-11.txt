@@ -1,3 +1,0 @@
-MODEL=Gulfstream 4SP
-ENG_TYPE=J
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=MD-900 Combat Explorer
-ENG_TYPE=T
-ENG_NUM=2

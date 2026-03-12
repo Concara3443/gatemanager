@@ -1,3 +1,0 @@
-MODEL=FM-2 Air Shark
-ENG_TYPE=P
-ENG_NUM=1

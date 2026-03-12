@@ -1,3 +1,0 @@
-MODEL=RP-3 Orion
-ENG_TYPE=T
-ENG_NUM=4

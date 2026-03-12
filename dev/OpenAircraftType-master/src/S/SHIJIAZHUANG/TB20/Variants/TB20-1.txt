@@ -1,3 +1,0 @@
-MODEL=LE-500 Xiaoying
-ENG_TYPE=P
-ENG_NUM=1

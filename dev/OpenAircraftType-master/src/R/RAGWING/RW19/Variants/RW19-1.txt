@@ -1,3 +1,0 @@
-MODEL=Stork (RW-19)
-ENG_TYPE=P
-ENG_NUM=1

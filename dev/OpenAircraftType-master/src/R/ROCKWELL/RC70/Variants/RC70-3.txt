@@ -1,3 +1,0 @@
-MODEL=Commander 710
-ENG_TYPE=P
-ENG_NUM=2

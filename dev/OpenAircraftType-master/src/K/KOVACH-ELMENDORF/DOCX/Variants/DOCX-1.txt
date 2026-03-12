@@ -1,3 +1,0 @@
-MODEL=ES-3 Doc's RX
-ENG_TYPE=P
-ENG_NUM=1

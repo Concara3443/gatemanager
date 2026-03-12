@@ -1,3 +1,0 @@
-MODEL=SA-20 Vista
-ENG_TYPE=P
-ENG_NUM=1

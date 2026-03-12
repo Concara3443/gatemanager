@@ -1,3 +1,0 @@
-MODEL=M-28 Bryza (PT6A engines)
-ENG_TYPE=T
-ENG_NUM=2

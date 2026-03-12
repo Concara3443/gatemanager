@@ -1,3 +1,0 @@
-MODEL=EMB-111 Bandeirulha
-ENG_TYPE=T
-ENG_NUM=2

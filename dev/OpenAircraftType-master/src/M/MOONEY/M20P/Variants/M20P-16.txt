@@ -1,3 +1,0 @@
-MODEL=M-20E Chaparral
-ENG_TYPE=P
-ENG_NUM=1

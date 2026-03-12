@@ -1,3 +1,0 @@
-MODEL=VC-97 Brasilia
-ENG_TYPE=T
-ENG_NUM=2

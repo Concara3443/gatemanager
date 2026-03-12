@@ -1,3 +1,0 @@
-MODEL=DHC-2 Mk1 Beaver
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=Do-28D Skyservant
-ENG_TYPE=P
-ENG_NUM=2

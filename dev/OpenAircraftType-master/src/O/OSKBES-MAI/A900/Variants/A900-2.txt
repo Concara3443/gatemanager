@@ -1,3 +1,0 @@
-MODEL=MAI-900 Acrobat
-ENG_TYPE=P
-ENG_NUM=1

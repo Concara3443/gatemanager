@@ -1,3 +1,0 @@
-MODEL=1202 Norecrin
-ENG_TYPE=P
-ENG_NUM=1

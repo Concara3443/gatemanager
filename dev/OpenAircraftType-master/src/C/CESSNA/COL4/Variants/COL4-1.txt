@@ -1,3 +1,0 @@
-MODEL=LC-41 Corvalis TT
-ENG_TYPE=P
-ENG_NUM=1

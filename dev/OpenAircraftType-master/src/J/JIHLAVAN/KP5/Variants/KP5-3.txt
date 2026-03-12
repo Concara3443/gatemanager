@@ -1,3 +1,0 @@
-MODEL=KP-5 Skyleader 600
-ENG_TYPE=P
-ENG_NUM=1

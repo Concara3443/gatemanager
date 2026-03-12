@@ -1,3 +1,0 @@
-MODEL=HST-550 Stallion
-ENG_TYPE=T
-ENG_NUM=1

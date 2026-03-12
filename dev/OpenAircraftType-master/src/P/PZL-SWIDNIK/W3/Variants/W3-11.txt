@@ -1,3 +1,0 @@
-MODEL=W-3 Huzar
-ENG_TYPE=T
-ENG_NUM=2

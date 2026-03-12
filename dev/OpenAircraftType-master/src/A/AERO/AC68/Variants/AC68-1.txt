@@ -1,3 +1,0 @@
-MODEL=Commander 680E
-ENG_TYPE=P
-ENG_NUM=2

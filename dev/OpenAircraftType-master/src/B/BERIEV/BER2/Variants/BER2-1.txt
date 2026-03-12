@@ -1,3 +1,0 @@
-MODEL=Be-200 Altair
-ENG_TYPE=J
-ENG_NUM=2

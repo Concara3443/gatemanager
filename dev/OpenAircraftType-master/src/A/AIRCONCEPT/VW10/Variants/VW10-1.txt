@@ -1,3 +1,0 @@
-MODEL=VoWi-10 Airbuggy
-ENG_TYPE=P
-ENG_NUM=1

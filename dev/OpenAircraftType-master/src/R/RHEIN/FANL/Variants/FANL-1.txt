@@ -1,3 +1,0 @@
-MODEL=FL-1 Fanliner
-ENG_TYPE=P
-ENG_NUM=1

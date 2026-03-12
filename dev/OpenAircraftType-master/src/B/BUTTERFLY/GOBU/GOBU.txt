@@ -1,6 +1,0 @@
-MODEL=Golden Butterfly
-ICAO=GOBU
-CLASS=G
-WAKE=L
-ENG_TYPE=P
-ENG_NUM=1

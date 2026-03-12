@@ -1,3 +1,0 @@
-MODEL=S-2R-R1820 Bull Thrush
-ENG_TYPE=P
-ENG_NUM=1

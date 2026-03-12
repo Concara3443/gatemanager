@@ -1,3 +1,0 @@
-MODEL=Zlin Z-226 Trener 6
-ENG_TYPE=P
-ENG_NUM=1

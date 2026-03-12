@@ -1,3 +1,0 @@
-MODEL=M-18 Wee Scotsman
-ENG_TYPE=P
-ENG_NUM=1

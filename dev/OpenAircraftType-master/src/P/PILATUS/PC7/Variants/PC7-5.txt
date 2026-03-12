@@ -1,3 +1,0 @@
-MODEL=PC-7 Turbo Trainer
-ENG_TYPE=T
-ENG_NUM=1

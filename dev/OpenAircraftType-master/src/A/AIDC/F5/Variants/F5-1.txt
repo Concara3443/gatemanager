@@ -1,3 +1,0 @@
-MODEL=F-5 Chung-Cheng
-ENG_TYPE=J
-ENG_NUM=2

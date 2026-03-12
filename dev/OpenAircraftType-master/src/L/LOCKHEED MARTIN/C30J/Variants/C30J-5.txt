@@ -1,3 +1,0 @@
-MODEL=Hercules (AE-2100 engines)
-ENG_TYPE=T
-ENG_NUM=4

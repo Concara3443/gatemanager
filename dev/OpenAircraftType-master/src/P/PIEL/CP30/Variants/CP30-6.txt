@@ -1,3 +1,0 @@
-MODEL=CP-304 Emeraude
-ENG_TYPE=P
-ENG_NUM=1

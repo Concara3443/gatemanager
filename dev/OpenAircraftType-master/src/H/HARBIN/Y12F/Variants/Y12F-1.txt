@@ -1,3 +1,0 @@
-MODEL=Y-12F Aircar
-ENG_TYPE=T
-ENG_NUM=2

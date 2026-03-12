@@ -1,3 +1,0 @@
-MODEL=RF-5 Tigereye
-ENG_TYPE=J
-ENG_NUM=2

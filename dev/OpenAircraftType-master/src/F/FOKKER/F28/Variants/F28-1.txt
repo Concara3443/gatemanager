@@ -1,3 +1,0 @@
-MODEL=Fellowship
-ENG_TYPE=J
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=4000 Hawker Horizon
-ENG_TYPE=J
-ENG_NUM=2

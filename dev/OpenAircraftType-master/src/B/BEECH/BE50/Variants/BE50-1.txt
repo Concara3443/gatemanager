@@ -1,3 +1,0 @@
-MODEL=RU-8 Seminole
-ENG_TYPE=P
-ENG_NUM=2

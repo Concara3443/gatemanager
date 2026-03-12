@@ -1,3 +1,0 @@
-MODEL=MH-1521 Broussard
-ENG_TYPE=P
-ENG_NUM=1

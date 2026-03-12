@@ -1,3 +1,0 @@
-MODEL=S-12 Super Stinker
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=C-41 Aviocar
-ENG_TYPE=T
-ENG_NUM=2

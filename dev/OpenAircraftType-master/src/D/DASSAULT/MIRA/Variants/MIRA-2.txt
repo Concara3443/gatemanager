@@ -1,3 +1,0 @@
-MODEL=Mirage 50
-ENG_TYPE=J
-ENG_NUM=1

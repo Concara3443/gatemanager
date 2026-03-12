@@ -1,3 +1,0 @@
-MODEL=TP-40 Warhawk
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=H-125 SuperStar
-ENG_TYPE=T
-ENG_NUM=1

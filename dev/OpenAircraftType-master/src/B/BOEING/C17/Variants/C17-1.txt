@@ -1,3 +1,0 @@
-MODEL=Globemaster 3
-ENG_TYPE=J
-ENG_NUM=4

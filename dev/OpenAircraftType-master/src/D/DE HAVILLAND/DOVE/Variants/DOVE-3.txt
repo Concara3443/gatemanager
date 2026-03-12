@@ -1,3 +1,0 @@
-MODEL=Sea Devon
-ENG_TYPE=P
-ENG_NUM=2

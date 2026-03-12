@@ -1,3 +1,0 @@
-MODEL=L-1 Malamut
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=LA-250 Seawolf
-ENG_TYPE=P
-ENG_NUM=1

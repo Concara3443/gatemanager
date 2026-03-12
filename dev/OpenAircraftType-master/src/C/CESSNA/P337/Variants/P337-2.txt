@@ -1,3 +1,0 @@
-MODEL=T337G Pressurized Skymaster
-ENG_TYPE=P
-ENG_NUM=2

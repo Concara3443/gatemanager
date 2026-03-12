@@ -1,3 +1,0 @@
-MODEL=Katana (DA-20/DV-20)
-ENG_TYPE=P
-ENG_NUM=1

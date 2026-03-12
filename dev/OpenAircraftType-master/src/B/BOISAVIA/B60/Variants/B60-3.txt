@@ -1,3 +1,0 @@
-MODEL=B-603 Mercurey
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=S-2R-600 Thrush
-ENG_TYPE=P
-ENG_NUM=1

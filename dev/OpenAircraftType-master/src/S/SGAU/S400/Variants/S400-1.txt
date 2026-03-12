@@ -1,3 +1,0 @@
-MODEL=S-400 Kapitan
-ENG_TYPE=P
-ENG_NUM=2

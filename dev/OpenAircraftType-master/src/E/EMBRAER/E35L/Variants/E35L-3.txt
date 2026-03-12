@@ -1,3 +1,0 @@
-MODEL=VC-99B Legacy
-ENG_TYPE=J
-ENG_NUM=2

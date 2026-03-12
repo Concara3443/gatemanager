@@ -1,3 +1,0 @@
-MODEL=HB-202 Fledger
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=SC-5 Belfast
-ENG_TYPE=T
-ENG_NUM=4

@@ -1,3 +1,0 @@
-MODEL=L-18 Lodestar
-ENG_TYPE=P
-ENG_NUM=2

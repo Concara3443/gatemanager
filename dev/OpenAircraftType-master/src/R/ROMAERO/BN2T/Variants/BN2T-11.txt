@@ -1,3 +1,0 @@
-MODEL=Defender 4000
-ENG_TYPE=T
-ENG_NUM=2

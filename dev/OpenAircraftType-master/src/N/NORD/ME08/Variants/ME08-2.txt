@@ -1,3 +1,0 @@
-MODEL=1001 Pingouin 1
-ENG_TYPE=P
-ENG_NUM=1

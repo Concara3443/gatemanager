@@ -1,3 +1,0 @@
-MODEL=Smaragd VLA
-ENG_TYPE=P
-ENG_NUM=1

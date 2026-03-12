@@ -1,3 +1,0 @@
-MODEL=P-38 Lightning
-ENG_TYPE=P
-ENG_NUM=2

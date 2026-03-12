@@ -1,3 +1,0 @@
-MODEL=LP-1 Fury
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=CP-305 Emeraude
-ENG_TYPE=P
-ENG_NUM=1

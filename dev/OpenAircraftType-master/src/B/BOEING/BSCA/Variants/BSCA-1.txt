@@ -1,3 +1,0 @@
-MODEL=Shuttle Carrier
-ENG_TYPE=J
-ENG_NUM=4

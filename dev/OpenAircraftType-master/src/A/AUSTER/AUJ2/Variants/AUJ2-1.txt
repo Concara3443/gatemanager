@@ -1,3 +1,0 @@
-MODEL=J-2 Arrow
-ENG_TYPE=P
-ENG_NUM=1

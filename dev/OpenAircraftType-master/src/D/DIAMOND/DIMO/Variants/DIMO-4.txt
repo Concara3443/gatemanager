@@ -1,3 +1,0 @@
-MODEL=HK-36 Super Dimona
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=8 Trainer
-ENG_TYPE=P
-ENG_NUM=1

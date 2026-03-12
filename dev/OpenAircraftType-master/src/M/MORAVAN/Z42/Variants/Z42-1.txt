@@ -1,3 +1,0 @@
-MODEL=Zlin Z-42
-ENG_TYPE=P
-ENG_NUM=1

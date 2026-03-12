@@ -1,3 +1,0 @@
-MODEL=CR-12 Phantom 2
-ENG_TYPE=J
-ENG_NUM=2

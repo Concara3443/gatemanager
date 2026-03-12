@@ -1,3 +1,0 @@
-MODEL=SF-260W Warrior
-ENG_TYPE=P
-ENG_NUM=1

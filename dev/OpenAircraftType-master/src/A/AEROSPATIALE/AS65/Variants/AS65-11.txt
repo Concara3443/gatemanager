@@ -1,3 +1,0 @@
-MODEL=SA-366 Dolphin
-ENG_TYPE=T
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=P-70 Acey Deucy
-ENG_TYPE=P
-ENG_NUM=1

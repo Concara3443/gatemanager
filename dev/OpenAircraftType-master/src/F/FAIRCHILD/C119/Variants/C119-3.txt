@@ -1,3 +1,0 @@
-MODEL=R4Q Flying Boxcar
-ENG_TYPE=P
-ENG_NUM=2

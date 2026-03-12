@@ -1,3 +1,0 @@
-MODEL=EuroHawk
-ENG_TYPE=J
-ENG_NUM=1

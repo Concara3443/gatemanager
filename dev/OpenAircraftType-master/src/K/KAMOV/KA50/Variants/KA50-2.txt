@@ -1,3 +1,0 @@
-MODEL=Ka-50 Black Shark
-ENG_TYPE=T
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=RB-26 Invader
-ENG_TYPE=P
-ENG_NUM=2

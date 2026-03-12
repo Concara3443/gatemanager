@@ -1,3 +1,0 @@
-MODEL=G-1159 Gulfstream 2
-ENG_TYPE=J
-ENG_NUM=2

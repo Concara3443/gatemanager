@@ -1,3 +1,0 @@
-MODEL=Space Ship Two
-ENG_TYPE=R
-ENG_NUM=1

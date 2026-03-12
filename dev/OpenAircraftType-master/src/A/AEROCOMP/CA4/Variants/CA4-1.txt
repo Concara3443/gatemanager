@@ -1,3 +1,0 @@
-MODEL=CA-4 Comp Monster
-ENG_TYPE=P
-ENG_NUM=1

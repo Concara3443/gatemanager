@@ -1,3 +1,0 @@
-MODEL=Tzu-Chung
-ENG_TYPE=J
-ENG_NUM=2

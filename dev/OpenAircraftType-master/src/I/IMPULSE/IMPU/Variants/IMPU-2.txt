@@ -1,3 +1,0 @@
-MODEL=Xturn
-ENG_TYPE=P
-ENG_NUM=1

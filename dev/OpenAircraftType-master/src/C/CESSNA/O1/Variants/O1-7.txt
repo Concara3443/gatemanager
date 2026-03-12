@@ -1,3 +1,0 @@
-MODEL=TO-1 Bird Dog
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=L-14 Super Electra
-ENG_TYPE=P
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=TM-20 Flamingo 3
-ENG_TYPE=P
-ENG_NUM=2

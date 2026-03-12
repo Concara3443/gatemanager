@@ -1,3 +1,0 @@
-MODEL=Taurus Electro
-ENG_TYPE=E
-ENG_NUM=1

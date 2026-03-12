@@ -1,3 +1,0 @@
-MODEL=UH-13 Esquilo
-ENG_TYPE=T
-ENG_NUM=2

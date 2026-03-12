@@ -1,3 +1,0 @@
-MODEL=Baron
-ENG_TYPE=P
-ENG_NUM=2

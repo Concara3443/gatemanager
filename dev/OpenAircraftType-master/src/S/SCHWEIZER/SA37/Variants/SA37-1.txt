@@ -1,3 +1,0 @@
-MODEL=RG-8 Condor
-ENG_TYPE=P
-ENG_NUM=1

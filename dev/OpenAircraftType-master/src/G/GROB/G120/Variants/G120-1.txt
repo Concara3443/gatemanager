@@ -1,3 +1,0 @@
-MODEL=G-120 Snunit
-ENG_TYPE=P
-ENG_NUM=1

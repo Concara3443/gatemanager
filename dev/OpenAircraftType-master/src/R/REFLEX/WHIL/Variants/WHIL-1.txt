@@ -1,3 +1,0 @@
-MODEL=WLAC-1 White Lightning
-ENG_TYPE=P
-ENG_NUM=1

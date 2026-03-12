@@ -1,3 +1,0 @@
-MODEL=Fire Boss
-ENG_TYPE=T
-ENG_NUM=1

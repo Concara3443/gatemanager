@@ -1,3 +1,0 @@
-MODEL=T207 Turbo Stationair 7
-ENG_TYPE=P
-ENG_NUM=1

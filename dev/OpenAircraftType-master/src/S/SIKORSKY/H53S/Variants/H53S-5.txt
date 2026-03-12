@@ -1,3 +1,0 @@
-MODEL=Sea Dragon
-ENG_TYPE=T
-ENG_NUM=3

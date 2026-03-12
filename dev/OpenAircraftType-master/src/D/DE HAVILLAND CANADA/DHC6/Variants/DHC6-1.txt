@@ -1,3 +1,0 @@
-MODEL=DHC-6 Twin Otter
-ENG_TYPE=T
-ENG_NUM=2

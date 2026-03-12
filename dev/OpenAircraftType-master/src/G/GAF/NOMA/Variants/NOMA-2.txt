@@ -1,3 +1,0 @@
-MODEL=N-2 Nomad
-ENG_TYPE=T
-ENG_NUM=2

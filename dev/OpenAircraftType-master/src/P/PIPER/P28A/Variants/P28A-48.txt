@@ -1,3 +1,0 @@
-MODEL=PA-28-150 Cherokee
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=TR182 Turbo Skylane RG
-ENG_TYPE=P
-ENG_NUM=1

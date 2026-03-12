@@ -1,3 +1,0 @@
-MODEL=LA-4 Buccaneer
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=LS-1 Lightning
-ENG_TYPE=P
-ENG_NUM=1

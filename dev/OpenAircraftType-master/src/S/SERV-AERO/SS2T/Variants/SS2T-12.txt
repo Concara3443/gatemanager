@@ -1,3 +1,0 @@
-MODEL=Thrush (turboprop conversions)
-ENG_TYPE=T
-ENG_NUM=1

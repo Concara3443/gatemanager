@@ -1,3 +1,0 @@
-MODEL=MXP-100 Aventura
-ENG_TYPE=P
-ENG_NUM=1

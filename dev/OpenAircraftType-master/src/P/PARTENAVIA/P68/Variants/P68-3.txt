@@ -1,3 +1,0 @@
-MODEL=P-68 Victor
-ENG_TYPE=P
-ENG_NUM=2

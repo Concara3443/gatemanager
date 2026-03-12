@@ -1,3 +1,0 @@
-MODEL=EM-10 Bielik
-ENG_TYPE=J
-ENG_NUM=1

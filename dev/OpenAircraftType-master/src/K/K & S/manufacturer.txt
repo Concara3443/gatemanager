@@ -1,2 +1,0 @@
-NAME=K & S
-COMPANY=K & S

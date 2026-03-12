@@ -1,3 +1,0 @@
-MODEL=TH-55 Osage
-ENG_TYPE=P
-ENG_NUM=1

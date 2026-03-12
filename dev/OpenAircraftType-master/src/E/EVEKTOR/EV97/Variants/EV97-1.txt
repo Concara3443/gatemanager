@@ -1,3 +1,0 @@
-MODEL=EV-97 Harmony
-ENG_TYPE=P
-ENG_NUM=1

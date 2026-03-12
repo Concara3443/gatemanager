@@ -1,3 +1,0 @@
-MODEL=EC-54 Skymaster
-ENG_TYPE=P
-ENG_NUM=4

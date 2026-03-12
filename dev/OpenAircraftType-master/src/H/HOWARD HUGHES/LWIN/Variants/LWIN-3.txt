@@ -1,3 +1,0 @@
-MODEL=Austalian LightWing Sport 2000
-ENG_TYPE=P
-ENG_NUM=1

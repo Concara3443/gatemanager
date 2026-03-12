@@ -1,3 +1,0 @@
-MODEL=Ventus 2CT
-ENG_TYPE=P
-ENG_NUM=1

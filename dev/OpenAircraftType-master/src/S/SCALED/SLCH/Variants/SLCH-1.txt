@@ -1,3 +1,0 @@
-MODEL=Stratolaunch
-ENG_TYPE=J
-ENG_NUM=6

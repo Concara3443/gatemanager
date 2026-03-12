@@ -1,3 +1,0 @@
-MODEL=T-36 Aviojet
-ENG_TYPE=J
-ENG_NUM=1

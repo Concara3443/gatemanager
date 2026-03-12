@@ -1,3 +1,0 @@
-MODEL=Zlin Z-326 Trener Master
-ENG_TYPE=P
-ENG_NUM=1

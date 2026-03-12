@@ -1,3 +1,0 @@
-MODEL=CL-600 Challenger 870
-ENG_TYPE=J
-ENG_NUM=2
