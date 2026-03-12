@@ -1,3 +1,0 @@
-MODEL=PGK-1 Hirondelle
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=JD-1 Headwind
-ENG_TYPE=P
-ENG_NUM=1

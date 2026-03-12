@@ -1,3 +1,0 @@
-MODEL=4 Senior Speedmail
-ENG_TYPE=P
-ENG_NUM=1

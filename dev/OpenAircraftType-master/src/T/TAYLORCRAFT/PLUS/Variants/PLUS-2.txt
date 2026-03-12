@@ -1,3 +1,0 @@
-MODEL=Plus D
-ENG_TYPE=P
-ENG_NUM=1

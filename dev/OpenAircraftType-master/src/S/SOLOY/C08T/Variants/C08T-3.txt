@@ -1,3 +1,0 @@
-MODEL=Pathfinder 21
-ENG_TYPE=T
-ENG_NUM=C

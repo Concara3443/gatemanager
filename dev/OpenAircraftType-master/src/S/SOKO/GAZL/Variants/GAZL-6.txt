@@ -1,3 +1,0 @@
-MODEL=SA-342 Partizan
-ENG_TYPE=T
-ENG_NUM=1

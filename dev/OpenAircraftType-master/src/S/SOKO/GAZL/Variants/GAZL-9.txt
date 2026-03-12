@@ -1,3 +1,0 @@
-MODEL=HN-45 Partizan
-ENG_TYPE=T
-ENG_NUM=1

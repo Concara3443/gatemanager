@@ -1,3 +1,0 @@
-MODEL=SM-92 Finist
-ENG_TYPE=P
-ENG_NUM=1

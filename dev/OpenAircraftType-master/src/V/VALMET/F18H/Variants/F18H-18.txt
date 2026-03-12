@@ -1,3 +1,0 @@
-MODEL=FA-18 Hornet
-ENG_TYPE=J
-ENG_NUM=2

@@ -1,3 +1,0 @@
-MODEL=H-4 Hoverfly
-ENG_TYPE=P
-ENG_NUM=1

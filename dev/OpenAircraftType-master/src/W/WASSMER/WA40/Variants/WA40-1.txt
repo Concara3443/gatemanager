@@ -1,3 +1,0 @@
-MODEL=WA-40 Super 4
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=Alluvion Legend
-ENG_TYPE=P
-ENG_NUM=1

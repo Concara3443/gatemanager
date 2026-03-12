@@ -1,3 +1,0 @@
-MODEL=S-33 Independence
-ENG_TYPE=J
-ENG_NUM=2

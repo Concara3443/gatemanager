@@ -1,3 +1,0 @@
-MODEL=VH-3 Sea King
-ENG_TYPE=T
-ENG_NUM=2

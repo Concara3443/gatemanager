@@ -1,3 +1,0 @@
-MODEL=Zodiac (CH-640)
-ENG_TYPE=P
-ENG_NUM=1

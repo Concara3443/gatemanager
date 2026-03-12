@@ -1,3 +1,0 @@
-MODEL=W-1 Super Kingfisher
-ENG_TYPE=P
-ENG_NUM=1

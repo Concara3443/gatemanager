@@ -1,3 +1,0 @@
-MODEL=TB-31 Omega
-ENG_TYPE=T
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=WW-1 Der J�ger D-9
-ENG_TYPE=P
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=TE-1 Buckaroo
-ENG_TYPE=P
-ENG_NUM=1

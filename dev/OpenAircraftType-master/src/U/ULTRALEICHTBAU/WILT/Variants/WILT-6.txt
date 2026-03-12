@@ -1,3 +1,0 @@
-MODEL=WT-02 Wild Thing
-ENG_TYPE=P
-ENG_NUM=1
