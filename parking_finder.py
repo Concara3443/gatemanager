@@ -13,7 +13,7 @@ import re
 from aurora_bridge import AuroraBridge, callsign_to_airline
 
 # Force UTF-8 output on Windows so box-drawing chars and colours work
-if sys.platform == 'win32':
+if sys.platform == 'win32' and sys.stdout is not None:
     sys.stdout.reconfigure(encoding='utf-8')
 
 # ─── ANSI colours ────────────────────────────────────────────────────────────
