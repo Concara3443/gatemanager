@@ -1,3 +1,0 @@
-MODEL=Turbo Thrush 660
-ENG_TYPE=T
-ENG_NUM=1

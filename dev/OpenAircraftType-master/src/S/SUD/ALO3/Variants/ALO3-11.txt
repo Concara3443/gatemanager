@@ -1,3 +1,0 @@
-MODEL=SA-319 Alouette 3
-ENG_TYPE=T
-ENG_NUM=1

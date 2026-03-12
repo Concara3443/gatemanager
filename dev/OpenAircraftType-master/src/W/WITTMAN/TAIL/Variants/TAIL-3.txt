@@ -1,3 +1,0 @@
-MODEL=W-8 Tailwind
-ENG_TYPE=P
-ENG_NUM=1

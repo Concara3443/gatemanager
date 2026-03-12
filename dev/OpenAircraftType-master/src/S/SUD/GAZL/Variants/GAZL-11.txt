@@ -1,3 +1,0 @@
-MODEL=SA-341 Gazelle
-ENG_TYPE=T
-ENG_NUM=1

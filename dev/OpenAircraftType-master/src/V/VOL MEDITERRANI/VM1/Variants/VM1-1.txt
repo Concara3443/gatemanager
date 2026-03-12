@@ -1,3 +1,0 @@
-MODEL=VM-1 Esqual
-ENG_TYPE=P
-ENG_NUM=1

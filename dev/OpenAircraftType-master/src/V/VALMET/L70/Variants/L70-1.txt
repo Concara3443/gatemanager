@@ -1,3 +1,0 @@
-MODEL=L-70 Vinka
-ENG_TYPE=P
-ENG_NUM=1

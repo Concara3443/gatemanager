@@ -1,3 +1,0 @@
-MODEL=CH-300 Tri-Z�nith
-ENG_TYPE=P
-ENG_NUM=1

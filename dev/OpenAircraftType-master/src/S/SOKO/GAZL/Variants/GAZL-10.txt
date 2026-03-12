@@ -1,3 +1,0 @@
-MODEL=HO-42 Partizan
-ENG_TYPE=T
-ENG_NUM=1

@@ -1,3 +1,0 @@
-MODEL=Gemini ST
-ENG_TYPE=T
-ENG_NUM=2

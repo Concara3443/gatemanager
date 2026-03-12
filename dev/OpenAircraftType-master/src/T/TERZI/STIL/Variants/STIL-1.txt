@@ -1,3 +1,0 @@
-MODEL=T-9 Stiletto
-ENG_TYPE=P
-ENG_NUM=1

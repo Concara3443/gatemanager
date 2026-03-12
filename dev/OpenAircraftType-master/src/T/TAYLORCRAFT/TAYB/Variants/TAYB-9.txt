@@ -1,3 +1,0 @@
-MODEL=Traveller
-ENG_TYPE=P
-ENG_NUM=1

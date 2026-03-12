@@ -1,3 +1,0 @@
-MODEL=T-10 Avia-Tor
-ENG_TYPE=P
-ENG_NUM=1

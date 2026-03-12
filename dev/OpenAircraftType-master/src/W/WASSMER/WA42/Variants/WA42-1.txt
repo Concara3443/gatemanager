@@ -1,3 +1,0 @@
-MODEL=WA-421 Prestige
-ENG_TYPE=P
-ENG_NUM=1

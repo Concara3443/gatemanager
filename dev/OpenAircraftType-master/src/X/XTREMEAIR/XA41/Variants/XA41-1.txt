@@ -1,3 +1,0 @@
-MODEL=Xtreme 3000
-ENG_TYPE=P
-ENG_NUM=1

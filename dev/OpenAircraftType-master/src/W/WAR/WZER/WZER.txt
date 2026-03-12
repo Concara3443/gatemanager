@@ -1,6 +1,0 @@
-MODEL=Mitsubishi Zero
-ICAO=WZER
-CLASS=L
-WAKE=L
-ENG_TYPE=P
-ENG_NUM=1

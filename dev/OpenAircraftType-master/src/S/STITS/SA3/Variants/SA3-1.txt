@@ -1,3 +1,0 @@
-MODEL=SA-3 Playboy
-ENG_TYPE=P
-ENG_NUM=1

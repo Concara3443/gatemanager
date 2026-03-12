@@ -1,3 +1,0 @@
-MODEL=SE-3160 Alouette 3
-ENG_TYPE=T
-ENG_NUM=1

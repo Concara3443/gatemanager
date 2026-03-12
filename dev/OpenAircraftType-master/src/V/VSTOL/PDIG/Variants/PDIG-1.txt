@@ -1,3 +1,0 @@
-MODEL=SST-2000 Pairadigm
-ENG_TYPE=P
-ENG_NUM=2
