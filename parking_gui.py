@@ -233,7 +233,9 @@ class ParkingApp(tk.Tk):
         _btn(brow, "Query  ▶", self._query_manual,
              bg='#0d47a1').pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 3))
         _btn(brow, "Aurora  F5", self._query_aurora,
-             bg='#1b5e20').pack(side=tk.LEFT, fill=tk.X, expand=True)
+             bg='#1b5e20').pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 3))
+        _btn(brow, "✕", self._clear_query,
+             bg='#2a1010', fg=C['red']).pack(side=tk.LEFT)
 
         # ── Strip card ────────────────────────────────────────────────────────
         self._slabel(left, "Current Strip")
@@ -496,6 +498,7 @@ class ParkingApp(tk.Tk):
         self._my_callsign = self.aurora.get_connected_callsign() or ''
         suffix = f"  ({self._my_callsign})" if self._my_callsign else ''
         self._log(f"Connected to Aurora  (localhost:1130){suffix}", 'ok')
+        self._sync_occupied_aurora()
         if self._auto_var.get():
             self._poll()
 
@@ -524,6 +527,11 @@ class ParkingApp(tk.Tk):
         self.v_aircraft.set(aircraft); self.v_origin.set(origin)
         self._log(f"Aurora FP: {cs} → {airline} {aircraft} from {origin}", 'info')
         self._run_query(cs, airline or None, aircraft or None, origin or None)
+
+    def _clear_query(self):
+        for v in (self.v_callsign, self.v_airline, self.v_aircraft, self.v_origin):
+            v.set('')
+        self.current_cs = ''
 
     def _query_manual(self):
         cs      = self.v_callsign.get().strip().upper() or None
