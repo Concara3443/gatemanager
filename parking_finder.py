@@ -10,6 +10,7 @@ import json
 import os
 import sys
 import re
+from aurora_bridge import AuroraBridge, callsign_to_airline
 
 # Force UTF-8 output on Windows so box-drawing chars and colours work
 if sys.platform == 'win32':
@@ -438,7 +439,7 @@ def show_results(label, pids, data_map, schengen_flight, acft_ws=None, is_fallba
     return visible, all_sorted
 
 
-def assign_prompt(visible_pids, all_pids, data_map, schengen_flight, parkings, occupied, acft_ws=None):
+def assign_prompt(visible_pids, all_pids, data_map, schengen_flight, parkings, occupied, acft_ws=None, aurora=None, callsign=None):
     """Prompt user to assign a stand.
     Modifiers: r (remote only)  p (gates only)  + (show all)  r+ p+ (filter+all)
     Type a stand ID to assign it."""
@@ -510,6 +511,15 @@ def assign_prompt(visible_pids, all_pids, data_map, schengen_flight, parkings, o
             parts.append(f"{DIM}+ blocked: {', '.join(excls)}{R}")
         parts.append(f"{DIM}[{len(occupied)} unavailable this session]{R}")
         print("  " + "  ".join(parts))
+
+        # ── Push gate label to Aurora ──────────────────────────────────────────
+        if aurora and aurora.connected and callsign:
+            ok, detail = aurora.assign_gate(callsign, sel)
+            if ok:
+                print(f"  {BL}Aurora: gate {B}{sel}{R}{BL} assigned to {callsign}{R}")
+            else:
+                print(f"  {YL}Aurora: gate label failed  {DIM}({detail}){R}")
+
         return
 
 
@@ -773,6 +783,11 @@ HELP_TEXT = f"""
     {WH}x STAND [STAND ...]{R}            release stand     (e.g. {DIM}x 242{R})
     {WH}clear{R}                          release all occupied stands
 
+  {CY}{B}Aurora (requires Aurora open + 3rd Party enabled):{R}
+    {WH}a [CALLSIGN]{R}               auto-fetch FP from Aurora  (e.g. {DIM}a IBE1234{R})
+                               omit callsign to use selected traffic
+                               gate is pushed to Aurora after assignment
+
   {CY}{B}Other:{R}
     {WH}?{R}   help    {WH}q{R}   quit    {WH}cls{R}   clear screen (keeps occupied list)
   {DIM}Modifiers go anywhere: {R}{WH}AEA B738 r LFPO s{R}{DIM} is valid.{R}
@@ -790,17 +805,24 @@ def main():
 
     occupied: set = set()
 
+    # ── Aurora connection (optional) ───────────────────────────────────────────
+    aurora = AuroraBridge()
+    if aurora.connect():
+        print(f"  {GR}{B}Aurora connected{R}  {DIM}(localhost:1130){R}")
+    else:
+        print(f"  {YL}Aurora not available{R}  {DIM}(running without live data){R}")
+
     # ── One-shot CLI mode ──────────────────────────────────────────────────────
     args = sys.argv[1:]
     if args:
         flags, positional = parse_input(' '.join(args))
         if flags['ga_mode'] and positional:
             vis, all_p, dm, sch, aws = run_query_ga(resolve_aircraft_type(positional[0], wingspans), wingspans, parkings, occupied)
-            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws)
+            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws, aurora=aurora)
             return
         if flags['cargo_mode'] and positional:
             vis, all_p, dm, sch, aws = run_query_cargo(resolve_aircraft_type(positional[0], wingspans), wingspans, parkings, occupied)
-            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws)
+            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws, aurora=aurora)
             return
         if len(positional) >= 3:
             vis, all_p, dm, sch, aws = run_query(positional[0], resolve_aircraft_type(positional[1], wingspans), positional[2],
@@ -809,11 +831,12 @@ def main():
                                             force_gate=flags['force_gate'],
                                             force_schengen=flags['force_schengen'],
                                             force_terminal=flags['force_terminal'])
-            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws)
+            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws, aurora=aurora)
             return
 
     # ── Interactive session loop ───────────────────────────────────────────────
-    print(f"\n{CY}{B}  LEBL Parking System{R}  {DIM}· '?' for help · 'q' to quit{R}")
+    aurora_status = f"{GR}Aurora{R}" if aurora.connected else f"{DIM}no Aurora{R}"
+    print(f"\n{CY}{B}  LEBL Parking System{R}  {DIM}· '?' for help · 'q' to quit{R}  [{aurora_status}]")
     print(f"  {DIM}{'─' * 44}{R}")
 
     while True:
@@ -843,6 +866,43 @@ def main():
 
         if raw_lower == '?':
             print(HELP_TEXT)
+            continue
+
+        # a [CALLSIGN] — fetch flight data from Aurora for selected/given callsign
+        if raw_lower == 'a' or raw_lower.startswith('a '):
+            if not aurora.connected:
+                print(f"  {RD}Aurora not connected.{R}")
+                continue
+            parts = raw.upper().split()
+            if len(parts) >= 2:
+                cs = parts[1]
+            else:
+                cs = aurora.get_selected_callsign()
+                if not cs:
+                    print(f"  {YL}No traffic selected in Aurora.{R}")
+                    continue
+                print(f"  {DIM}Selected in Aurora: {WH}{B}{cs}{R}")
+            fp = aurora.get_flight_plan(cs)
+            if not fp:
+                print(f"  {YL}No flight plan found for '{cs}' in Aurora.{R}")
+                continue
+            airline_code  = callsign_to_airline(cs)
+            aircraft_type = resolve_aircraft_type(fp['aircraft'], wingspans) if fp['aircraft'] else None
+            origin        = fp['departure'] if fp['departure'] else None
+            if not airline_code:
+                print(f"  {YL}Cannot extract airline code from '{cs}'.{R}")
+                continue
+            if not aircraft_type:
+                print(f"  {YL}No aircraft type in flight plan for '{cs}'.{R}")
+                continue
+            if not origin:
+                print(f"  {YL}No departure airport in flight plan for '{cs}'.{R}")
+                continue
+            print(f"  {DIM}Aurora FP: {WH}{cs}{R}  {DIM}→  {WH}{airline_code} {aircraft_type} from {origin}{R}")
+            vis, all_p, dm, sch, aws = run_query(airline_code, aircraft_type, origin,
+                                            airlines, wingspans, parkings, occupied)
+            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws,
+                          aurora=aurora, callsign=cs)
             continue
 
         if raw_lower == 'clear':
@@ -916,7 +976,7 @@ def main():
                 print(f"  {YL}GA mode: enter aircraft type  (e.g. C208 g){R}")
                 continue
             vis, all_p, dm, sch, aws = run_query_ga(resolve_aircraft_type(positional[0], wingspans), wingspans, parkings, occupied)
-            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws)
+            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws, aurora=aurora)
             continue
 
         # Cargo mode
@@ -925,7 +985,7 @@ def main():
                 print(f"  {YL}Cargo mode: enter aircraft type  (e.g. B744 c){R}")
                 continue
             vis, all_p, dm, sch, aws = run_query_cargo(resolve_aircraft_type(positional[0], wingspans), wingspans, parkings, occupied)
-            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws)
+            assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws, aurora=aurora)
             continue
 
         # Standard query
@@ -943,7 +1003,7 @@ def main():
                                         force_gate=flags['force_gate'],
                                         force_schengen=flags['force_schengen'],
                                         force_terminal=flags['force_terminal'])
-        assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws)
+        assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws, aurora=aurora)
 
 
 if __name__ == "__main__":
