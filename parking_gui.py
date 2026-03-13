@@ -123,9 +123,7 @@ class ParkingApp(tk.Tk):
         self.bind('<Return>', lambda e: self._assign_stand())
         self.protocol("WM_DELETE_WINDOW", self._on_close)
 
-    # ══════════════════════════════════════════════════════════════════════════
     # BUILD UI
-    # ══════════════════════════════════════════════════════════════════════════
 
     def _build_ui(self):
         self._build_header()
@@ -443,9 +441,7 @@ class ParkingApp(tk.Tk):
                  bg=C['bg'], fg=C['fg_dim'], anchor='w').pack(
                      fill=tk.X, pady=(8, 2))
 
-    # ══════════════════════════════════════════════════════════════════════════
     # STRIP CARD
-    # ══════════════════════════════════════════════════════════════════════════
 
     def _strip_empty(self):
         for w in self.strip_frame.winfo_children():
@@ -500,9 +496,7 @@ class ParkingApp(tk.Tk):
                      font=('Consolas', 12),
                      bg='#111', fg='#555', pady=5).pack()
 
-    # ══════════════════════════════════════════════════════════════════════════
     # AURORA
-    # ══════════════════════════════════════════════════════════════════════════
 
     def _try_connect_aurora(self):
         def _do():
@@ -532,9 +526,7 @@ class ParkingApp(tk.Tk):
         self.aurora_lbl.config(text="Aurora disconnected", fg=C['red'])
         self._log("Aurora not available — running standalone", 'warn')
 
-    # ══════════════════════════════════════════════════════════════════════════
     # QUERY
-    # ══════════════════════════════════════════════════════════════════════════
 
     def _query_aurora(self):
         if not self.aurora.connected:
@@ -701,7 +693,7 @@ class ParkingApp(tk.Tk):
         occupied = self.occupied
         parkings = self.parkings
 
-        # ── GA / Private mode ─────────────────────────────────────────────────
+        #  GA / Private mode 
         if ga_mode:
             ws_req   = ws or 0
             lbl_base = f"GA {aircraft_type}" if aircraft_type else "GA Privado"
@@ -1001,9 +993,7 @@ class ParkingApp(tk.Tk):
         for v in self._suit_rows.values():
             v.config(text='—', fg=C['fg_dim'])
 
-    # ══════════════════════════════════════════════════════════════════════════
     # ASSIGN
-    # ══════════════════════════════════════════════════════════════════════════
 
     def _assign_stand(self):
         if not self.selected_stand:
@@ -1088,9 +1078,7 @@ class ParkingApp(tk.Tk):
         self._refresh_assignments_panel()
         self._refresh_occupied_panel()
 
-    # ══════════════════════════════════════════════════════════════════════════
     # HELPERS
-    # ══════════════════════════════════════════════════════════════════════════
 
     def _update_occupied(self):
         if self.occupied:
@@ -1232,13 +1220,7 @@ class ParkingApp(tk.Tk):
         self.log_box.see(tk.END)
         self.log_box.config(state=tk.DISABLED)
 
-    # ══════════════════════════════════════════════════════════════════════════
-    # AUTO-REFRESH
-    # ══════════════════════════════════════════════════════════════════════════
-
-    # ══════════════════════════════════════════════════════════════════════════
     # ASSIGNMENTS PANEL
-    # ══════════════════════════════════════════════════════════════════════════
 
     def _record_assignment(self, cs, airline, aircraft, origin, stand, status):
         self.assignments.append({
