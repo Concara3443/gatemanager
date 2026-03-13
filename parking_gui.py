@@ -636,15 +636,7 @@ class ParkingApp(tk.Tk):
             sch = False
         elif origin:
             prefix = origin[:2].upper()
-            if prefix in pf.SCHENGEN_PREFIXES:
-                sch = True
-            elif prefix in pf.NON_SCHENGEN_PREFIXES:
-                sch = False
-            else:
-                sch = messagebox.askyesno(
-                    "¿Schengen?",
-                    f"Prefijo '{prefix}' ({origin}) desconocido.\n¿Es vuelo Schengen?",
-                    parent=self)
+            sch = (prefix in pf.SCHENGEN_PREFIXES)
         else:
             sch = None   # no filter
         self.sch_bool = sch if sch is not None else True

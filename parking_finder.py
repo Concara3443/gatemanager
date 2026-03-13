@@ -37,12 +37,9 @@ PARKINGS_JSON  = os.path.join(DATA, "parkings.json")
 
 # Schengen prefix lookup
 SCHENGEN_PREFIXES = {
-    'BI','LB','LD','LE','LF','LG','LH','LI','LJ','LK','LM',
-    'LO','LP','LS','LZ','EB','ED','EF','EH','EK','EL','EN',
-    'EP','ES','EV','EY',
-}
-NON_SCHENGEN_PREFIXES = {
-    'EG','EI','LQ','LR','LT','LU','LW','LX','LY', 'GM'
+    'BI','EB','ED','ET','EE','EF','EH','EK','EL','EN',
+    'EP','ES','EV','EY','LD','LE','GC','GE','LF','LG',
+    'LH','LI','LJ','LK','LM','LO','LP','LS','LZ','LX',
 }
 
 # Special airline dedicated stands (populated from airlines.json at startup)
@@ -154,20 +151,11 @@ def get_numeric_id(pid):
     return int(m.group(1)) if m else -1
 
 
-def is_schengen_flight(icao_origin, interactive=True):
+def is_schengen_flight(icao_origin):
     prefix = icao_origin[:2].upper() if icao_origin and len(icao_origin) >= 2 else None
     if prefix in SCHENGEN_PREFIXES:
         return True, prefix
-    if prefix in NON_SCHENGEN_PREFIXES:
-        return False, prefix
-    european = {'E', 'L', 'B', 'G', 'F', 'O', 'H', 'D'}
-    if prefix and prefix[0] not in european:
-        return False, prefix
-    if interactive:
-        print(f"  {YL}Unknown Schengen status for prefix '{prefix}' ({icao_origin}).{R}")
-        ans = input("  Schengen flight? (y/n): ").strip().lower()
-        return (ans == 'y'), prefix
-    return None, prefix
+    return False, prefix
 
 
 def _country(prefix):
@@ -179,6 +167,7 @@ def _country(prefix):
         'EB':'Belgium',  'ED':'Germany',  'EF':'Finland',  'EH':'Netherlands',
         'EK':'Denmark',  'EL':'Luxembourg','EN':'Norway',  'EP':'Poland',
         'ES':'Sweden',   'EV':'Latvia',   'EY':'Lithuania',
+        'ET':'Germany (Mil)', 'EE':'Estonia', 'GC':'Canary Islands', 'GE':'Ceuta/Melilla',
         'EG':'United Kingdom', 'EI':'Ireland',
         'LQ':'Bosnia',   'LR':'Romania',  'LT':'Turkey',   'LU':'Moldova',
         'LW':'N. Macedonia', 'LX':'Gibraltar', 'LY':'Serbia',
@@ -273,7 +262,7 @@ def info_stand(pid, parkings, occupied, airline_code=None, aircraft_type=None, o
         _info_row("Wingspan", f"{ws_str} ({acft_ws}m)")
 
         # Check Schengen
-        sch_bool, sch_prefix = is_schengen_flight(origin, interactive=True)
+        sch_bool, sch_prefix = is_schengen_flight(origin)
         if sch_bool is None:
              sch_str = f"{YL}UNKNOWN{R}"
              sch_ok_val = True

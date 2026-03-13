@@ -152,9 +152,8 @@ AEROLINEA AERONAVE ORIGEN [modificadores]
 ## Detección Schengen automática
 
 Por prefijo ICAO del aeropuerto de origen:
-- **Schengen**: `BI LB LD LE LF LG LH LI LJ LK LM LO LP LS LZ EB ED EF EH EK EL EN EP ES EV EY`
-- **Non-Schengen conocidos**: `EG EI LQ LR LT LU LW LX LY`
-- **Resto**: pregunta interactivamente.
+- **Schengen**: `BI EB ED ET EE EF EH EK EL EN EP ES EV EY LD LE GC GE LF LG LH LI LJ LK LM LO LP LS LZ LX`
+- **Resto**: se asume Non-Schengen.
 
 ---
 
