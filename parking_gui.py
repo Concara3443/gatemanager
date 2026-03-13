@@ -13,7 +13,7 @@ sys.path.insert(0, BASE)
 from aurora_bridge import AuroraBridge, callsign_to_airline
 import parking_finder as pf
 
-# ── Palette ───────────────────────────────────────────────────────────────────
+# Palette
 C = {
     'bg':       '#1a1a2e', 'bg2':  '#16213e', 'bg3':  '#0f0f23',
     'hdr':      '#0d0d1f', 'sep':  '#4fc3f7', 'accent':'#4fc3f7',
@@ -29,7 +29,7 @@ FONT_L = ('Consolas', 14, 'bold')
 FONT_X = ('Consolas', 20, 'bold')
 
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+# Helpers
 
 def _btn(parent, text, cmd, bg=None, fg=None, **kw):
     return tk.Button(parent, text=text, font=FONT_S,
@@ -69,7 +69,7 @@ class SegGroup:
         return self.var.get()
 
 
-# ── Main App ──────────────────────────────────────────────────────────────────
+# Main App
 
 class ParkingApp(tk.Tk):
 
@@ -136,7 +136,7 @@ class ParkingApp(tk.Tk):
         tk.Frame(self, bg=C['sep'], height=2).pack(fill=tk.X)
         self._build_footer()
 
-    # ── Header ────────────────────────────────────────────────────────────────
+    # Header
 
     def _build_header(self):
         hdr = tk.Frame(self, bg=C['hdr'], pady=10)
@@ -170,14 +170,14 @@ class ParkingApp(tk.Tk):
                                    font=FONT_S, bg=C['hdr'], fg=C['red'])
         self.aurora_lbl.pack(side=tk.LEFT, padx=(4, 0))
 
-    # ── Left panel ────────────────────────────────────────────────────────────
+    # Left panel
 
     def _build_left(self, parent):
         left = tk.Frame(parent, bg=C['bg'], width=320)
         left.pack(side=tk.LEFT, fill=tk.Y)
         left.pack_propagate(False)
 
-        # ── Inputs ────────────────────────────────────────────────────────────
+        # Inputs
         self._slabel(left, "Query  (1, 2 o 3 campos)")
         inp = tk.Frame(left, bg=C['bg2'], padx=8, pady=6)
         inp.pack(fill=tk.X, padx=8, pady=(0, 2))
@@ -207,7 +207,7 @@ class ParkingApp(tk.Tk):
                 tk.Label(row, text=hint, font=('Consolas', 8),
                          bg=C['bg2'], fg=C['fg_dim']).pack(side=tk.LEFT, padx=3)
 
-        # ── Filters ───────────────────────────────────────────────────────────
+        # Filters
         self._slabel(left, "Filtros")
         flt = tk.Frame(left, bg=C['bg2'], padx=8, pady=6)
         flt.pack(fill=tk.X, padx=8, pady=(0, 2))
@@ -237,7 +237,7 @@ class ParkingApp(tk.Tk):
         _btn(brow, "✕", self._clear_query,
              bg='#2a1010', fg=C['red']).pack(side=tk.LEFT)
 
-        # ── Strip card ────────────────────────────────────────────────────────
+        # Strip card
         self._slabel(left, "Current Strip")
         sf = tk.Frame(left, bg=C['bg'], padx=8)
         sf.pack(fill=tk.X)
@@ -245,7 +245,7 @@ class ParkingApp(tk.Tk):
         self.strip_frame.pack(fill=tk.X)
         self._strip_empty()
 
-        # ── Occupied ──────────────────────────────────────────────────────────
+        # Occupied
         self._slabel(left, "Stands ocupados")
         of = tk.Frame(left, bg=C['bg'], padx=8)
         of.pack(fill=tk.X)
@@ -262,7 +262,7 @@ class ParkingApp(tk.Tk):
         _btn(of, "x  Liberar stand…", self._release_dialog,
              bg='#1a1a1a').pack(fill=tk.X, pady=(2, 0))
 
-    # ── Right panel ───────────────────────────────────────────────────────────
+    # Right panel
 
     def _build_right(self, parent):
         right = tk.Frame(parent, bg=C['bg'])
@@ -308,7 +308,7 @@ class ParkingApp(tk.Tk):
         self.tree.bind('<<TreeviewSelect>>', self._on_stand_select)
         self.tree.bind('<Double-1>', lambda e: self._assign_stand())
 
-        # ── Stand info box ────────────────────────────────────────────────────
+        # Stand info box
         # Search bar
         sh = tk.Frame(right, bg=C['bg'])
         sh.pack(fill=tk.X, padx=8, pady=(0, 2))
@@ -384,7 +384,7 @@ class ParkingApp(tk.Tk):
             padx=10, pady=7, state=tk.DISABLED, command=self._assign_stand)
         self.assign_btn.pack(fill=tk.X, padx=8, pady=(0, 6))
 
-    # ── Log ───────────────────────────────────────────────────────────────────
+    # Log
 
     def _build_log(self):
         wrap = tk.Frame(self, bg=C['bg3'], height=120)
@@ -399,7 +399,7 @@ class ParkingApp(tk.Tk):
                           ('warn', C['orange']), ('err', C['red'])]:
             self.log_box.tag_config(tag, foreground=col)
 
-    # ── Footer buttons ────────────────────────────────────────────────────────
+    # Footer buttons
 
     def _build_footer(self):
         bar = tk.Frame(self, bg=C['hdr'], pady=7)
@@ -549,7 +549,7 @@ class ParkingApp(tk.Tk):
         self.selected_stand = ''
         self.assign_btn.config(state=tk.DISABLED, text="Assign Stand  ↵")
 
-        # ── Wingspan (None if no aircraft) ────────────────────────────────────
+        # Wingspan (None if no aircraft) 
         ws = None
         if aircraft_type:
             aircraft_type = pf.resolve_aircraft_type(aircraft_type, self.wingspans)
@@ -569,7 +569,7 @@ class ParkingApp(tk.Tk):
                 ws = ws or 36.0
         self.acft_ws = ws or 0.0
 
-        # ── Schengen: only if origin provided + not overridden ────────────────
+        # Schengen: only if origin provided + not overridden 
         sch_override = self.seg['Schengen'].get()
         if sch_override == 'yes':
             sch = True
@@ -591,14 +591,14 @@ class ParkingApp(tk.Tk):
         self.sch_bool = sch if sch is not None else True
         sch_str = ("SCHENGEN" if sch else "NON-SCHENGEN") if sch is not None else ""
 
-        # ── Terminal override ─────────────────────────────────────────────────
+        # Terminal override 
         term_override = self.seg['Terminal'].get()
 
-        # ── Build candidate pool ──────────────────────────────────────────────
+        # Build candidate pool 
         pool, terminal, label, fallback = self._build_pool(
             airline_code, aircraft_type, ws, sch, origin, term_override)
 
-        # ── Apply type filter (gates / remote) ────────────────────────────────
+        # Apply type filter (gates / remote) 
         type_f = self.seg['Tipo'].get()
         if type_f == 'gates':
             pool = {k: v for k, v in pool.items() if not v.get('remote', False)}
@@ -632,7 +632,7 @@ class ParkingApp(tk.Tk):
             try: return 900 <= int(pid) <= 999
             except (ValueError, TypeError): return False
 
-        # ── Only aircraft, no airline ─────────────────────────────────────────
+        # Only aircraft, no airline 
         if not airline_code:
             pool = {}
             for pid, d in parkings.items():
@@ -645,7 +645,7 @@ class ParkingApp(tk.Tk):
                 pool[pid] = d
             return pool, term_override or 'ALL', f"Aircraft {aircraft_type}", False
 
-        # ── Cargo ─────────────────────────────────────────────────────────────
+        # Cargo
         if pf.get_airline_terminal(self.airlines, airline_code) == 'CARGO' \
                 and airline_code not in pf.DEDICATED:
             pool = {pid: d for pid, d in parkings.items()
@@ -655,7 +655,7 @@ class ParkingApp(tk.Tk):
                     and (d.get('max_wingspan') or 999) >= (ws or 0)}
             return pool, 'CARGO', f"CARGO {airline_code}", False
 
-        # ── Dedicated ─────────────────────────────────────────────────────────
+        # Dedicated
         if airline_code in pf.DEDICATED:
             ded_term = pf.DEDICATED_TERMINAL.get(airline_code, 'T1')
             other    = 'T2' if ded_term == 'T1' else 'T1'
@@ -680,7 +680,7 @@ class ParkingApp(tk.Tk):
                 return pool, other, f"{airline_code} fallback→{other}", True
             return pool, term, f"{airline_code} fallback→{term}", True
 
-        # ── Standard ──────────────────────────────────────────────────────────
+        # Standard
         terminal = pf.get_airline_terminal(self.airlines, airline_code)
         if terminal is None:
             ans = simpledialog.askstring(
@@ -719,7 +719,7 @@ class ParkingApp(tk.Tk):
                                    eff_ws, eff_sch, occupied).items() if not _is_special(p)}
         return pool, other, f"{airline_code} fallback→{other}", True
 
-    # ── Table ─────────────────────────────────────────────────────────────────
+    # Table
 
     def _populate_table(self, data_map, sch, acft_ws, fallback=False):
         for r in self.tree.get_children():
@@ -753,7 +753,7 @@ class ParkingApp(tk.Tk):
             self.tree.focus(self.all_sorted[0])
             self.tree.see(self.all_sorted[0])
 
-    # ── Stand info ────────────────────────────────────────────────────────────
+    # Stand info
 
     def _on_stand_select(self, _=None):
         sel = self.tree.selection()
@@ -810,7 +810,7 @@ class ParkingApp(tk.Tk):
             text="OCUPADO" if occupied else "Libre",
             fg=C['red'] if occupied else C['green'])
 
-        # ── Suitability checks ────────────────────────────────────────────────
+        # Suitability checks 
         airline     = self.v_airline.get().strip().upper()
         acft_ws     = self.acft_ws
         sch         = self.sch_bool
@@ -886,7 +886,7 @@ class ParkingApp(tk.Tk):
 
         cs = self.current_cs or self.v_callsign.get().strip().upper() or '—'
 
-        # ── Re-assignment: free old stand if this callsign already has one ─────
+        # Re-assignment: free old stand if this callsign already has one 
         if cs and cs != '—':
             for rec in self.assignments:
                 if rec['cs'] == cs and rec['status'] in ('ASIGNADO', 'ASIGNADO(auto)', 'PRE-ASIGNADO'):
@@ -1195,7 +1195,7 @@ class ParkingApp(tk.Tk):
         self._refresh_assignments_panel()
         self._log("Historial de asignaciones limpiado", 'info')
 
-    # ── Pre-assignment poller ─────────────────────────────────────────────────
+    # Pre-assignment poller 
 
     def _poll_preassigned(self):
         """Check if any pre-assigned traffic has been assumed."""

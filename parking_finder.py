@@ -16,7 +16,7 @@ from aurora_bridge import AuroraBridge, callsign_to_airline
 if sys.platform == 'win32' and sys.stdout is not None:
     sys.stdout.reconfigure(encoding='utf-8')
 
-# ─── ANSI colours ────────────────────────────────────────────────────────────
+# ANSI colours
 R   = '\033[0m'
 B   = '\033[1m'
 DIM = '\033[2m'
@@ -28,14 +28,14 @@ MG  = '\033[95m'
 WH  = '\033[97m'
 BL  = '\033[94m'
 
-# ─── Data files ───────────────────────────────────────────────────────────────
+# Data files
 BASE           = os.path.dirname(os.path.abspath(__file__))
 DATA           = os.path.join(BASE, "data")
 AIRLINES_JSON  = os.path.join(DATA, "airlines.json")
 WINGSPANS_JSON = os.path.join(DATA, "aircraft_wingspans.json")
 PARKINGS_JSON  = os.path.join(DATA, "parkings.json")
 
-# ─── Schengen prefix lookup ───────────────────────────────────────────────────
+# Schengen prefix lookup
 SCHENGEN_PREFIXES = {
     'BI','LB','LD','LE','LF','LG','LH','LI','LJ','LK','LM',
     'LO','LP','LS','LZ','EB','ED','EF','EH','EK','EL','EN',
@@ -45,7 +45,7 @@ NON_SCHENGEN_PREFIXES = {
     'EG','EI','LQ','LR','LT','LU','LW','LX','LY', 'GM'
 }
 
-# ─── Special airline dedicated stands (populated from airlines.json at startup)
+# Special airline dedicated stands (populated from airlines.json at startup)
 DEDICATED          = {}  # code -> set of stand IDs
 DEDICATED_LABEL    = {}  # code -> display label
 DEDICATED_TERMINAL = {}  # code -> terminal
@@ -112,7 +112,7 @@ SCHENGEN_LABELS = {
 }
 
 
-# ─── Helpers ──────────────────────────────────────────────────────────────────
+# Helpers
 
 def load_json(path, name):
     if not os.path.exists(path):
@@ -307,7 +307,7 @@ def info_stand(pid, parkings, occupied, airline_code=None, aircraft_type=None, o
     print()
 
 
-# ─── Display ─────────────────────────────────────────────────────────────────
+# Display
 
 WIDTH = 62
 
@@ -324,7 +324,7 @@ def _info_row(label, value):
 
 
 def _section_header(title, count):
-    bar = '─' * max(2, WIDTH - len(title) - len(str(count)) - 7)
+    bar = '' * max(2, WIDTH - len(title) - len(str(count)) - 7)
     print(f"\n  {BL}{B}{title}{R}  {DIM}{count} option{'s' if count != 1 else ''}{R}  {DIM}{bar}{R}")
 
 
@@ -398,10 +398,10 @@ def print_table(pids, data_map, schengen_flight, limit=RESULTS_LIMIT, acft_ws=No
     def plain_row(r):
         return '│' + '│'.join(f' {str(c):<{cw[i]}} ' for i, c in enumerate(r)) + '│'
 
-    top     = '┌' + '┬'.join('─' * (w + 2) for w in cw) + '┐'
-    sep     = '├' + '┼'.join('─' * (w + 2) for w in cw) + '┤'
+    top     = '┌' + '┬'.join('' * (w + 2) for w in cw) + '┐'
+    sep     = '├' + '┼'.join('' * (w + 2) for w in cw) + '┤'
     hdr_sep = '├' + '┼'.join('═' * (w + 2) for w in cw) + '┤'
-    bot     = '└' + '┴'.join('─' * (w + 2) for w in cw) + '┘'
+    bot     = '└' + '┴'.join('' * (w + 2) for w in cw) + '┘'
 
     print(f"  {DIM}{top}{R}")
     print(f"  {DIM}{plain_row(cols)}{R}")
@@ -472,7 +472,7 @@ def assign_prompt(visible_pids, all_pids, data_map, schengen_flight, parkings, o
         if not sel:
             return
 
-        # ── Re-filter modifiers ────────────────────────────────────────────────
+        # Re-filter modifiers 
         expand   = sel.endswith('+') or sel.startswith('+')
         core     = sel.replace('+', '').strip()
 
@@ -496,7 +496,7 @@ def assign_prompt(visible_pids, all_pids, data_map, schengen_flight, parkings, o
             _redisplay(active_pool, expand)
             continue
 
-        # ── Stand ID ──────────────────────────────────────────────────────────
+        # Stand ID
         if sel not in all_pids:
             print(f"  {YL}Stand '{sel}' not found — type + to see all options.{R}")
             continue
@@ -512,7 +512,7 @@ def assign_prompt(visible_pids, all_pids, data_map, schengen_flight, parkings, o
         parts.append(f"{DIM}[{len(occupied)} unavailable this session]{R}")
         print("  " + "  ".join(parts))
 
-        # ── Push gate label to Aurora ──────────────────────────────────────────
+        # Push gate label to Aurora 
         if aurora and aurora.connected and callsign:
             ok, detail = aurora.assign_gate(callsign, sel)
             if ok:
@@ -592,15 +592,15 @@ def run_query(airline_code, aircraft_type, origin,
     force_schengen  : True=Schengen, False=Non-Schengen, None=auto-detect
     """
 
-    # ── Wingspan ───────────────────────────────────────────────────────────────
+    # Wingspan
     wingspan = get_wingspan(aircraft_type, wingspans)
 
-    # ── Early cargo redirect (before any output) ───────────────────────────────
+    # Early cargo redirect (before any output) 
     if airline_code not in DEDICATED and get_airline_terminal(airlines, airline_code) == 'CARGO':
         return run_query_cargo(aircraft_type, wingspans, parkings, occupied,
                                airline_code=airline_code)
 
-    # ── Schengen ───────────────────────────────────────────────────────────────
+    # Schengen
     if force_schengen is not None:
         sch_bool    = force_schengen
         sch_prefix  = origin[:2].upper() if origin and len(origin) >= 2 else '??'
@@ -613,10 +613,10 @@ def run_query(airline_code, aircraft_type, origin,
     if force_schengen is not None:
         sch_str += f"  {DIM}(override){R}"
 
-    # ── Remote flag label ──────────────────────────────────────────────────────
+    # Remote flag label
     remote_tag = f"  {YL}[remote only]{R}" if force_remote else (f"  {GR}[gates only]{R}" if force_gate else "")
 
-    # ── Header ─────────────────────────────────────────────────────────────────
+    # Header
     print()
     _box_top("LEBL  PARKING  ASSIGNMENT")
     print()
@@ -643,7 +643,7 @@ def run_query(airline_code, aircraft_type, origin,
             (other,    None, f"{other} (fallback)"),
         ]
 
-    # ── Dedicated airline ──────────────────────────────────────────────────────
+    # Dedicated airline
     if airline_code in DEDICATED:
         ded_terminal = DEDICATED_TERMINAL.get(airline_code, 'T1')
         ded_label    = DEDICATED_LABEL.get(airline_code, f"{airline_code} DEDICATED")
@@ -680,7 +680,7 @@ def run_query(airline_code, aircraft_type, origin,
                     last_data_map = dm
                     break
 
-    # ── Standard airline ───────────────────────────────────────────────────────
+    # Standard airline
     else:
         terminal = get_airline_terminal(airlines, airline_code)
         if terminal is None:
@@ -723,7 +723,7 @@ def run_query(airline_code, aircraft_type, origin,
     return visible, all_pids, last_data_map, sch_bool, wingspan
 
 
-# ─── Input parser ─────────────────────────────────────────────────────────────
+# Input parser
 
 def parse_input(raw):
     """
@@ -794,7 +794,7 @@ HELP_TEXT = f"""
 """
 
 
-# ─── Main ─────────────────────────────────────────────────────────────────────
+# Main
 
 def main():
     airlines  = load_json(AIRLINES_JSON,  "airlines.json")
@@ -805,14 +805,14 @@ def main():
 
     occupied: set = set()
 
-    # ── Aurora connection (optional) ───────────────────────────────────────────
+    # Aurora connection (optional) 
     aurora = AuroraBridge()
     if aurora.connect():
         print(f"  {GR}{B}Aurora connected{R}  {DIM}(localhost:1130){R}")
     else:
         print(f"  {YL}Aurora not available{R}  {DIM}(running without live data){R}")
 
-    # ── One-shot CLI mode ──────────────────────────────────────────────────────
+    # One-shot CLI mode
     args = sys.argv[1:]
     if args:
         flags, positional = parse_input(' '.join(args))
@@ -834,10 +834,10 @@ def main():
             assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws, aurora=aurora)
             return
 
-    # ── Interactive session loop ───────────────────────────────────────────────
+    # Interactive session loop 
     aurora_status = f"{GR}Aurora{R}" if aurora.connected else f"{DIM}no Aurora{R}"
     print(f"\n{CY}{B}  LEBL Parking System{R}  {DIM}· '?' for help · 'q' to quit{R}  [{aurora_status}]")
-    print(f"  {DIM}{'─' * 44}{R}")
+    print(f"  {DIM}{'' * 44}{R}")
 
     while True:
         # Show occupied summary
@@ -859,7 +859,7 @@ def main():
             continue
         raw_lower = raw.lower()
 
-        # ── Special commands ───────────────────────────────────────────────────
+        # Special commands
         if raw_lower == 'q':
             print(f"{DIM}Session ended.{R}")
             break
@@ -967,7 +967,7 @@ def main():
                 print(f"  {YL}Usage: i STAND [AIRLINE ACFT ORIGIN]{R}")
             continue
 
-        # ── Parse modifiers ────────────────────────────────────────────────────
+        # Parse modifiers
         flags, positional = parse_input(raw)
 
         # GA mode

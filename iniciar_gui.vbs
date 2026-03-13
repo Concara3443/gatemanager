@@ -9,7 +9,7 @@ If Not fso.FileExists(pyFile) Then
     WScript.Quit
 End If
 
-' ── Buscar pythonw en rutas habituales ────────────────────────────────────────
+' Buscar pythonw en rutas habituales 
 Dim candidates(10)
 candidates(0) = "pythonw"
 candidates(1) = shell.ExpandEnvironmentStrings("%LOCALAPPDATA%") & "\Programs\Python\Python313\pythonw.exe"
@@ -73,6 +73,6 @@ If pyExe = "" Then
     WScript.Quit
 End If
 
-' ── Lanzar la app ─────────────────────────────────────────────────────────────
+' Lanzar la app
 cmd = pyExe & " """ & pyFile & """"
 shell.Run cmd, 0, False

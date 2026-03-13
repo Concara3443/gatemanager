@@ -15,7 +15,7 @@ class AuroraBridge:
         self._lock  = threading.Lock()
         self.connected = False
 
-    # ── Connection ────────────────────────────────────────────────────────────
+    # Connection
 
     def connect(self):
         """Try to connect to Aurora. Returns True on success."""
@@ -40,7 +40,7 @@ class AuroraBridge:
         self._sock     = None
         self.connected = False
 
-    # ── Low-level send/recv ───────────────────────────────────────────────────
+    # Low-level send/recv
 
     def _send(self, cmd: str) -> str | None:
         """Send one command, return the first response line (stripped), or None.
@@ -74,7 +74,7 @@ class AuroraBridge:
                 self.connected = False
                 return None
 
-    # ── High-level helpers ────────────────────────────────────────────────────
+    # High-level helpers
 
     def get_selected_callsign(self) -> str | None:
         """Return the callsign selected in Aurora, or None."""
