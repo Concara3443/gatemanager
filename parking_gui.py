@@ -12,6 +12,7 @@ sys.path.insert(0, BASE)
 
 from aurora_bridge import AuroraBridge, callsign_to_airline
 import parking_finder as pf
+from callsign_analyzer import CallsignAnalyzer
 
 # Palette
 C = {
@@ -88,6 +89,9 @@ class ParkingApp(tk.Tk):
         self.parkings  = pf.load_json(pf.PARKINGS_JSON,  "parkings.json")
 
         # State
+        self._cs_analyzer   = CallsignAnalyzer()
+        self._ga_forced     : bool  = False  # manual GA toggle
+
         self.occupied       : set   = set()
         self.occupied_by    : dict  = {}   # {stand: {'cs','acft','airline'}}
         self.current_cs     : str   = ''
@@ -187,8 +191,29 @@ class ParkingApp(tk.Tk):
         self.v_aircraft = tk.StringVar()
         self.v_origin   = tk.StringVar()
 
-        fields = [("Callsign", self.v_callsign, ""),
-                  ("Airline",  self.v_airline,  "opcional"),
+        # Callsign row (special: includes GA toggle + country badge)
+        cs_row = tk.Frame(inp, bg=C['bg2'])
+        cs_row.pack(fill=tk.X, pady=2)
+        tk.Label(cs_row, text=f"{'Callsign':<9}", font=FONT_S,
+                 bg=C['bg2'], fg=C['fg_dim'], width=9, anchor='w').pack(side=tk.LEFT)
+        tk.Entry(cs_row, textvariable=self.v_callsign, font=FONT,
+                 bg=C['entry_bg'], fg=C['fg'], insertbackground=C['fg'],
+                 relief=tk.FLAT, bd=4, width=13).pack(side=tk.LEFT, fill=tk.X, expand=True)
+        self.v_callsign.trace_add('write', lambda *_: self._on_callsign_change())
+
+        self._ga_var = tk.BooleanVar(value=False)
+        self._ga_btn = tk.Checkbutton(
+            cs_row, text="GA", font=FONT_S, variable=self._ga_var,
+            bg=C['bg2'], fg=C['fg_dim'], selectcolor=C['seg_on'],
+            activebackground=C['bg2'], activeforeground=C['fg'],
+            indicatoron=False, padx=6, pady=2, relief=tk.FLAT, cursor='hand2',
+            command=self._on_ga_toggle)
+        self._ga_btn.pack(side=tk.LEFT, padx=(4, 0))
+        self._country_lbl = tk.Label(cs_row, text='', font=('Consolas', 8),
+                                      bg=C['bg2'], fg=C['fg_dim'])
+        self._country_lbl.pack(side=tk.LEFT, padx=(3, 0))
+
+        fields = [("Airline",  self.v_airline,  "opcional"),
                   ("Aircraft", self.v_aircraft, "opcional"),
                   ("Origin",   self.v_origin,   "opcional")]
 
@@ -523,15 +548,57 @@ class ParkingApp(tk.Tk):
         airline  = callsign_to_airline(cs) or ''
         aircraft = fp.get('aircraft', '')
         origin   = fp.get('departure', '')
+        self._ga_forced = False   # reset manual override; auto-detect will re-run via trace
         self.v_callsign.set(cs); self.v_airline.set(airline)
         self.v_aircraft.set(aircraft); self.v_origin.set(origin)
         self._log(f"Aurora FP: {cs} → {airline} {aircraft} from {origin}", 'info')
         self._run_query(cs, airline or None, aircraft or None, origin or None)
 
+    def _on_callsign_change(self):
+        cs = self.v_callsign.get().strip()
+        if not cs:
+            self._set_ga_indicator(False, '')
+            return
+        result = self._cs_analyzer.check(cs)
+        if result['is_private']:
+            country = result['countries'][0] if result['countries'] else ''
+            self._set_ga_indicator(True, country)
+        else:
+            self._set_ga_indicator(False, '')
+
+    def _set_ga_indicator(self, is_private: bool, country: str):
+        """Update GA button color and country label based on auto-detection."""
+        if is_private:
+            self._ga_btn.config(fg=C['green'], bg=C['seg_on'])
+            short = country[:12] if country else 'GA/Privado'
+            self._country_lbl.config(text=short, fg=C['green'])
+            if not self._ga_forced:          # only auto-set if not manually forced
+                self._ga_var.set(True)
+        else:
+            if not self._ga_forced:
+                self._ga_var.set(False)
+                self._ga_btn.config(fg=C['fg_dim'], bg=C['bg2'])
+            self._country_lbl.config(text='', fg=C['fg_dim'])
+
+    def _on_ga_toggle(self):
+        self._ga_forced = self._ga_var.get()
+        if self._ga_forced:
+            self._ga_btn.config(fg=C['green'], bg=C['seg_on'])
+            self._country_lbl.config(text='manual', fg=C['orange'])
+        else:
+            self._ga_btn.config(fg=C['fg_dim'], bg=C['bg2'])
+            self._country_lbl.config(text='', fg=C['fg_dim'])
+            # Re-run auto-detect on current callsign
+            self._on_callsign_change()
+
     def _clear_query(self):
         for v in (self.v_callsign, self.v_airline, self.v_aircraft, self.v_origin):
             v.set('')
         self.current_cs = ''
+        self._ga_forced = False
+        self._ga_var.set(False)
+        self._ga_btn.config(fg=C['fg_dim'], bg=C['bg2'])
+        self._country_lbl.config(text='', fg=C['fg_dim'])
 
     def _query_manual(self):
         cs      = self.v_callsign.get().strip().upper() or None
@@ -594,25 +661,31 @@ class ParkingApp(tk.Tk):
         # Terminal override 
         term_override = self.seg['Terminal'].get()
 
-        # Build candidate pool 
-        pool, terminal, label, fallback = self._build_pool(
-            airline_code, aircraft_type, ws, sch, origin, term_override)
+        # GA / private mode overrides everything
+        ga_mode = self._ga_var.get()
 
-        # Apply type filter (gates / remote) 
+        # Build candidate pool
+        pool, terminal, label, fallback = self._build_pool(
+            airline_code, aircraft_type, ws, sch, origin, term_override,
+            ga_mode=ga_mode)
+
+        # Apply type filter (gates / remote) — skip in GA mode (all are remote/apron)
         type_f = self.seg['Tipo'].get()
-        if type_f == 'gates':
-            pool = {k: v for k, v in pool.items() if not v.get('remote', False)}
-        elif type_f == 'remote':
-            pool = {k: v for k, v in pool.items() if v.get('remote', False)}
+        if not ga_mode:
+            if type_f == 'gates':
+                pool = {k: v for k, v in pool.items() if not v.get('remote', False)}
+            elif type_f == 'remote':
+                pool = {k: v for k, v in pool.items() if v.get('remote', False)}
 
         self.current_dm = pool
         self._populate_table(pool, self.sch_bool, ws or 0.0, fallback=fallback)
 
         n = len(pool)
         extra = []
-        if ws:     extra.append(f"{ws}m")
+        if ws:      extra.append(f"{ws}m")
         if sch_str: extra.append(sch_str)
-        if type_f != 'all': extra.append(type_f)
+        if ga_mode: extra.append("GA/Privado")
+        elif type_f != 'all': extra.append(type_f)
         extra_s = f"  ({', '.join(extra)})" if extra else ""
         fb_s = "FALLBACK  " if fallback else ""
         self._log(f"{fb_s}{label}{extra_s}  →  {n} stands",
@@ -622,10 +695,22 @@ class ParkingApp(tk.Tk):
                            airline_code or '', aircraft_type or '',
                            origin or '', '', sch_str, terminal or '—')
 
-    def _build_pool(self, airline_code, aircraft_type, ws, sch, origin, term_override):
+    def _build_pool(self, airline_code, aircraft_type, ws, sch, origin, term_override,
+                    ga_mode=False):
         """Return (pool_dict, terminal, label, is_fallback)."""
         occupied = self.occupied
         parkings = self.parkings
+
+        # ── GA / Private mode ─────────────────────────────────────────────────
+        if ga_mode:
+            pool = {
+                pid: d for pid, d in parkings.items()
+                if d.get('schengen') == 'ga'
+                and pid not in occupied
+                and (d.get('max_wingspan') or 0) >= (ws or 0)
+            }
+            lbl = f"GA {aircraft_type}" if aircraft_type else "GA Privado"
+            return pool, 'GA', lbl, False
 
         def _is_special(pid):
             """Returns True for 9xx special-use stands (excluded from default results)."""
@@ -1260,6 +1345,7 @@ class ParkingApp(tk.Tk):
         aircraft = fp.get('aircraft', '')
         origin   = fp.get('departure', '')
         if not airline and not aircraft: return
+        self._ga_forced = False   # reset manual; auto-detect fires via trace
         self.v_callsign.set(cs); self.v_airline.set(airline)
         self.v_aircraft.set(aircraft); self.v_origin.set(origin)
         self._log(f"Auto: {cs} → {airline} {aircraft} from {origin}", 'info')
