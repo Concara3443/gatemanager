@@ -1,0 +1,2863 @@
+{
+  "YA": {
+    "countries": [
+      "Afghanistan"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ZA": {
+    "countries": [
+      "Albania"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "7T": {
+    "countries": [
+      "Algeria"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "C3": {
+    "countries": [
+      "Andorra"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "D2": {
+    "countries": [
+      "Angola"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "VPA": {
+    "countries": [
+      "Anguilla"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "V2": {
+    "countries": [
+      "Antigua and Barbuda"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "LV": {
+    "countries": [
+      "Argentina",
+      "Latvia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      },
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      },
+      {
+        "len": 3,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "LQ": {
+    "countries": [
+      "Argentina"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "EK": {
+    "countries": [
+      "Armenia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "DIGIT"
+      },
+      {
+        "len": 5,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "P4": {
+    "countries": [
+      "Aruba"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "VH": {
+    "countries": [
+      "Australia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "OE": {
+    "countries": [
+      "Austria"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "4K": {
+    "countries": [
+      "Azerbaijan"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "DIGIT"
+      },
+      {
+        "len": 1,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "C6": {
+    "countries": [
+      "Bahamas"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "A9C": {
+    "countries": [
+      "Bahrain"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "S2": {
+    "countries": [
+      "Bangladesh"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "8P": {
+    "countries": [
+      "Barbados"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "EW": {
+    "countries": [
+      "Belarus"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "DIGIT"
+      },
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "OO": {
+    "countries": [
+      "Belgium"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "DIGIT"
+      },
+      {
+        "len": 3,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "V3": {
+    "countries": [
+      "Belize"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TY": {
+    "countries": [
+      "Benin"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "VPB": {
+    "countries": [
+      "Bermuda"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "VQB": {
+    "countries": [
+      "Bermuda"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "A5": {
+    "countries": [
+      "Bhutan"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "CP": {
+    "countries": [
+      "Bolivia"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "E7": {
+    "countries": [
+      "Bosnia and Herzegovina"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "A2": {
+    "countries": [
+      "Botswana"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "PP": {
+    "countries": [
+      "Brazil"
+    ],
+    "patterns": []
+  },
+  "PT": {
+    "countries": [
+      "Brazil"
+    ],
+    "patterns": []
+  },
+  "PR": {
+    "countries": [
+      "Brazil"
+    ],
+    "patterns": []
+  },
+  "PU": {
+    "countries": [
+      "Brazil"
+    ],
+    "patterns": []
+  },
+  "PS": {
+    "countries": [
+      "Brazil"
+    ],
+    "patterns": []
+  },
+  "VPL": {
+    "countries": [
+      "British Virgin Islands"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "V8": {
+    "countries": [
+      "Brunei"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "ALPHANUM"
+      },
+      {
+        "len": 3,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "LZ": {
+    "countries": [
+      "Bulgaria"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "XT": {
+    "countries": [
+      "Burkina Faso"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9U": {
+    "countries": [
+      "Burundi"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "XU": {
+    "countries": [
+      "Cambodia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TJ": {
+    "countries": [
+      "Cameroon"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "C": {
+    "countries": [
+      "Canada"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "D4": {
+    "countries": [
+      "Cape Verde"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "VPC": {
+    "countries": [
+      "Cayman Islands"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "VQC": {
+    "countries": [
+      "Cayman Islands"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TL": {
+    "countries": [
+      "Central African Republic"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TT": {
+    "countries": [
+      "Chad"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "CC": {
+    "countries": [
+      "Chile"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "B": {
+    "countries": [
+      "China",
+      "Taiwan"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      },
+      {
+        "len": 5,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "HJ": {
+    "countries": [
+      "Colombia"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "HK": {
+    "countries": [
+      "Colombia"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "D6": {
+    "countries": [
+      "Comoros"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TN": {
+    "countries": [
+      "Congo, Republic of"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9S": {
+    "countries": [
+      "Congo, Democratic Republic of"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9T": {
+    "countries": [
+      "Congo, Democratic Republic of"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "E5": {
+    "countries": [
+      "Cook Islands"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TI": {
+    "countries": [
+      "Costa Rica"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "9A": {
+    "countries": [
+      "Croatia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "CU": {
+    "countries": [
+      "Cuba"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "5B": {
+    "countries": [
+      "Cyprus"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "OK": {
+    "countries": [
+      "Czech Republic"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      },
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "OY": {
+    "countries": [
+      "Denmark"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "J2": {
+    "countries": [
+      "Djibouti"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "J7": {
+    "countries": [
+      "Dominica"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "HI": {
+    "countries": [
+      "Dominican Republic"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "4W": {
+    "countries": [
+      "East Timor"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "HC": {
+    "countries": [
+      "Ecuador"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "SU": {
+    "countries": [
+      "Egypt"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "YS": {
+    "countries": [
+      "El Salvador"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "3C": {
+    "countries": [
+      "Equatorial Guinea"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "E3": {
+    "countries": [
+      "Eritrea"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ES": {
+    "countries": [
+      "Estonia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "3D": {
+    "countries": [
+      "Eswatini"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "3DC": {
+    "countries": [
+      "Eswatini"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ET": {
+    "countries": [
+      "Ethiopia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "VPF": {
+    "countries": [
+      "Falkland Islands"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "DQ": {
+    "countries": [
+      "Fiji"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "OH": {
+    "countries": [
+      "Finland"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "DIGIT"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "F": {
+    "countries": [
+      "France"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "INSEE": {
+    "countries": [
+      "France"
+    ],
+    "patterns": []
+  },
+  "code": {
+    "countries": [
+      "France"
+    ],
+    "patterns": []
+  },
+  "FO": {
+    "countries": [
+      "French Guiana",
+      "French Polynesia",
+      "French West Indies",
+      "Martinique",
+      "New Caledonia",
+      "Réunion"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TR": {
+    "countries": [
+      "Gabon"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "C5": {
+    "countries": [
+      "Gambia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "4L": {
+    "countries": [
+      "Georgia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 5,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "D": {
+    "countries": [
+      "Germany"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "9G": {
+    "countries": [
+      "Ghana"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9GR": {
+    "countries": [
+      "Ghana"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "VPG": {
+    "countries": [
+      "Gibraltar"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "SX": {
+    "countries": [
+      "Greece"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "J3": {
+    "countries": [
+      "Grenada"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TG": {
+    "countries": [
+      "Guatemala"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "2": {
+    "countries": [
+      "Guernsey"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "3X": {
+    "countries": [
+      "Guinea"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "J5": {
+    "countries": [
+      "Guinea-Bissau"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "8R": {
+    "countries": [
+      "Guyana"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "HH": {
+    "countries": [
+      "Haiti"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "HR": {
+    "countries": [
+      "Honduras"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "BH": {
+    "countries": [
+      "Hong Kong"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "BK": {
+    "countries": [
+      "Hong Kong"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "BL": {
+    "countries": [
+      "Hong Kong"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "HA": {
+    "countries": [
+      "Hungary"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "TF": {
+    "countries": [
+      "Iceland"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "VT": {
+    "countries": [
+      "India"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "PK": {
+    "countries": [
+      "Indonesia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "EP": {
+    "countries": [
+      "Iran"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "YI": {
+    "countries": [
+      "Iraq"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "EI": {
+    "countries": [
+      "Ireland"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "EJ": {
+    "countries": [
+      "Ireland"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "M": {
+    "countries": [
+      "Isle of Man"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "4X": {
+    "countries": [
+      "Israel"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "4Z": {
+    "countries": [
+      "Israel"
+    ],
+    "patterns": []
+  },
+  "I": {
+    "countries": [
+      "Italy"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "TU": {
+    "countries": [
+      "Ivory Coast"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "6Y": {
+    "countries": [
+      "Jamaica"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "JA": {
+    "countries": [
+      "Japan"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      },
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "JR": {
+    "countries": [
+      "Japan"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "JY": {
+    "countries": [
+      "Jordan"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "4YB": {
+    "countries": [
+      "Jordan and Iraq"
+    ],
+    "patterns": []
+  },
+  "UP": {
+    "countries": [
+      "Kazakhstan"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "5Y": {
+    "countries": [
+      "Kenya"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "T3": {
+    "countries": [
+      "Kiribati"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "Z6": {
+    "countries": [
+      "Kosovo"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "plus": {
+    "countries": [
+      "Kosovo",
+      "Liechtenstein",
+      "Mexico",
+      "Senegal",
+      "Spain",
+      "Switzerland"
+    ],
+    "patterns": []
+  },
+  "9K": {
+    "countries": [
+      "Kuwait"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "EX": {
+    "countries": [
+      "Kyrgyzstan"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "DIGIT"
+      },
+      {
+        "len": 5,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "RDPL": {
+    "countries": [
+      "Laos"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "YL": {
+    "countries": [
+      "Latvia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "OD": {
+    "countries": [
+      "Lebanon"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "7P": {
+    "countries": [
+      "Lesotho"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "A8": {
+    "countries": [
+      "Liberia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "5A": {
+    "countries": [
+      "Libya"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "HB": {
+    "countries": [
+      "Liechtenstein",
+      "Switzerland"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "LY": {
+    "countries": [
+      "Lithuania"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "LX": {
+    "countries": [
+      "Luxembourg"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "BM": {
+    "countries": [
+      "Macau"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "5R": {
+    "countries": [
+      "Madagascar"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "7Q": {
+    "countries": [
+      "Malawi"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9M": {
+    "countries": [
+      "Malaysia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "8Q": {
+    "countries": [
+      "Maldives"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TZ": {
+    "countries": [
+      "Mali"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9H": {
+    "countries": [
+      "Malta"
+    ],
+    "patterns": []
+  },
+  "V7": {
+    "countries": [
+      "Marshall Islands"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "5T": {
+    "countries": [
+      "Mauritania"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "3B": {
+    "countries": [
+      "Mauritius"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "XA": {
+    "countries": [
+      "Mexico"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "XB": {
+    "countries": [
+      "Mexico"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "XC": {
+    "countries": [
+      "Mexico"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "V6": {
+    "countries": [
+      "Micronesia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ER": {
+    "countries": [
+      "Moldova"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 5,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "3AM": {
+    "countries": [
+      "Monaco"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "JU": {
+    "countries": [
+      "Mongolia"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "4O": {
+    "countries": [
+      "Montenegro"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "VPM": {
+    "countries": [
+      "Montserrat"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "CN": {
+    "countries": [
+      "Morocco"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "C9": {
+    "countries": [
+      "Mozambique"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "XY": {
+    "countries": [
+      "Myanmar"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "XZ": {
+    "countries": [
+      "Myanmar"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "V5": {
+    "countries": [
+      "Namibia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "C2": {
+    "countries": [
+      "Nauru"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9N": {
+    "countries": [
+      "Nepal"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "PH": {
+    "countries": [
+      "Netherlands"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "PJ": {
+    "countries": [
+      "Netherlands Antilles (currently used by Curaçao and Sint Maarten)"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ZK": {
+    "countries": [
+      "New Zealand"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ZL": {
+    "countries": [
+      "New Zealand"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ZM": {
+    "countries": [
+      "New Zealand"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "YN": {
+    "countries": [
+      "Nicaragua"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "5U": {
+    "countries": [
+      "Niger"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "5N": {
+    "countries": [
+      "Nigeria"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "P": {
+    "countries": [
+      "North Korea"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "Z3": {
+    "countries": [
+      "North Macedonia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "LN": {
+    "countries": [
+      "Norway"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "A4O": {
+    "countries": [
+      "Oman"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "AP": {
+    "countries": [
+      "Pakistan"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "HP": {
+    "countries": [
+      "Panama"
+    ],
+    "patterns": [
+      {
+        "len": 7,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "P2": {
+    "countries": [
+      "Papua New Guinea"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ZP": {
+    "countries": [
+      "Paraguay"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "OB": {
+    "countries": [
+      "Peru"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "RP": {
+    "countries": [
+      "Philippines"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      },
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "SP": {
+    "countries": [
+      "Poland"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "SN": {
+    "countries": [
+      "Poland"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "CR": {
+    "countries": [
+      "Portugal"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "CS": {
+    "countries": [
+      "Portugal"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "A7": {
+    "countries": [
+      "Qatar"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "YR": {
+    "countries": [
+      "Romania"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      },
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "RA": {
+    "countries": [
+      "Russia"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "DIGIT"
+      },
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "RF": {
+    "countries": [
+      "Russia"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "9XR": {
+    "countries": [
+      "Rwanda"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "VQH": {
+    "countries": [
+      "Saint Helena/Ascension"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "V4": {
+    "countries": [
+      "Saint Kitts and Nevis"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "J6": {
+    "countries": [
+      "Saint Lucia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "J8": {
+    "countries": [
+      "Saint Vincent and the Grenadines"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "5W": {
+    "countries": [
+      "Samoa"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "T7": {
+    "countries": [
+      "San Marino"
+    ],
+    "patterns": []
+  },
+  "S9": {
+    "countries": [
+      "São Tomé and Príncipe"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "HZ": {
+    "countries": [
+      "Saudi Arabia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "6V": {
+    "countries": [
+      "Senegal"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "6W": {
+    "countries": [
+      "Senegal"
+    ],
+    "patterns": []
+  },
+  "YU": {
+    "countries": [
+      "Serbia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      },
+      {
+        "len": 5,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "S7": {
+    "countries": [
+      "Seychelles"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9L": {
+    "countries": [
+      "Sierra Leone"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9V": {
+    "countries": [
+      "Singapore"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "OM": {
+    "countries": [
+      "Slovakia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "S5": {
+    "countries": [
+      "Slovenia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 4,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "H4": {
+    "countries": [
+      "Solomon Islands"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "6O": {
+    "countries": [
+      "Somalia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ZS": {
+    "countries": [
+      "South Africa"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ZT": {
+    "countries": [
+      "South Africa"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ZU": {
+    "countries": [
+      "South Africa"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "HL": {
+    "countries": [
+      "South Korea"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "Z8": {
+    "countries": [
+      "South Sudan"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "EC": {
+    "countries": [
+      "Spain"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "ALPHANUM"
+      },
+      {
+        "len": 3,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "EM": {
+    "countries": [
+      "Spain"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "4R": {
+    "countries": [
+      "Sri Lanka"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "ST": {
+    "countries": [
+      "Sudan"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "PZ": {
+    "countries": [
+      "Suriname"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "SE": {
+    "countries": [
+      "Sweden"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "YK": {
+    "countries": [
+      "Syria"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "EY": {
+    "countries": [
+      "Tajikistan"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "5H": {
+    "countries": [
+      "Tanzania"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "HS": {
+    "countries": [
+      "Thailand"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "U": {
+    "countries": [
+      "Thailand"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "5V": {
+    "countries": [
+      "Togo"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "A3": {
+    "countries": [
+      "Tonga"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9Y": {
+    "countries": [
+      "Trinidad and Tobago"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TS": {
+    "countries": [
+      "Tunisia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "TC": {
+    "countries": [
+      "Turkey"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "EZ": {
+    "countries": [
+      "Turkmenistan"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "VQT": {
+    "countries": [
+      "Turks and Caicos"
+    ],
+    "patterns": [
+      {
+        "len": 2,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "T2": {
+    "countries": [
+      "Tuvalu"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "5X": {
+    "countries": [
+      "Uganda"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "UR": {
+    "countries": [
+      "Ukraine"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 5,
+        "type": "DIGIT"
+      },
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "A6": {
+    "countries": [
+      "United Arab Emirates"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      },
+      {
+        "len": 3,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "DU": {
+    "countries": [
+      "United Arab Emirates"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "G": {
+    "countries": [
+      "United Kingdom"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "N": {
+    "countries": [
+      "United States"
+    ],
+    "patterns": []
+  },
+  "FA": {
+    "countries": [
+      "United States"
+    ],
+    "patterns": []
+  },
+  "CX": {
+    "countries": [
+      "Uruguay"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "UK": {
+    "countries": [
+      "Uzbekistan"
+    ],
+    "patterns": [
+      {
+        "len": 5,
+        "type": "DIGIT"
+      }
+    ]
+  },
+  "YJ": {
+    "countries": [
+      "Vanuatu"
+    ],
+    "patterns": []
+  },
+  "YV": {
+    "countries": [
+      "Venezuela"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "VN": {
+    "countries": [
+      "Vietnam"
+    ],
+    "patterns": [
+      {
+        "len": 4,
+        "type": "DIGIT"
+      },
+      {
+        "len": 4,
+        "type": "ALPHANUM"
+      }
+    ]
+  },
+  "7O": {
+    "countries": [
+      "Yemen"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "9J": {
+    "countries": [
+      "Zambia"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  },
+  "Z": {
+    "countries": [
+      "Zimbabwe"
+    ],
+    "patterns": [
+      {
+        "len": 3,
+        "type": "ALPHA"
+      }
+    ]
+  }
+}
