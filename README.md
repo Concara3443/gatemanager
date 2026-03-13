@@ -3,14 +3,18 @@ Sistema de asignación de parkings para el aeropuerto de Barcelona El Prat (LEBL
 
 ---
 
-## Instalación rápida
+## Descarga e instalación
 
-### Opción A — Ejecutable (recomendada, sin Python)
-Descarga `LEBL Parking.exe` de la sección [Releases](../../releases) y ejecútalo directamente. No requiere Python ni ninguna dependencia.
+> **[Descargar última versión → Releases](../../releases/latest)**
 
-### Opción B — Desde fuente (Python 3.8+)
+1. Ve a la sección **Releases** y descarga `LEBL Parking.exe`.
+2. Colócalo en cualquier carpeta. No requiere instalación ni Python.
+3. Doble clic para abrir.
+
+> Si Windows muestra una advertencia de SmartScreen, haz clic en **"Más información" → "Ejecutar de todas formas"**. El ejecutable no está firmado digitalmente.
+
+### Desde fuente (Python 3.8+, sin instalador)
 ```
-git clone ...
 python parking_gui.py        # GUI
 python parking_finder.py     # CLI
 ```
