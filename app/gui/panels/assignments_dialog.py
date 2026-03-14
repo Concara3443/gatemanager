@@ -5,6 +5,7 @@ import datetime
 import csv
 import os
 from app.theme import C, FONT_S, _btn
+from tkinter import messagebox
 
 
 def open(app):
@@ -79,11 +80,18 @@ def _export_assignments(app):
         os.path.abspath(__file__)))))
     export_dir = downloads if os.path.isdir(downloads) else BASE
     path = os.path.join(export_dir, f"assignments_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
-    with open(path, 'w', newline='', encoding='utf-8') as f:
-        w = csv.DictWriter(f, fieldnames=['time','cs','airline','aircraft','origin','stand','status'])
-        w.writeheader()
-        w.writerows(app.assignments)
-    app._log(f"Exportado: {path}", 'ok')
+    try:
+        with open(path, 'w', newline='', encoding='utf-8') as f:
+            w = csv.DictWriter(f, fieldnames=['time','cs','airline','aircraft','origin','stand','status'])
+            w.writeheader()
+            w.writerows(app.assignments)
+        app._log(f"Exportado: {path}", 'ok')
+    except Exception as e:
+        app._log(f"Error al exportar: {e}", 'error')
+        try:
+            messagebox.showerror("Error de exportación", f"No se pudo exportar el archivo:\n{e}")
+        except Exception:
+            pass
 
 
 def _clear_assignments(app):
