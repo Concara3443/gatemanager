@@ -10,7 +10,7 @@ import json
 import os
 import sys
 import re
-from aurora_bridge import AuroraBridge, callsign_to_airline
+from app.aurora_bridge import AuroraBridge, callsign_to_airline
 
 # Force UTF-8 output on Windows so box-drawing chars and colours work
 if sys.platform == 'win32' and sys.stdout is not None:
@@ -28,12 +28,12 @@ MG  = '\033[95m'
 WH  = '\033[97m'
 BL  = '\033[94m'
 
-# Data files
+# Data files — now in airports/LEBL/
 BASE           = os.path.dirname(os.path.abspath(__file__))
-DATA           = os.path.join(BASE, "data")
-AIRLINES_JSON  = os.path.join(DATA, "airlines.json")
-WINGSPANS_JSON = os.path.join(DATA, "aircraft_wingspans.json")
-PARKINGS_JSON  = os.path.join(DATA, "parkings.json")
+LEBL_DIR       = os.path.join(BASE, '..', 'airports', 'LEBL')
+AIRLINES_JSON  = os.path.join(LEBL_DIR, 'airlines.json')
+WINGSPANS_JSON = os.path.join(LEBL_DIR, 'aircraft_wingspans.json')
+PARKINGS_JSON  = os.path.join(LEBL_DIR, 'parkings.json')
 
 # Schengen prefix lookup
 SCHENGEN_PREFIXES = {
@@ -461,7 +461,7 @@ def assign_prompt(visible_pids, all_pids, data_map, schengen_flight, parkings, o
         if not sel:
             return
 
-        # Re-filter modifiers 
+        # Re-filter modifiers
         expand   = sel.endswith('+') or sel.startswith('+')
         core     = sel.replace('+', '').strip()
 
@@ -501,7 +501,7 @@ def assign_prompt(visible_pids, all_pids, data_map, schengen_flight, parkings, o
         parts.append(f"{DIM}[{len(occupied)} unavailable this session]{R}")
         print("  " + "  ".join(parts))
 
-        # Push gate label to Aurora 
+        # Push gate label to Aurora
         if aurora and aurora.connected and callsign:
             ok, detail = aurora.assign_gate(callsign, sel)
             if ok:
@@ -584,7 +584,7 @@ def run_query(airline_code, aircraft_type, origin,
     # Wingspan
     wingspan = get_wingspan(aircraft_type, wingspans)
 
-    # Early cargo redirect (before any output) 
+    # Early cargo redirect (before any output)
     if airline_code not in DEDICATED and get_airline_terminal(airlines, airline_code) == 'CARGO':
         return run_query_cargo(aircraft_type, wingspans, parkings, occupied,
                                airline_code=airline_code)
@@ -794,7 +794,7 @@ def main():
 
     occupied: set = set()
 
-    # Aurora connection (optional) 
+    # Aurora connection (optional)
     aurora = AuroraBridge()
     if aurora.connect():
         print(f"  {GR}{B}Aurora connected{R}  {DIM}(localhost:1130){R}")
@@ -823,10 +823,10 @@ def main():
             assign_prompt(vis, all_p, dm, sch, parkings, occupied, acft_ws=aws, aurora=aurora)
             return
 
-    # Interactive session loop 
+    # Interactive session loop
     aurora_status = f"{GR}Aurora{R}" if aurora.connected else f"{DIM}no Aurora{R}"
     print(f"\n{CY}{B}  LEBL Parking System{R}  {DIM}· '?' for help · 'q' to quit{R}  [{aurora_status}]")
-    print(f"  {DIM}{'' * 44}{R}")
+    print(f"  {DIM}{chr(9472) * 44}{R}")
 
     while True:
         # Show occupied summary

@@ -1,76 +1,15 @@
-"""parking_gui.py — LEBL Parking Assignment GUI  v2.1"""
+"""app_window.py — ParkingApp main window."""
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
 import threading, datetime, json, sys, os
 
-_LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'error.log')
-_log_fh = open(_LOG, 'a', encoding='utf-8')
-sys.stderr = _log_fh
+from app.theme import C, FONT, FONT_S, FONT_L, FONT_X, _btn, SegGroup
+from app.aurora_bridge import AuroraBridge, callsign_to_airline
+import app.parking_finder as pf
+from app.callsign_analyzer import CallsignAnalyzer
+from app.core.airport import AirportData
+from app.gui.panels import left_panel, right_panel, assignments_dialog, occupied_dialog
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, BASE)
-
-from aurora_bridge import AuroraBridge, callsign_to_airline
-import parking_finder as pf
-from callsign_analyzer import CallsignAnalyzer
-
-# Palette
-C = {
-    'bg':       '#1a1a2e', 'bg2':  '#16213e', 'bg3':  '#0f0f23',
-    'hdr':      '#0d0d1f', 'sep':  '#4fc3f7', 'accent':'#4fc3f7',
-    'green':    '#66bb6a', 'orange':'#ffa726', 'red':  '#ef5350',
-    'purple':   '#ce93d8', 'fg':   '#e0e0e0', 'fg_dim':'#757575',
-    'strip_bg': '#fffde7', 'strip_sep':'#bdbdbd',
-    'btn':      '#1c1c3a', 'btn_hl':'#2a2a50', 'entry_bg':'#0d1b35',
-    'seg_on':   '#1565c0', 'seg_off':'#111122',
-}
-FONT   = ('Consolas', 10)
-FONT_S = ('Consolas', 9)
-FONT_L = ('Consolas', 14, 'bold')
-FONT_X = ('Consolas', 20, 'bold')
-
-
-# Helpers
-
-def _btn(parent, text, cmd, bg=None, fg=None, **kw):
-    return tk.Button(parent, text=text, font=FONT_S,
-                     bg=bg or C['btn'], fg=fg or C['fg'],
-                     activebackground=C['btn_hl'], relief=tk.FLAT,
-                     cursor='hand2', padx=10, pady=5, command=cmd, **kw)
-
-
-class SegGroup:
-    """Row of flat toggle buttons — only one active at a time."""
-    def __init__(self, parent, options, default, on_change=None):
-        self.var = tk.StringVar(value=default)
-        self._btns = {}
-        self._cb = on_change
-        for val, lbl in options:
-            b = tk.Button(parent, text=lbl, font=FONT_S,
-                          relief=tk.FLAT, cursor='hand2', padx=8, pady=3,
-                          command=lambda v=val: self._pick(v))
-            b.pack(side=tk.LEFT, padx=1)
-            self._btns[val] = b
-        self._refresh()
-
-    def _pick(self, val):
-        self.var.set(val)
-        self._refresh()
-        if self._cb:
-            self._cb(val)
-
-    def _refresh(self):
-        cur = self.var.get()
-        for val, b in self._btns.items():
-            on = val == cur
-            b.config(bg=C['seg_on'] if on else C['seg_off'],
-                     fg=C['fg']     if on else C['fg_dim'])
-
-    def get(self):
-        return self.var.get()
-
-
-# Main App
 
 class ParkingApp(tk.Tk):
 
@@ -82,11 +21,10 @@ class ParkingApp(tk.Tk):
         self.geometry('1120x760')
 
         # Data
-        self.airlines  = pf.load_json(pf.AIRLINES_JSON,  "airlines.json")
-        pf._build_dedicated(self.airlines)
-        self.wingspans = pf.load_json(pf.WINGSPANS_JSON, "aircraft_wingspans.json")
-        pf._build_suffix_map(self.wingspans)
-        self.parkings  = pf.load_json(pf.PARKINGS_JSON,  "parkings.json")
+        airport = AirportData('LEBL')
+        self.airlines  = airport.airlines
+        self.wingspans = airport.wingspans
+        self.parkings  = airport.parkings
 
         # State
         self._cs_analyzer   = CallsignAnalyzer()
@@ -130,9 +68,9 @@ class ParkingApp(tk.Tk):
         tk.Frame(self, bg=C['sep'], height=2).pack(fill=tk.X)
         body = tk.Frame(self, bg=C['bg'])
         body.pack(fill=tk.BOTH, expand=True)
-        self._build_left(body)
+        left_panel.build(self, body)
         tk.Frame(body, bg='#2a2a2a', width=1).pack(side=tk.LEFT, fill=tk.Y)
-        self._build_right(body)
+        right_panel.build(self, body)
         tk.Frame(self, bg='#2a2a2a', height=1).pack(fill=tk.X)
         self._build_log()
         tk.Frame(self, bg=C['sep'], height=2).pack(fill=tk.X)
@@ -172,241 +110,6 @@ class ParkingApp(tk.Tk):
                                    font=FONT_S, bg=C['hdr'], fg=C['red'])
         self.aurora_lbl.pack(side=tk.LEFT, padx=(4, 0))
 
-    # Left panel
-
-    def _build_left(self, parent):
-        left = tk.Frame(parent, bg=C['bg'], width=320)
-        left.pack(side=tk.LEFT, fill=tk.Y)
-        left.pack_propagate(False)
-
-        # Inputs
-        self._slabel(left, "Query  (1, 2 o 3 campos)")
-        inp = tk.Frame(left, bg=C['bg2'], padx=8, pady=6)
-        inp.pack(fill=tk.X, padx=8, pady=(0, 2))
-
-        self.v_callsign = tk.StringVar()
-        self.v_airline  = tk.StringVar()
-        self.v_aircraft = tk.StringVar()
-        self.v_origin   = tk.StringVar()
-
-        # Callsign row (special: includes GA toggle + country badge)
-        cs_row = tk.Frame(inp, bg=C['bg2'])
-        cs_row.pack(fill=tk.X, pady=2)
-        tk.Label(cs_row, text=f"{'Callsign':<9}", font=FONT_S,
-                 bg=C['bg2'], fg=C['fg_dim'], width=9, anchor='w').pack(side=tk.LEFT)
-        tk.Entry(cs_row, textvariable=self.v_callsign, font=FONT,
-                 bg=C['entry_bg'], fg=C['fg'], insertbackground=C['fg'],
-                 relief=tk.FLAT, bd=4, width=13).pack(side=tk.LEFT, fill=tk.X, expand=True)
-        self.v_callsign.trace_add('write', lambda *_: self._on_callsign_change())
-
-        self._ga_var = tk.BooleanVar(value=False)
-        self._ga_btn = tk.Checkbutton(
-            cs_row, text="GA", font=FONT_S, variable=self._ga_var,
-            bg=C['bg2'], fg=C['fg_dim'], selectcolor=C['seg_on'],
-            activebackground=C['bg2'], activeforeground=C['fg'],
-            indicatoron=False, padx=6, pady=2, relief=tk.FLAT, cursor='hand2',
-            command=self._on_ga_toggle)
-        self._ga_btn.pack(side=tk.LEFT, padx=(4, 0))
-        self._country_lbl = tk.Label(cs_row, text='', font=('Consolas', 8),
-                                      bg=C['bg2'], fg=C['fg_dim'])
-        self._country_lbl.pack(side=tk.LEFT, padx=(3, 0))
-
-        fields = [("Airline",  self.v_airline,  "opcional"),
-                  ("Aircraft", self.v_aircraft, "opcional"),
-                  ("Origin",   self.v_origin,   "opcional")]
-
-        for lbl, var, hint in fields:
-            row = tk.Frame(inp, bg=C['bg2'])
-            row.pack(fill=tk.X, pady=2)
-            tk.Label(row, text=f"{lbl:<9}", font=FONT_S,
-                     bg=C['bg2'], fg=C['fg_dim'], width=9,
-                     anchor='w').pack(side=tk.LEFT)
-            tk.Entry(row, textvariable=var, font=FONT,
-                     bg=C['entry_bg'], fg=C['fg'],
-                     insertbackground=C['fg'],
-                     relief=tk.FLAT, bd=4, width=13).pack(
-                         side=tk.LEFT, fill=tk.X, expand=True)
-            if hint:
-                tk.Label(row, text=hint, font=('Consolas', 8),
-                         bg=C['bg2'], fg=C['fg_dim']).pack(side=tk.LEFT, padx=3)
-
-        # Filters
-        self._slabel(left, "Filtros")
-        flt = tk.Frame(left, bg=C['bg2'], padx=8, pady=6)
-        flt.pack(fill=tk.X, padx=8, pady=(0, 2))
-
-        filter_rows = [
-            ("Tipo",     [('all','Todo'), ('gates','Gates'), ('remote','Remote')]),
-            ("Schengen", [('auto','Auto'), ('yes','SCH'), ('no','No-SCH')]),
-            ("Terminal", [('auto','Auto'), ('T1','T1'), ('T2','T2')]),
-        ]
-        self.seg = {}
-        for label, opts in filter_rows:
-            row = tk.Frame(flt, bg=C['bg2'])
-            row.pack(fill=tk.X, pady=2)
-            tk.Label(row, text=f"{label:<9}", font=FONT_S, bg=C['bg2'],
-                     fg=C['fg_dim'], width=9, anchor='w').pack(side=tk.LEFT)
-            seg_frame = tk.Frame(row, bg=C['bg2'])
-            seg_frame.pack(side=tk.LEFT)
-            self.seg[label] = SegGroup(seg_frame, opts, opts[0][0])
-
-        # Query buttons
-        brow = tk.Frame(inp, bg=C['bg2'])
-        brow.pack(fill=tk.X, pady=(6, 2))
-        _btn(brow, "Query  ▶", self._query_manual,
-             bg='#0d47a1').pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 3))
-        _btn(brow, "Aurora  F5", self._query_aurora,
-             bg='#1b5e20').pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 3))
-        _btn(brow, "✕", self._clear_query,
-             bg='#2a1010', fg=C['red']).pack(side=tk.LEFT)
-
-        # Strip card
-        self._slabel(left, "Current Strip")
-        sf = tk.Frame(left, bg=C['bg'], padx=8)
-        sf.pack(fill=tk.X)
-        self.strip_frame = tk.Frame(sf, bg=C['strip_bg'], bd=1, relief=tk.SOLID)
-        self.strip_frame.pack(fill=tk.X)
-        self._strip_empty()
-
-        # Occupied
-        self._slabel(left, "Stands ocupados")
-        of = tk.Frame(left, bg=C['bg'], padx=8)
-        of.pack(fill=tk.X)
-        self.occ_label = tk.Label(of, text="—", font=FONT_S, bg=C['bg2'],
-                                  fg=C['orange'], anchor='nw', justify='left',
-                                  wraplength=280, padx=6, pady=5)
-        self.occ_label.pack(fill=tk.X)
-        occ_btns = tk.Frame(of, bg=C['bg'])
-        occ_btns.pack(fill=tk.X, pady=(3, 0))
-        _btn(occ_btns, "⟳  Sync Aurora", self._sync_occupied_aurora,
-             bg='#0a2a1a').pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 2))
-        _btn(occ_btns, "▦  Ver ocupados", self._open_occupied_panel,
-             bg='#1a2a3a').pack(side=tk.LEFT, fill=tk.X, expand=True)
-        _btn(of, "x  Liberar stand…", self._release_dialog,
-             bg='#1a1a1a').pack(fill=tk.X, pady=(2, 0))
-
-    # Right panel
-
-    def _build_right(self, parent):
-        right = tk.Frame(parent, bg=C['bg'])
-        right.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
-        self._slabel(right, "Stands disponibles")
-
-        # Table
-        style = ttk.Style(self)
-        style.theme_use('default')
-        style.configure('P.Treeview',
-                         background=C['bg2'], fieldbackground=C['bg2'],
-                         foreground=C['fg'], rowheight=24, font=FONT_S,
-                         borderwidth=0, relief='flat')
-        style.configure('P.Treeview.Heading',
-                         background=C['hdr'], foreground=C['accent'],
-                         font=('Consolas', 9, 'bold'), relief='flat')
-        style.map('P.Treeview',
-                  background=[('selected', '#1565c0')],
-                  foreground=[('selected', '#fff')])
-
-        tf = tk.Frame(right, bg=C['bg'])
-        tf.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 4))
-
-        cols = ('Stand', 'Max WS', 'Tipo', 'Zona', 'Max Acft', 'Excluye')
-        self.tree = ttk.Treeview(tf, columns=cols, show='headings',
-                                  style='P.Treeview', selectmode='browse')
-        cw = {'Stand':62,'Max WS':68,'Tipo':62,'Zona':88,'Max Acft':72,'Excluye':180}
-        for c in cols:
-            self.tree.heading(c, text=c, anchor='w')
-            self.tree.column(c, width=cw[c], anchor='w', minwidth=30)
-
-        vsb = ttk.Scrollbar(tf, orient='vertical', command=self.tree.yview)
-        self.tree.configure(yscrollcommand=vsb.set)
-        vsb.pack(side=tk.RIGHT, fill=tk.Y)
-        self.tree.pack(fill=tk.BOTH, expand=True)
-
-        self.tree.tag_configure('perfect', foreground=C['purple'])
-        self.tree.tag_configure('gate',    foreground='#a5d6a7')
-        self.tree.tag_configure('remote',  foreground=C['orange'])
-        self.tree.tag_configure('fallbk',  foreground='#ffee58')
-
-        self.tree.bind('<<TreeviewSelect>>', self._on_stand_select)
-        self.tree.bind('<Double-1>', lambda e: self._assign_stand())
-
-        # Stand info box
-        # Search bar
-        sh = tk.Frame(right, bg=C['bg'])
-        sh.pack(fill=tk.X, padx=8, pady=(0, 2))
-        tk.Label(sh, text="  Info stand", font=FONT_S,
-                 bg=C['bg'], fg=C['fg_dim']).pack(side=tk.LEFT)
-        self.v_stand_search = tk.StringVar()
-        se = tk.Entry(sh, textvariable=self.v_stand_search, font=FONT,
-                      bg=C['entry_bg'], fg=C['fg'], insertbackground=C['fg'],
-                      relief=tk.FLAT, bd=4, width=8)
-        se.pack(side=tk.LEFT, padx=(8, 3))
-        se.bind('<Return>', lambda e: self._lookup_stand())
-        _btn(sh, "Buscar ▶", self._lookup_stand,
-             bg='#1c2a4a').pack(side=tk.LEFT)
-
-        info_outer = tk.Frame(right, bg=C['bg2'], padx=10, pady=6)
-        info_outer.pack(fill=tk.X, padx=8, pady=(0, 4))
-
-        self._info_lbl = {}
-        info_fields = [
-            ('Stand',    'Stand'),
-            ('Terminal', 'Terminal'),
-            ('Tipo',     'Tipo'),
-            ('Max WS',   'Max WS'),
-            ('Max Acft', 'Max Acft'),
-            ('Zona',     'Zona'),
-            ('Excluye',  'Excluye'),
-            ('Estado',   'Estado'),
-        ]
-        grid = tk.Frame(info_outer, bg=C['bg2'])
-        grid.pack(fill=tk.X)
-        col_a = tk.Frame(grid, bg=C['bg2'])
-        col_a.pack(side=tk.LEFT, fill=tk.X, expand=True)
-        col_b = tk.Frame(grid, bg=C['bg2'])
-        col_b.pack(side=tk.LEFT, fill=tk.X, expand=True)
-        pairs = [info_fields[i:i+2] for i in range(0, len(info_fields), 2)]
-        for (ka, la), (kb, lb) in pairs:
-            for col, key, label in [(col_a, ka, la), (col_b, kb, lb)]:
-                r = tk.Frame(col, bg=C['bg2'])
-                r.pack(fill=tk.X, pady=1)
-                tk.Label(r, text=f"{label}:", font=FONT_S,
-                         bg=C['bg2'], fg=C['fg_dim'],
-                         width=9, anchor='w').pack(side=tk.LEFT)
-                v = tk.Label(r, text='—', font=FONT_S,
-                             bg=C['bg2'], fg=C['fg'], anchor='w')
-                v.pack(side=tk.LEFT, fill=tk.X, expand=True)
-                self._info_lbl[key] = v
-
-        # Suitability breakdown (one label per check)
-        suit_frame = tk.Frame(info_outer, bg=C['bg2'])
-        suit_frame.pack(fill=tk.X, pady=(5, 0))
-        tk.Frame(info_outer, bg='#333', height=1).pack(fill=tk.X, pady=(4, 0))
-        self._suit_rows: dict[str, tk.Label] = {}
-        for key, label in [('ws',   'Envergadura'),
-                            ('sch',  'Schengen'),
-                            ('term', 'Terminal'),
-                            ('ded',  'Dedicado')]:
-            r = tk.Frame(suit_frame, bg=C['bg2'])
-            r.pack(fill=tk.X, pady=1)
-            tk.Label(r, text=f"{label}:", font=FONT_S,
-                     bg=C['bg2'], fg=C['fg_dim'],
-                     width=12, anchor='w').pack(side=tk.LEFT)
-            lbl = tk.Label(r, text='—', font=FONT_S,
-                           bg=C['bg2'], fg=C['fg_dim'], anchor='w')
-            lbl.pack(side=tk.LEFT)
-            self._suit_rows[key] = lbl
-
-        # Assign button
-        self.assign_btn = tk.Button(
-            right, text="Assign Stand  ↵",
-            font=('Consolas', 10, 'bold'),
-            bg='#1b5e20', fg='#fff', activebackground='#2e7d32',
-            disabledforeground='#444', relief=tk.FLAT, cursor='hand2',
-            padx=10, pady=7, state=tk.DISABLED, command=self._assign_stand)
-        self.assign_btn.pack(fill=tk.X, padx=8, pady=(0, 6))
-
     # Log
 
     def _build_log(self):
@@ -441,60 +144,15 @@ class ParkingApp(tk.Tk):
                  bg=C['bg'], fg=C['fg_dim'], anchor='w').pack(
                      fill=tk.X, pady=(8, 2))
 
-    # STRIP CARD
+    # STRIP CARD (delegated to left_panel helpers)
 
     def _strip_empty(self):
-        for w in self.strip_frame.winfo_children():
-            w.destroy()
-        tk.Label(self.strip_frame, text="Sin asignación",
-                 font=FONT_S, bg=C['strip_bg'], fg='#aaa',
-                 pady=16, padx=10).pack()
+        left_panel._strip_empty(self)
 
     def _strip_update(self, callsign, airline, aircraft, origin,
                       stand, sch_str, terminal):
-        for w in self.strip_frame.winfo_children():
-            w.destroy()
-        f = self.strip_frame
-
-        r1 = tk.Frame(f, bg=C['strip_bg'])
-        r1.pack(fill=tk.X)
-        tk.Label(r1, text=callsign or '—', font=FONT_L,
-                 bg=C['strip_bg'], fg='#000', padx=6, pady=3).pack(side=tk.LEFT)
-        tk.Label(r1, text=aircraft or '', font=('Consolas', 11),
-                 bg=C['strip_bg'], fg='#333').pack(side=tk.LEFT, padx=6)
-        t_bg = '#0d47a1' if terminal == 'T1' else \
-               '#880e4f' if terminal == 'T2' else '#4e342e'
-        tk.Label(r1, text=f" {terminal} ", font=('Consolas', 9, 'bold'),
-                 bg=t_bg, fg='#fff').pack(side=tk.RIGHT, padx=5, pady=3)
-
-        tk.Frame(f, bg=C['strip_sep'], height=1).pack(fill=tk.X)
-
-        r2 = tk.Frame(f, bg=C['strip_bg'])
-        r2.pack(fill=tk.X)
-        tk.Label(r2, text=airline or '', font=FONT_S,
-                 bg=C['strip_bg'], fg='#444', padx=6, pady=2).pack(side=tk.LEFT)
-        if origin:
-            tk.Label(r2, text=origin, font=('Consolas', 9, 'bold'),
-                     bg=C['strip_bg'], fg='#000').pack(side=tk.LEFT, padx=4)
-        if sch_str:
-            s_bg = '#1b5e20' if 'NON' not in sch_str else '#b71c1c'
-            tk.Label(r2, text=f"  {sch_str}  ", font=('Consolas', 8),
-                     bg=s_bg, fg='#fff', pady=2).pack(side=tk.LEFT, padx=4)
-
-        tk.Frame(f, bg=C['strip_sep'], height=1).pack(fill=tk.X)
-
-        r3 = tk.Frame(f, bg='#111')
-        r3.pack(fill=tk.X)
-        if stand:
-            tk.Label(r3, text=f"  STAND  {stand}  ",
-                     font=('Consolas', 16, 'bold'),
-                     bg='#111', fg='#fff', pady=5).pack(side=tk.LEFT)
-            tk.Label(r3, text="ASSIGNED", font=('Consolas', 8),
-                     bg='#111', fg=C['green']).pack(side=tk.LEFT, padx=4)
-        else:
-            tk.Label(r3, text="  STAND  —  PENDING",
-                     font=('Consolas', 12),
-                     bg='#111', fg='#555', pady=5).pack()
+        left_panel._strip_update(self, callsign, airline, aircraft, origin,
+                                 stand, sch_str, terminal)
 
     # AURORA
 
@@ -608,7 +266,7 @@ class ParkingApp(tk.Tk):
         self.selected_stand = ''
         self.assign_btn.config(state=tk.DISABLED, text="Assign Stand  ↵")
 
-        # Wingspan (None if no aircraft) 
+        # Wingspan (None if no aircraft)
         ws = None
         if aircraft_type:
             aircraft_type = pf.resolve_aircraft_type(aircraft_type, self.wingspans)
@@ -628,7 +286,7 @@ class ParkingApp(tk.Tk):
                 ws = ws or 36.0
         self.acft_ws = ws or 0.0
 
-        # Schengen: only if origin provided + not overridden 
+        # Schengen: only if origin provided + not overridden
         sch_override = self.seg['Schengen'].get()
         if sch_override == 'yes':
             sch = True
@@ -642,7 +300,7 @@ class ParkingApp(tk.Tk):
         self.sch_bool = sch if sch is not None else True
         sch_str = ("SCHENGEN" if sch else "NON-SCHENGEN") if sch is not None else ""
 
-        # Terminal override 
+        # Terminal override
         term_override = self.seg['Terminal'].get()
 
         # GA / private mode overrides everything
@@ -685,7 +343,7 @@ class ParkingApp(tk.Tk):
         occupied = self.occupied
         parkings = self.parkings
 
-        #  GA / Private mode 
+        #  GA / Private mode
         if ga_mode:
             ws_req   = ws or 0
             lbl_base = f"GA {aircraft_type}" if aircraft_type else "GA Privado"
@@ -744,7 +402,7 @@ class ParkingApp(tk.Tk):
             try: return 900 <= int(pid) <= 999
             except (ValueError, TypeError): return False
 
-        # Only aircraft, no airline 
+        # Only aircraft, no airline
         if not airline_code:
             pool = {}
             for pid, d in parkings.items():
@@ -922,7 +580,7 @@ class ParkingApp(tk.Tk):
             text="OCUPADO" if occupied else "Libre",
             fg=C['red'] if occupied else C['green'])
 
-        # Suitability checks 
+        # Suitability checks
         airline     = self.v_airline.get().strip().upper()
         acft_ws     = self.acft_ws
         sch         = self.sch_bool
@@ -996,7 +654,7 @@ class ParkingApp(tk.Tk):
 
         cs = self.current_cs or self.v_callsign.get().strip().upper() or '—'
 
-        # Re-assignment: free old stand if this callsign already has one 
+        # Re-assignment: free old stand if this callsign already has one
         if cs and cs != '—':
             for rec in self.assignments:
                 if rec['cs'] == cs and rec['status'] in ('ASIGNADO', 'ASIGNADO(auto)', 'PRE-ASIGNADO'):
@@ -1134,76 +792,10 @@ class ParkingApp(tk.Tk):
             self._log(f"{s} no estaba ocupado", 'warn')
 
     def _open_occupied_panel(self):
-        if self._occ_win and self._occ_win.winfo_exists():
-            self._refresh_occupied_panel()
-            self._occ_win.lift()
-            return
-
-        win = tk.Toplevel(self)
-        win.title("Stands Ocupados")
-        win.configure(bg=C['bg'])
-        win.geometry('560x340')
-        self._occ_win = win
-
-        # Treeview
-        cols = ('stand', 'callsign', 'aircraft', 'airline')
-        style = ttk.Style(win)
-        style.configure('Occ.Treeview',
-                         background=C['bg2'], fieldbackground=C['bg2'],
-                         foreground=C['fg'], rowheight=22, font=FONT_S,
-                         borderwidth=0)
-        style.configure('Occ.Treeview.Heading',
-                         background=C['hdr'], foreground=C['accent'],
-                         font=('Consolas', 9, 'bold'), relief='flat')
-        style.map('Occ.Treeview', background=[('selected', C['seg_on'])])
-
-        tree = ttk.Treeview(win, columns=cols, show='headings',
-                             style='Occ.Treeview', selectmode='browse')
-        tree.heading('stand',    text='Stand')
-        tree.heading('callsign', text='Callsign')
-        tree.heading('aircraft', text='Avión')
-        tree.heading('airline',  text='Aerolínea')
-        tree.column('stand',    width=80,  anchor='center')
-        tree.column('callsign', width=120, anchor='center')
-        tree.column('aircraft', width=100, anchor='center')
-        tree.column('airline',  width=100, anchor='center')
-
-        sb = ttk.Scrollbar(win, orient='vertical', command=tree.yview)
-        tree.configure(yscrollcommand=sb.set)
-        tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(8, 0), pady=8)
-        sb.pack(side=tk.LEFT, fill=tk.Y, pady=8)
-        self._occ_tree = tree
-
-        # Tag for stands with no callsign info (synced from Aurora raw)
-        tree.tag_configure('known',   foreground=C['orange'])
-        tree.tag_configure('unknown', foreground=C['fg_dim'])
-
-        bar = tk.Frame(win, bg=C['bg'])
-        bar.pack(side=tk.RIGHT, fill=tk.Y, padx=8, pady=8)
-        _btn(bar, "⟳ Refresh", self._refresh_occupied_panel,
-             bg='#0a2a1a').pack(fill=tk.X, pady=(0, 4))
-        _btn(bar, "x Liberar…", self._release_dialog,
-             bg='#1a1a1a').pack(fill=tk.X, pady=(0, 4))
-        _btn(bar, "Cerrar", win.destroy,
-             bg=C['btn']).pack(fill=tk.X)
-
-        self._refresh_occupied_panel()
+        occupied_dialog.open(self)
 
     def _refresh_occupied_panel(self):
-        if not self._occ_win or not self._occ_win.winfo_exists():
-            return
-        for row in self._occ_tree.get_children():
-            self._occ_tree.delete(row)
-        stands = sorted(self.occupied, key=lambda x: (pf.get_numeric_id(x), x))
-        for s in stands:
-            info = self.occupied_by.get(s, {})
-            cs      = info.get('cs', '—')
-            acft    = info.get('acft', '—')
-            airline = info.get('airline', '—')
-            tag = 'known' if cs and cs != '—' else 'unknown'
-            self._occ_tree.insert('', 'end',
-                                   values=(s, cs, acft, airline),
-                                   tags=(tag,))
+        occupied_dialog.refresh(self)
 
     def _log(self, msg, level='info'):
         ts = datetime.datetime.now().strftime('%H:%M:%S')
@@ -1222,84 +814,12 @@ class ParkingApp(tk.Tk):
         })
 
     def _open_assignments_panel(self):
-        if self._assign_win and self._assign_win.winfo_exists():
-            self._assign_win.lift()
-            return
-
-        win = tk.Toplevel(self)
-        win.title("Stands Asignados / Pre-asignados")
-        win.configure(bg=C['bg'])
-        win.geometry('780x380')
-        win.resizable(True, True)
-        self._assign_win = win
-
-        # Table
-        style = ttk.Style(win)
-        style.configure('A.Treeview',
-                         background=C['bg2'], fieldbackground=C['bg2'],
-                         foreground=C['fg'], rowheight=24, font=FONT_S)
-        style.configure('A.Treeview.Heading',
-                         background=C['hdr'], foreground=C['accent'],
-                         font=('Consolas', 9, 'bold'), relief='flat')
-        style.map('A.Treeview', background=[('selected', '#1565c0')])
-
-        cols = ('Hora', 'Callsign', 'Aerolínea', 'Avión', 'Origen', 'Stand', 'Estado')
-        self._atree = ttk.Treeview(win, columns=cols, show='headings',
-                                    style='A.Treeview', selectmode='browse')
-        cw = {'Hora':58, 'Callsign':80, 'Aerolínea':70, 'Avión':62,
-              'Origen':62, 'Stand':58, 'Estado':100}
-        for c in cols:
-            self._atree.heading(c, text=c, anchor='w')
-            self._atree.column(c, width=cw[c], anchor='w')
-
-        self._atree.tag_configure('pre',  foreground=C['orange'])
-        self._atree.tag_configure('done', foreground=C['green'])
-
-        vsb = ttk.Scrollbar(win, orient='vertical', command=self._atree.yview)
-        self._atree.configure(yscrollcommand=vsb.set)
-        vsb.pack(side=tk.RIGHT, fill=tk.Y, padx=(0, 4), pady=8)
-        self._atree.pack(fill=tk.BOTH, expand=True, padx=(8, 0), pady=8)
-
-        # Buttons
-        bf = tk.Frame(win, bg=C['hdr'], pady=6)
-        bf.pack(fill=tk.X)
-        _btn(bf, "Exportar CSV", self._export_assignments,
-             bg='#1a2a1a').pack(side=tk.LEFT, padx=(8, 4))
-        _btn(bf, "Limpiar historial", self._clear_assignments,
-             bg='#2a1a1a').pack(side=tk.LEFT, padx=4)
-
-        self._refresh_assignments_panel()
+        assignments_dialog.open(self)
 
     def _refresh_assignments_panel(self):
-        if not self._assign_win or not self._assign_win.winfo_exists():
-            return
-        for row in self._atree.get_children():
-            self._atree.delete(row)
-        for a in reversed(self.assignments):
-            tag = 'pre' if a['status'] == 'PRE-ASIGNADO' else 'done'
-            self._atree.insert('', 'end',
-                                values=(a['time'], a['cs'], a['airline'],
-                                        a['aircraft'], a['origin'],
-                                        a['stand'], a['status']),
-                                tags=(tag,))
+        assignments_dialog.refresh(self)
 
-    def _export_assignments(self):
-        import csv
-        downloads = os.path.join(os.path.expanduser('~'), 'Downloads')
-        export_dir = downloads if os.path.isdir(downloads) else BASE
-        path = os.path.join(export_dir, f"assignments_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
-        with open(path, 'w', newline='', encoding='utf-8') as f:
-            w = csv.DictWriter(f, fieldnames=['time','cs','airline','aircraft','origin','stand','status'])
-            w.writeheader()
-            w.writerows(self.assignments)
-        self._log(f"Exportado: {path}", 'ok')
-
-    def _clear_assignments(self):
-        self.assignments.clear()
-        self._refresh_assignments_panel()
-        self._log("Historial de asignaciones limpiado", 'info')
-
-    # Pre-assignment poller 
+    # Pre-assignment poller
 
     def _poll_preassigned(self):
         """Check if any pre-assigned traffic has been assumed."""
@@ -1379,27 +899,3 @@ class ParkingApp(tk.Tk):
         self._stop_poll()
         self.aurora.disconnect()
         self.destroy()
-
-
-if __name__ == '__main__':
-    try:
-        # Cerrar splash screen de PyInstaller (solo activo en el .exe)
-        try:
-            import pyi_splash
-            pyi_splash.close()
-        except ImportError:
-            pass
-
-        app = ParkingApp()
-        app.mainloop()
-    except Exception as exc:
-        import traceback, datetime
-        _log_fh.write(f"\n[{datetime.datetime.now()}] CRASH:\n")
-        traceback.print_exc(file=_log_fh)
-        _log_fh.flush()
-        try:
-            import tkinter.messagebox as _mb
-            _mb.showerror("LEBL Parking — Error",
-                          f"La aplicación ha fallado:\n\n{exc}\n\nVer error.log para detalles.")
-        except Exception:
-            pass
