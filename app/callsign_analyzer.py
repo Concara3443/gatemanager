@@ -51,15 +51,6 @@ class CallsignAnalyzer:
         # sort desc len to try longest prefixes first
         self.prefixes = sorted(self.data.keys(), key=len, reverse=True)
 
-        # known airlines
-        self.common_airlines = {
-            'IBE', 'VLG', 'RYR', 'AEA', 'BAW', 'DLH', 'AFR', 'KLM', 'SWR',
-            'TAP', 'RAM', 'JAF', 'THY', 'PGT', 'QTR', 'UAE', 'ETD', 'ROT',
-            'LOT', 'SAS', 'FIN', 'NAX', 'NOZ', 'SVR', 'SBI', 'SWT', 'BCS',
-            'EXS', 'EZY', 'EJU', 'EZS', 'BEE', 'GWI', 'EWG', 'AEE', 'GOL',
-            'TAM', 'AZU', 'GLO', 'ONE', 'NDA', 'UAL', 'DAL', 'AAL', 'SWA',
-        }
-
     def clean(self, cs):
         return cs.upper().replace('-', '').replace(' ', '')
 
@@ -69,18 +60,14 @@ class CallsignAnalyzer:
         if len(clean) < 3:
             return {'is_private': False, 'type': 'Invalid', 'countries': []}
 
-        # 1. exact icao code match
-        if len(clean) >= 4 and clean[:3].isalpha() and clean[:3] in self.common_airlines:
-            return {'is_private': False, 'type': 'Airline (ICAO)', 'countries': []}
-
-        # 2. generic icao pattern: 3 alpha + digit
+        # 1. icao airline pattern: 3 alpha + digit → commercial
         if (self._AIRLINE_RE.match(clean)
                 and clean[:3].isalpha()
                 and len(clean) > 3
                 and clean[3].isdigit()):
-            return {'is_private': False, 'type': 'Airline (pattern)', 'countries': []}
+            return {'is_private': False, 'type': 'Airline', 'countries': []}
 
-        # 3. prefix db search
+        # 2. prefix db search
         for prefix in self.prefixes:
             if not clean.startswith(prefix):
                 continue
@@ -114,7 +101,7 @@ class CallsignAnalyzer:
                     'countries': info.get('countries', []),
                 }
 
-        # 4. USA registration (N + 2-5 alphanum)
+        # 3. USA registration (N + 2-5 alphanum)
         if clean.startswith('N') and 3 <= len(clean) <= 6 and clean[1:].isalnum():
             return {
                 'is_private': True,
