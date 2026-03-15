@@ -54,7 +54,7 @@ class ParkingApp(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("Stand Manager  ·  v2.2")
+        self.title("Stand Manager  ·  v3.0")
         self.configure(bg=C['bg3'])
         self.minsize(1020, 700)
         self.geometry('1120x760')
@@ -139,7 +139,7 @@ class ParkingApp(tk.Tk):
         tf = tk.Frame(lf, bg=C['hdr'])
         tf.pack(side=tk.LEFT, padx=10)
         tk.Label(tf, text="Stand Manager", font=FONT_X, bg=C['hdr'], fg=C['fg']).pack(anchor='w')
-        tk.Label(tf, text=f"{self.airport_config.get('name', '')}  ·  IVAO Virtual ATC  ·  v2.2", font=FONT_S, bg=C['hdr'], fg=C['fg_dim']).pack(anchor='w')
+        tk.Label(tf, text=f"{self.airport_config.get('name', '')}  ·  IVAO Virtual ATC  ·  v3.0", font=FONT_S, bg=C['hdr'], fg=C['fg_dim']).pack(anchor='w')
 
         rf = tk.Frame(hdr, bg=C['hdr'])
         rf.pack(side=tk.RIGHT, padx=16)
