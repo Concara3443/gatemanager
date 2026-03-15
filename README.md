@@ -5,6 +5,17 @@ Introduce aerolínea, aeronave y aeropuerto de origen — GateManager te sugiere
 
 > **v3.0** — Soporte multi-aeropuerto · Solo GUI · Sin CLI
 
+## Descarga rápida
+
+[![Última release](https://img.shields.io/github/v/release/Concara3443/gatemanager?label=Última%20versión&color=blue)](https://github.com/Concara3443/gatemanager/releases/latest)
+
+**No tienes Python? Descarga el ejecutable directamente:**
+
+👉 [Descargar LEBL Parking.exe — v3.0](https://github.com/Concara3443/gatemanager/releases/latest/download/LEBL.Parking.exe)
+
+1. Descarga el `.exe`
+2. Ejecútalo directamente — no requiere instalación ni Python
+
 ---
 
 ## Capturas
@@ -39,18 +50,22 @@ Añadir un nuevo aeropuerto es tan sencillo como crear una carpeta `airports/ICA
 
 ## Cómo ejecutar
 
-**Opción A — Lanzador (recomendado):**
-Doble clic en `iniciar_gui.vbs`
+### Opción A — Ejecutable (sin Python)
+1. Ve a [Releases](https://github.com/Concara3443/gatemanager/releases/latest)
+2. Descarga `LEBL Parking.exe`
+3. Ejecútalo — no requiere nada más
 
-**Opción B — Directo:**
+### Opción B — Con Python instalado
+
+**Lanzador automático (recomendado):**
+Doble clic en `iniciar_gui.vbs` — encuentra Python automáticamente y abre la app sin ventana de consola.
+
+**Manual:**
 ```
 python "LEBL Parking.pyw"
 ```
 
-**Opción C — Ejecutable compilado:**
-Descarga el `.exe` desde [Releases](https://github.com/Concara3443/gatemanager/releases) y ejecútalo directamente. No requiere Python.
-
-> El modo CLI ha sido eliminado en v3.0. La aplicación es exclusivamente GUI.
+Al arrancar, si hay más de un aeropuerto disponible aparece un selector. Elige el aeropuerto y se abre la ventana principal.
 
 ---
 
