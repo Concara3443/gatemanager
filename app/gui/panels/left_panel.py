@@ -36,7 +36,8 @@ def build(app, parent):
     # filters
     _slabel(left, "Filters")
     flt = tk.Frame(left, bg=C['bg2'], padx=8, pady=6); flt.pack(fill=tk.X, padx=8, pady=(0, 2))
-    filter_rows = [("Tipo", [('all','All'), ('gates','Gates'), ('remote','Remote')]), ("Schengen", [('auto','Auto'), ('yes','SCH'), ('no','No-SCH')]), ("Terminal", [('auto','Auto'), ('T1','T1'), ('T2','T2')])]
+    term_opts = [('auto', 'Auto')] + [(t, t) for t in app.terminals]
+    filter_rows = [("Tipo", [('all','All'), ('gates','Gates'), ('remote','Remote')]), ("Schengen", [('auto','Auto'), ('yes','SCH'), ('no','No-SCH')]), ("Terminal", term_opts)]
     app.seg = {}
     for l, opts in filter_rows:
         row = tk.Frame(flt, bg=C['bg2']); row.pack(fill=tk.X, pady=2)
@@ -77,7 +78,8 @@ def _strip_update(app, cs, air, acft, dep, st, sch, term):
     r1 = tk.Frame(f, bg=C['strip_bg']); r1.pack(fill=tk.X)
     tk.Label(r1, text=cs or '—', font=FONT_L, bg=C['strip_bg'], fg='#000', padx=6, pady=3).pack(side=tk.LEFT)
     tk.Label(r1, text=acft or '', font=('Consolas', 11), bg=C['strip_bg'], fg='#333').pack(side=tk.LEFT, padx=6)
-    tbg = '#0d47a1' if term == 'T1' else '#880e4f' if term == 'T2' else '#4e342e'
+    _term_colors = ['#0d47a1', '#880e4f', '#1b5e20', '#e65100', '#4a148c']
+    tbg = _term_colors[app.terminals.index(term) % len(_term_colors)] if term in app.terminals else '#4e342e'
     tk.Label(r1, text=f" {term} ", font=('Consolas', 9, 'bold'), bg=tbg, fg='#fff').pack(side=tk.RIGHT, padx=5, pady=3)
     tk.Frame(f, bg=C['strip_sep'], height=1).pack(fill=tk.X)
     r2 = tk.Frame(f, bg=C['strip_bg']); r2.pack(fill=tk.X)

@@ -3,6 +3,45 @@ import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
 import threading, datetime, json, sys, os
 
+
+def _pick_airport(parent, available):
+    """Modal dropdown to choose an airport. Returns selected ICAO."""
+    dlg = tk.Toplevel(parent)
+    dlg.title("Stand Manager")
+    dlg.configure(bg=C['bg3'])
+    dlg.resizable(False, False)
+    dlg.grab_set()
+    dlg.focus_set()
+
+    result = [available[0]]
+
+    tk.Label(dlg, text="Seleccionar aeropuerto", font=FONT_L,
+             bg=C['bg3'], fg=C['accent']).pack(padx=30, pady=(20, 10))
+
+    var = tk.StringVar(value=available[0])
+    cb = ttk.Combobox(dlg, textvariable=var, values=available,
+                      state='readonly', font=FONT, width=18,
+                      justify='center')
+    cb.pack(padx=30, pady=(0, 16))
+
+    def _ok():
+        result[0] = var.get()
+        dlg.destroy()
+
+    _btn(dlg, "ACEPTAR", _ok, bg=C['seg_on']).pack(pady=(0, 20))
+    dlg.bind('<Return>', lambda _: _ok())
+
+    # center over parent
+    parent.update_idletasks()
+    px, py = parent.winfo_x(), parent.winfo_y()
+    pw, ph = parent.winfo_width(), parent.winfo_height()
+    dlg.update_idletasks()
+    dw, dh = dlg.winfo_width(), dlg.winfo_height()
+    dlg.geometry(f"+{px + (pw - dw)//2}+{py + (ph - dh)//2}")
+
+    dlg.wait_window()
+    return result[0]
+
 from app.theme import C, FONT, FONT_S, FONT_L, FONT_X, _btn, SegGroup
 from app.aurora_bridge import AuroraBridge, callsign_to_airline
 import app.parking_finder as pf
@@ -15,13 +54,24 @@ class ParkingApp(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("LEBL Parking Assignment  ·  v2.2")
+        self.title("Stand Manager  ·  v2.2")
         self.configure(bg=C['bg3'])
         self.minsize(1020, 700)
         self.geometry('1120x760')
 
-        # load LEBL data
-        airport = AirportData('LEBL')
+        # select airport
+        available = AirportData.available()
+        selected_icao = available[0] if available else ''
+        if len(available) > 1:
+            selected_icao = _pick_airport(self, available)
+        
+        # load airport data
+        airport = AirportData(selected_icao)
+        pf.CURRENT_ICAO = selected_icao
+        self.airport_icao          = selected_icao
+        self.airport_config        = airport.config
+        self.terminals             = airport.config.get('terminals', [])
+        self.dedicated_airline_map = airport.config.get('dedicated_airline_map', {})
         self.airlines  = airport.airlines
         self.wingspans = airport.wingspans
         self.parkings  = airport.parkings
@@ -88,8 +138,8 @@ class ParkingApp(tk.Tk):
         tk.Label(lf, text="✈", font=('Consolas', 28), bg=C['hdr'], fg=C['accent']).pack(side=tk.LEFT)
         tf = tk.Frame(lf, bg=C['hdr'])
         tf.pack(side=tk.LEFT, padx=10)
-        tk.Label(tf, text="LEBL Parking Assignment", font=FONT_X, bg=C['hdr'], fg=C['fg']).pack(anchor='w')
-        tk.Label(tf, text="Barcelona El Prat  ·  IVAO Virtual ATC  ·  v2.2", font=FONT_S, bg=C['hdr'], fg=C['fg_dim']).pack(anchor='w')
+        tk.Label(tf, text="Stand Manager", font=FONT_X, bg=C['hdr'], fg=C['fg']).pack(anchor='w')
+        tk.Label(tf, text=f"{self.airport_config.get('name', '')}  ·  IVAO Virtual ATC  ·  v2.2", font=FONT_S, bg=C['hdr'], fg=C['fg_dim']).pack(anchor='w')
 
         rf = tk.Frame(hdr, bg=C['hdr'])
         rf.pack(side=tk.RIGHT, padx=16)
@@ -290,71 +340,71 @@ class ParkingApp(tk.Tk):
         if ga_mode:
             ws_req, lbl_base = ws or 0, f"GA {acft}" if acft else "GA Privado"
             def _ga_pool(p): return {id: d for id, d in pks.items() if id not in occ and (d.get('max_wingspan') or 0) >= ws_req and p(id, d)}
-            # order: GA -> MTO -> Cargo -> T2 rem -> T2 -> T1 rem -> T1
+            # order: GA -> MTO -> Cargo -> terminals remote -> terminals all
             pool = _ga_pool(lambda i, d: d.get('schengen') == 'ga')
             if pool: return pool, 'GA', lbl_base, False
             pool = _ga_pool(lambda i, d: d.get('schengen') == 'maintenance')
             if pool: return pool, 'MTO', f"{lbl_base} → Mantenimiento", True
             pool = _ga_pool(lambda i, d: d.get('schengen') == 'cargo')
             if pool: return pool, 'CARGO', f"{lbl_base} → Cargo", True
-            _is_comm = lambda i, d: d.get('schengen') not in ('ga', 'maintenance', 'cargo') and not (900 <= int(i) <= 999 if i.isdigit() else False)
-            pool = _ga_pool(lambda i, d: _is_comm(i, d) and d.get('terminal') == 'T2' and d.get('remote'))
-            if pool: return pool, 'T2', f"{lbl_base} → T2 Remote", True
-            pool = _ga_pool(lambda i, d: _is_comm(i, d) and d.get('terminal') == 'T2')
-            if pool: return pool, 'T2', f"{lbl_base} → T2", True
-            pool = _ga_pool(lambda i, d: _is_comm(i, d) and d.get('terminal') == 'T1' and d.get('remote'))
-            if pool: return pool, 'T1', f"{lbl_base} → T1 Remote", True
-            pool = _ga_pool(lambda i, d: _is_comm(i, d) and d.get('terminal') == 'T1')
-            return pool, 'T1', f"{lbl_base} → T1", True
-
-        def _is_spec(i):
-            try: return 900 <= int(i) <= 999
-            except: return False
+            _is_comm = lambda i, d: d.get('schengen') not in ('ga', 'maintenance', 'cargo')
+            for t in reversed(self.terminals):
+                pool = _ga_pool(lambda i, d, t=t: _is_comm(i, d) and d.get('terminal') == t and d.get('remote'))
+                if pool: return pool, t, f"{lbl_base} → {t} Remote", True
+                pool = _ga_pool(lambda i, d, t=t: _is_comm(i, d) and d.get('terminal') == t)
+                if pool: return pool, t, f"{lbl_base} → {t}", True
+            return {}, self.terminals[-1], f"{lbl_base} → {self.terminals[-1]}", True
 
         # aircraft only
         if not airline:
             pool = {}
             for i, d in pks.items():
-                if i in occ or _is_spec(i): continue
+                if i in occ: continue
                 if d.get('schengen') in ('ga', 'maintenance'): continue
                 if ws and (d.get('max_wingspan') or 999) < ws: continue
                 if sch is not None and not pf.schengen_ok(d, sch): continue
-                if term_over in ('T1', 'T2') and d.get('terminal') != term_over: continue
+                if term_over in self.terminals and d.get('terminal') != term_over: continue
                 pool[i] = d
             return pool, term_over or 'ALL', f"Aircraft {acft}", False
 
         # cargo
         if pf.get_airline_terminal(self.airlines, airline) == 'CARGO' and airline not in pf.DEDICATED:
-            pool = {i: d for i, d in pks.items() if d.get('schengen') == 'cargo' and i not in occ and not _is_spec(i) and (d.get('max_wingspan') or 999) >= (ws or 0)}
+            pool = {i: d for i, d in pks.items() if d.get('schengen') == 'cargo' and i not in occ and (d.get('max_wingspan') or 999) >= (ws or 0)}
             return pool, 'CARGO', f"CARGO {airline}", False
 
         # dedicated
         if airline in pf.DEDICATED:
-            dt, dl = pf.DEDICATED_TERMINAL.get(airline, 'T1'), pf.DEDICATED_LABEL.get(airline, airline)
+            dt, dl = pf.DEDICATED_TERMINAL.get(airline, self.terminals[0]), pf.DEDICATED_LABEL.get(airline, airline)
             pool = {i: pks[i] for i in pf.DEDICATED[airline] if i in pks and i not in occ and (pks[i].get('max_wingspan') or 0) >= (ws or 0) and (sch is None or pf.schengen_ok(pks[i], sch))}
             if pool: return pool, dt, dl, False
-            t = term_over if term_over in ('T1','T2') else dt
-            pool = {p: d for p, d in pf.filter_parkings(pks, t, airline, ws or 0, sch if sch is not None else True, occ).items() if not _is_spec(p)}
+            t = term_over if term_over in self.terminals else dt
+            pool = pf.filter_parkings(pks, t, airline, ws or 0, sch if sch is not None else True, occ, dedicated_map=self.dedicated_airline_map)
             if not pool:
-                o = 'T2' if t == 'T1' else 'T1'
-                pool = {p: d for p, d in pf.filter_parkings(pks, o, airline, ws or 0, sch if sch is not None else True, occ).items() if not _is_spec(p)}
+                o = next((x for x in self.terminals if x != t), self.terminals[0])
+                pool = pf.filter_parkings(pks, o, airline, ws or 0, sch if sch is not None else True, occ, dedicated_map=self.dedicated_airline_map)
                 return pool, o, f"{airline} fallback→{o}", True
             return pool, t, f"{airline} fallback→{t}", True
 
         # standard
-        terminal = pf.get_airline_terminal(self.airlines, airline)
-        if terminal is None:
-            ans = simpledialog.askstring("Airline missing", f"'{airline}' missing in db.\nTerminal (T1/T2/CARGO):", parent=self)
-            terminal = (ans or 'T1').strip().upper(); self.airlines[airline] = terminal
-        if terminal == 'CARGO':
-            pool = {i: d for i, d in pks.items() if d.get('schengen') == 'cargo' and i not in occ and not _is_spec(i) and (d.get('max_wingspan') or 999) >= (ws or 0)}
+        terminals = pf.get_airline_terminals(self.airlines, airline)
+        if terminals is None:
+            opts = '/'.join(self.terminals) + '/CARGO'
+            ans = simpledialog.askstring("Airline missing", f"'{airline}' missing in db.\nTerminal ({opts}):", parent=self)
+            entered = (ans or self.terminals[0]).strip().upper(); self.airlines[airline] = entered
+            terminals = [entered]
+        if terminals == ['CARGO']:
+            pool = {i: d for i, d in pks.items() if d.get('schengen') == 'cargo' and i not in occ and (d.get('max_wingspan') or 999) >= (ws or 0)}
             return pool, 'CARGO', f"CARGO {airline}", False
-        if term_over in ('T1', 'T2'): terminal = term_over
-        o = 'T2' if terminal == 'T1' else 'T1'; ews, esch = ws or 0, sch if sch is not None else True
-        pool = {p: d for p, d in pf.filter_parkings(pks, terminal, airline, ews, esch, occ).items() if not _is_spec(p)}
-        if pool: return pool, terminal, airline, False
-        pool = {p: d for p, d in pf.filter_parkings(pks, o, airline, ews, esch, occ).items() if not _is_spec(p)}
-        return pool, o, f"{airline} fallback→{o}", True
+        active = [term_over] if term_over in self.terminals else terminals
+        ews, esch = ws or 0, sch if sch is not None else True
+        for t in active:
+            pool = pf.filter_parkings(pks, t, airline, ews, esch, occ, dedicated_map=self.dedicated_airline_map)
+            if pool: return pool, t, airline, False
+        for t in self.terminals:
+            if t in active: continue
+            pool = pf.filter_parkings(pks, t, airline, ews, esch, occ, dedicated_map=self.dedicated_airline_map)
+            if pool: return pool, t, f"{airline} fallback→{t}", True
+        return {}, self.terminals[0], f"{airline} fallback→{self.terminals[0]}", True
 
     # results table
 
@@ -407,11 +457,16 @@ class ParkingApp(tk.Tk):
         if aws and ws: wr = _ok("★ perfect" if aws == ws else f"✓ fits ({aws}m ≤ {ws}m)") if aws <= ws else _wn(f"✗ too big ({aws}m > {ws}m)")
         else: wr = _ok("✓ no limit") if aws and ws is None else _na()
         sr = _ok("✓ OK") if (air or aws) and pf.schengen_ok(d, sch) else (_wn(f"✗ zone {pf.SCHENGEN_LABELS.get(st, st)}") if (air or aws) else _na())
-        al_t = pf.get_airline_terminal(self.airlines, air) if air else None
-        tr = _ok(f"✓ {term}") if al_t and (al_t == term or al_t == 'CARGO') else (_wn(f"✗ {air} uses {al_t}") if al_t else _na())
-        if st == 'eju_ezy_ezs': dr = _ok("✓ yours") if air in ('EJU','EZY','EZS') else _wn("✗ only EasyJet")
-        elif st == 'ibe_dedicated': dr = _ok("✓ yours") if air == 'IBE' else _wn("✗ only Iberia")
-        else: dr = _ok("✓ no restriction") if air else _na()
+        al_ts = pf.get_airline_terminals(self.airlines, air) if air else None
+        tr = _ok(f"✓ {term}") if al_ts and (term in al_ts or 'CARGO' in al_ts) else (_wn(f"✗ {air} → {'/'.join(al_ts)}") if al_ts else _na())
+        cat_airlines = {}
+        for a, c in self.dedicated_airline_map.items():
+            cat_airlines.setdefault(c, set()).add(a)
+        if st in cat_airlines:
+            allowed = cat_airlines[st]
+            dr = _ok("✓ yours") if air in allowed else _wn(f"✗ only {'/'.join(sorted(allowed))}")
+        else:
+            dr = _ok("✓ no restriction") if air else _na()
         for k, (t, c) in [('ws', wr), ('sch', sr), ('term', tr), ('ded', dr)]: self._suit_rows[k].config(text=t, fg=c)
 
     def _clear_info(self):
@@ -439,7 +494,7 @@ class ParkingApp(tk.Tk):
         for ex in d.get('excludes', []): self.occupied.add(ex)
         air, acft, dep = self.v_airline.get().strip().upper(), self.v_aircraft.get().strip().upper(), self.v_origin.get().strip().upper()
         self.occupied_by[i] = {'cs': cs, 'acft': acft, 'airline': air}
-        term = pf.get_airline_terminal(self.airlines, air) or d.get('terminal', 'T1')
+        term = pf.get_airline_terminal(self.airlines, air) or d.get('terminal', self.terminals[0])
         self._strip_update(cs, air, acft, dep, i, "SCHENGEN" if self.sch_bool else "NON-SCHENGEN", term)
 
         for it in list(self.tree.get_children()):

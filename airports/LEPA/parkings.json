@@ -1,0 +1,1194 @@
+{
+  "02": {
+    "max_acft": "A321",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "03": {
+    "max_acft": "A321",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "04": {
+    "max_acft": "A321",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "05": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "06": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "08": {
+    "max_acft": "B3XM",
+    "terminal": "A",
+    "schengen": "non_schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "10": {
+    "max_acft": "B3XM",
+    "terminal": "A",
+    "schengen": "non_schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "12": {
+    "max_acft": "A333",
+    "terminal": "A",
+    "schengen": "non_schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "14": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "non_schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "16": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "non_schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "18": {
+    "max_acft": "A333",
+    "terminal": "A",
+    "schengen": "non_schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "20": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "non_schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "22": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "non_schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "23A": {
+    "max_acft": "A321",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "23B": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "24": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "25": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "26": {
+    "max_acft": "B763",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "27": {
+    "max_acft": "A321",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "28": {
+    "max_acft": "A321",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "29": {
+    "max_acft": "A321",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "30": {
+    "max_acft": "AT72",
+    "terminal": "B",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "32": {
+    "max_acft": "AT72",
+    "terminal": "B",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "34": {
+    "max_acft": "B738",
+    "terminal": "B",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": [
+      "34B"
+    ]
+  },
+  "34B": {
+    "max_acft": "AT72",
+    "terminal": "B",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": [
+      "34"
+    ]
+  },
+  "36": {
+    "max_acft": "B738",
+    "terminal": "B",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "38": {
+    "max_acft": "A321",
+    "terminal": "A",
+    "schengen": "schengen_only",
+    "remote": true,
+    "excludes": []
+  },
+  "40": {
+    "max_acft": "A321",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "42": {
+    "max_acft": "A321",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "44": {
+    "max_acft": "A321",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "46": {
+    "max_acft": "A321",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "48": {
+    "max_acft": "A321",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "50": {
+    "max_acft": "A333",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "52": {
+    "max_acft": "B772",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "54": {
+    "max_acft": "A346",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "56": {
+    "max_acft": "A346",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "58": {
+    "max_acft": "A346",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "60": {
+    "max_acft": "A321",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "62": {
+    "max_acft": "B753",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "64": {
+    "max_acft": "B753",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "66": {
+    "max_acft": "B753",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "68": {
+    "max_acft": "B738",
+    "terminal": "C",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "72": {
+    "max_acft": "B763",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "80": {
+    "max_acft": "A321",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "82": {
+    "max_acft": "B763",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "84": {
+    "max_acft": "B763",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "86": {
+    "max_acft": "A321",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "88": {
+    "max_acft": "A321",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "90": {
+    "max_acft": "A321",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "92": {
+    "max_acft": "A321",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "94": {
+    "max_acft": "A321",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "96": {
+    "max_acft": "A321",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "98": {
+    "max_acft": "B738",
+    "terminal": "D",
+    "schengen": "schengen_only",
+    "remote": false,
+    "excludes": []
+  },
+  "100": {
+    "max_acft": "A339",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": [
+      "100B"
+    ]
+  },
+  "100B": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": [
+      "100"
+    ]
+  },
+  "101": {
+    "max_acft": "B763",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "102": {
+    "max_acft": "B763",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "103": {
+    "max_acft": "A339",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": [
+      "103B"
+    ]
+  },
+  "103B": {
+    "max_acft": "B3XM",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": [
+      "103"
+    ]
+  },
+  "104": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "105": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "106": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "107": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "108": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "109": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "114": {
+    "max_acft": "A339",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": [
+      "114B"
+    ]
+  },
+  "114B": {
+    "max_acft": "A321",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": [
+      "114"
+    ]
+  },
+  "115": {
+    "max_acft": "A333",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "116": {
+    "max_acft": "A333",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "117": {
+    "max_acft": "A333",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "118": {
+    "max_acft": "A388",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": [
+      "118B"
+    ]
+  },
+  "118B": {
+    "max_acft": "A321",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": [
+      "118"
+    ]
+  },
+  "119": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "120": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "121": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "123": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "150": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "151": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "152": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "153": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "154": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": [
+      "154B"
+    ]
+  },
+  "154B": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": [
+      "154"
+    ]
+  },
+  "155": {
+    "max_acft": "B753",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": [
+      "155B"
+    ]
+  },
+  "155B": {
+    "max_acft": "30m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": [
+      "155"
+    ]
+  },
+  "156": {
+    "max_acft": "B753",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": [
+      "156B"
+    ]
+  },
+  "156B": {
+    "max_acft": "30m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": [
+      "156"
+    ]
+  },
+  "157": {
+    "max_acft": "B753",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": [
+      "157B"
+    ]
+  },
+  "157B": {
+    "max_acft": "30m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": [
+      "157"
+    ]
+  },
+  "158": {
+    "max_acft": "B753",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": [
+      "158B"
+    ]
+  },
+  "158B": {
+    "max_acft": "30m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": [
+      "158"
+    ]
+  },
+  "200": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "201": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "202": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "203": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "204": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "205": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "206": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "207": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "208": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "209": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "210": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "211": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "212": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "213": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "214": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "215": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "216": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "217": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "218": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "219": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "220": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "221": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "222": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "223": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "224": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "225": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "226": {
+    "max_acft": "20m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "227": {
+    "max_acft": "30m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "228": {
+    "max_acft": "12m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "229": {
+    "max_acft": "12m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "230": {
+    "max_acft": "12m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "231": {
+    "max_acft": "12m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "232": {
+    "max_acft": "12m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "233": {
+    "max_acft": "12m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "234": {
+    "max_acft": "12m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "235": {
+    "max_acft": "12m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "236": {
+    "max_acft": "12m",
+    "terminal": "GA",
+    "schengen": "ga",
+    "remote": true,
+    "excludes": []
+  },
+  "237": {
+    "max_acft": "12m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "238": {
+    "max_acft": "12m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "239": {
+    "max_acft": "12m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "240": {
+    "max_acft": "12m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "241": {
+    "max_acft": "12m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "242": {
+    "max_acft": "12m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "243": {
+    "max_acft": "12m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "244": {
+    "max_acft": "12m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "246": {
+    "max_acft": "12m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "247": {
+    "max_acft": "12m",
+    "terminal": "A",
+    "schengen": "mixed",
+    "remote": true,
+    "excludes": []
+  },
+  "301": {
+    "max_acft": "A139",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": []
+  },
+  "303": {
+    "max_acft": "BE20",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": []
+  },
+  "306": {
+    "max_acft": "A124",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": []
+  },
+  "307": {
+    "max_acft": "B763",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "307B"
+    ]
+  },
+  "307B": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "307"
+    ]
+  },
+  "308": {
+    "max_acft": "B763",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "308B"
+    ]
+  },
+  "308B": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "308"
+    ]
+  },
+  "309": {
+    "max_acft": "B763",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "309B"
+    ]
+  },
+  "309B": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "309"
+    ]
+  },
+  "310": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "310B"
+    ]
+  },
+  "310B": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "310"
+    ]
+  },
+  "311": {
+    "max_acft": "B738",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": []
+  },
+  "312": {
+    "max_acft": "A333",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": []
+  },
+  "313": {
+    "max_acft": "A333",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": []
+  },
+  "314": {
+    "max_acft": "B763",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": []
+  },
+  "315": {
+    "max_acft": "B753",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "315B"
+    ]
+  },
+  "315B": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "315"
+    ]
+  },
+  "316": {
+    "max_acft": "B763",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "316B"
+    ]
+  },
+  "316B": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "316"
+    ]
+  },
+  "317": {
+    "max_acft": "B763",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "317B"
+    ]
+  },
+  "317B": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "317"
+    ]
+  },
+  "318": {
+    "max_acft": "B763",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "318B"
+    ]
+  },
+  "318B": {
+    "max_acft": "30m",
+    "terminal": "A",
+    "schengen": "cargo",
+    "remote": true,
+    "excludes": [
+      "318"
+    ]
+  }
+}
