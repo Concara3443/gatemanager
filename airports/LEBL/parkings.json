@@ -2074,7 +2074,7 @@
     "max_acft": "EC25",
     "max_wingspan": 16.2,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [
       "901"
     ],
@@ -2084,7 +2084,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [
       "900",
       "902"
@@ -2095,7 +2095,7 @@
     "max_acft": "S76",
     "max_wingspan": 13.4,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [
       "901"
     ],
@@ -2105,7 +2105,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [
       "905"
     ],
@@ -2115,7 +2115,7 @@
     "max_acft": "B772",
     "max_wingspan": 60.9,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [
       "904",
       "906"
@@ -2126,7 +2126,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [
       "905"
     ],
@@ -2136,7 +2136,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [],
     "remote": true
   },
@@ -2144,7 +2144,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [],
     "remote": true
   },
@@ -2152,7 +2152,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [],
     "remote": true
   },
@@ -2160,7 +2160,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [],
     "remote": true
   },
@@ -2168,7 +2168,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [
       "917"
     ],
@@ -2178,7 +2178,7 @@
     "max_acft": "A346",
     "max_wingspan": 63.45,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [
       "916",
       "918"
@@ -2189,7 +2189,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "T1",
-    "schengen": "mixed",
+    "schengen": "maintenance",
     "excludes": [
       "917"
     ],
