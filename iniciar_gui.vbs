@@ -2,10 +2,10 @@ Set fso   = CreateObject("Scripting.FileSystemObject")
 Set shell = CreateObject("WScript.Shell")
 
 sDir    = fso.GetParentFolderName(WScript.ScriptFullName)
-pyFile  = sDir & "\parking_gui.py"
+pyFile  = sDir & "\LEBL Parking.pyw"
 
 If Not fso.FileExists(pyFile) Then
-    MsgBox "No se encuentra parking_gui.py en:" & vbCrLf & sDir, 16, "LEBL Parking"
+    MsgBox "No se encuentra LEBL Parking.pyw en:" & vbCrLf & sDir, 16, "LEBL Parking"
     WScript.Quit
 End If
 
