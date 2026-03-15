@@ -14,6 +14,11 @@ class AirportData:
         self.airlines  = pf.load_json(os.path.join(base, 'airlines.json'),  'airlines.json')
         self.wingspans = pf.load_json(os.path.join(DATA_DIR, 'aircraft_wingspans.json'), 'aircraft_wingspans.json')
         self.parkings  = pf.load_json(os.path.join(base, 'parkings.json'),  'parkings.json')
+        # inject global cargo airlines (airport-level entry takes precedence)
+        cargo_db = pf.load_json(os.path.join(DATA_DIR, 'cargo_airlines.json'), 'cargo_airlines.json')
+        for code in cargo_db:
+            if not code.startswith('_') and code not in self.airlines:
+                self.airlines[code] = 'CARGO'
         pf._build_dedicated(self.airlines); pf._build_suffix_map(self.wingspans)
         # auto-fill max_wingspan from global db if not present in parkings.json
         for stand in self.parkings.values():

@@ -20,12 +20,13 @@ airports/
     +-- parkings.json   <- stand-by-stand data
 ```
 
-Two global files in `data/` are shared by all airports and do **not** live
+Three global files in `data/` are shared by all airports and do **not** live
 inside the airport folder:
 
 ```
 data/
 +-- aircraft_wingspans.json   <- wingspan in metres per ICAO type
++-- cargo_airlines.json       <- global list of cargo-only operators
 +-- prefix_data.json          <- used for GA/private callsign detection
 ```
 
@@ -166,6 +167,17 @@ The `terminal` field inside the object also accepts an array:
 | `["T1", "T2"]` | Airline uses both terminals - all are tried before falling back |
 | `"CARGO"` | Airline operates cargo only - routed to cargo stands |
 
+### Global cargo airlines — no entry needed
+
+All airlines listed in `data/cargo_airlines.json` are **automatically assigned
+`"CARGO"`** at load time for every airport. You do **not** need to add them to
+an airport's `airlines.json`. Examples of auto-handled codes: `DHL`, `FDX`,
+`UPS`, `CLX`, `GTI`, `GEC`, `TAY`, `BCS` (see the file for the full list).
+
+If a cargo airline operates at your airport but is **not** in the global list,
+add it to `data/cargo_airlines.json` instead of the per-airport file. Only use
+an airport-level `"CARGO"` entry as an exception or override.
+
 ### Multi-terminal behaviour
 
 When an airline has multiple terminals (`["T1", "T2"]`):
@@ -196,11 +208,12 @@ the override takes priority and only that terminal is searched.
     "TRA": "B",
     "WZZ": "D",
     "THY": "A",
-    "RAM": "A",
-    "DHL": "CARGO",
-    "FDX": "CARGO"
+    "RAM": "A"
 }
 ```
+
+> `DHL`, `FDX` and other cargo operators are handled automatically via
+> `data/cargo_airlines.json` — no entry needed here.
 
 ### Example - LEAL (single terminal "T")
 
@@ -213,8 +226,7 @@ the override takes priority and only that terminal is searched.
     "IBE": "T",
     "BAW": "T",
     "TRA": "T",
-    "WZZ": "T",
-    "DHL": "CARGO"
+    "WZZ": "T"
 }
 ```
 
@@ -512,6 +524,7 @@ declared in `lebl_parking.spec` inside the `datas` list. Add your airport:
 ```python
 datas=[
     ('data/aircraft_wingspans.json',   'data'),
+    ('data/cargo_airlines.json',       'data'),
     ('data/prefix_data.json',          'data'),
     ('airports/LEBL/config.json',      'airports/LEBL'),
     ('airports/LEBL/airlines.json',    'airports/LEBL'),
@@ -541,6 +554,8 @@ Go through this list before launching the app:
       with `"terminal"`, `"dedicated"` and `"label"` keys
 - [ ] `airlines.json` - dedicated stand IDs in `"dedicated"` arrays exist as
       keys in `parkings.json`
+- [ ] `airlines.json` - cargo airlines already in `data/cargo_airlines.json` are
+      **not** duplicated here (the global list is auto-injected at load time)
 - [ ] `parkings.json` - every stand's `"terminal"` value appears in
       `config.json`'s `terminals` array
 - [ ] `parkings.json` - all IDs in `"excludes"` arrays exist as keys in the
@@ -625,10 +640,12 @@ Use these templates as starting points.
 ```json
 {
     "XXX": "T1",
-    "YYY": "T1",
-    "ZZZ": "CARGO"
+    "YYY": "T1"
 }
 ```
+
+> Cargo airlines are injected automatically from `data/cargo_airlines.json`.
+> Only add a `"CARGO"` entry here for an airline that is NOT in that global list.
 
 ### `parkings.json`
 ```json

@@ -75,19 +75,5 @@
     "LES": "T2",
     "ANY": {"terminal": "T1", "dedicated": ["260","262","264","266","268"], "label": "ANYWAY DEDICATED"},
     "VAF": "T2",
-    "LIC": "T1",
-
-    "DHL": "CARGO",
-    "SWT": "CARGO",
-    "BCS": "CARGO",
-    "UPS": "CARGO",
-    "FDX": "CARGO",
-    "TAY": "CARGO",
-    "GTI": "CARGO",
-    "MPH": "CARGO",
-    "DHK": "CARGO",
-    "BOX": "CARGO",
-    "ACS": "CARGO",
-    "RCF": "CARGO",
-    "VDA": "CARGO"
+    "LIC": "T1"
 }
