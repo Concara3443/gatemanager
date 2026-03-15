@@ -343,20 +343,27 @@ class ParkingApp(tk.Tk):
             return pool, t, f"{airline} fallback→{t}", True
 
         # standard
-        terminal = pf.get_airline_terminal(self.airlines, airline)
-        if terminal is None:
+        terminals = pf.get_airline_terminals(self.airlines, airline)
+        if terminals is None:
             opts = '/'.join(self.terminals) + '/CARGO'
             ans = simpledialog.askstring("Airline missing", f"'{airline}' missing in db.\nTerminal ({opts}):", parent=self)
-            terminal = (ans or self.terminals[0]).strip().upper(); self.airlines[airline] = terminal
-        if terminal == 'CARGO':
+            entered = (ans or self.terminals[0]).strip().upper(); self.airlines[airline] = entered
+            terminals = [entered]
+        if terminals == ['CARGO']:
             pool = {i: d for i, d in pks.items() if d.get('schengen') == 'cargo' and i not in occ and not _is_spec(i) and (d.get('max_wingspan') or 999) >= (ws or 0)}
             return pool, 'CARGO', f"CARGO {airline}", False
-        if term_over in self.terminals: terminal = term_over
-        o = next((x for x in self.terminals if x != terminal), self.terminals[0]); ews, esch = ws or 0, sch if sch is not None else True
-        pool = {p: d for p, d in pf.filter_parkings(pks, terminal, airline, ews, esch, occ, dedicated_map=self.dedicated_airline_map).items() if not _is_spec(p)}
-        if pool: return pool, terminal, airline, False
-        pool = {p: d for p, d in pf.filter_parkings(pks, o, airline, ews, esch, occ, dedicated_map=self.dedicated_airline_map).items() if not _is_spec(p)}
-        return pool, o, f"{airline} fallback→{o}", True
+        # term_override narrows to a single terminal
+        active = [term_over] if term_over in self.terminals else terminals
+        ews, esch = ws or 0, sch if sch is not None else True
+        for t in active:
+            pool = {p: d for p, d in pf.filter_parkings(pks, t, airline, ews, esch, occ, dedicated_map=self.dedicated_airline_map).items() if not _is_spec(p)}
+            if pool: return pool, t, airline, False
+        # fallback: other terminals not in assigned list
+        for t in self.terminals:
+            if t in active: continue
+            pool = {p: d for p, d in pf.filter_parkings(pks, t, airline, ews, esch, occ, dedicated_map=self.dedicated_airline_map).items() if not _is_spec(p)}
+            if pool: return pool, t, f"{airline} fallback→{t}", True
+        return {}, self.terminals[0], f"{airline} fallback→{self.terminals[0]}", True
 
     # results table
 
@@ -409,8 +416,8 @@ class ParkingApp(tk.Tk):
         if aws and ws: wr = _ok("★ perfect" if aws == ws else f"✓ fits ({aws}m ≤ {ws}m)") if aws <= ws else _wn(f"✗ too big ({aws}m > {ws}m)")
         else: wr = _ok("✓ no limit") if aws and ws is None else _na()
         sr = _ok("✓ OK") if (air or aws) and pf.schengen_ok(d, sch) else (_wn(f"✗ zone {pf.SCHENGEN_LABELS.get(st, st)}") if (air or aws) else _na())
-        al_t = pf.get_airline_terminal(self.airlines, air) if air else None
-        tr = _ok(f"✓ {term}") if al_t and (al_t == term or al_t == 'CARGO') else (_wn(f"✗ {air} uses {al_t}") if al_t else _na())
+        al_ts = pf.get_airline_terminals(self.airlines, air) if air else None
+        tr = _ok(f"✓ {term}") if al_ts and (term in al_ts or 'CARGO' in al_ts) else (_wn(f"✗ {air} → {'/'.join(al_ts)}") if al_ts else _na())
         cat_airlines = {}
         for a, c in self.dedicated_airline_map.items():
             cat_airlines.setdefault(c, set()).add(a)

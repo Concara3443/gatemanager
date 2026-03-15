@@ -81,14 +81,19 @@ def resolve_aircraft_type(raw, wingspans):
     return choice if choice in wingspans else matches[0]
 
 
-def get_airline_terminal(airlines, code):
-    # get term for airline
+def get_airline_terminals(airlines, code):
+    # returns terminal for an airline, None if not found.
+    # supports: "IBE": "T1"  |  "IBE": ["T1","T2"]
     val = airlines.get(code)
     if val is None:
         return None
-    if isinstance(val, dict):
-        return val.get('terminal')
-    return val
+    t = val.get('terminal') if isinstance(val, dict) else val
+    return t if isinstance(t, list) else [t]
+
+
+def get_airline_terminal(airlines, code):
+    ts = get_airline_terminals(airlines, code)
+    return ts[0] if ts else None
 
 SUFFIX_MAP = {}  # suffix -> icao
 
