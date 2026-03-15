@@ -8,7 +8,7 @@ def _resource(path):
 from app.gui.app_window import ParkingApp
 
 app = ParkingApp()
-app.withdraw()  # hide main window while splash is shown
+app.withdraw()  # hide main while splash shows
 
 splash = tk.Toplevel(app)
 splash.overrideredirect(True)
