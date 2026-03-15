@@ -25,7 +25,7 @@ BL  = '\033[94m'
 BASE           = os.path.dirname(os.path.abspath(__file__))
 LEBL_DIR       = os.path.join(BASE, '..', 'airports', 'LEBL')
 AIRLINES_JSON  = os.path.join(LEBL_DIR, 'airlines.json')
-WINGSPANS_JSON = os.path.join(LEBL_DIR, 'aircraft_wingspans.json')
+WINGSPANS_JSON = os.path.join(BASE, '..', 'data', 'aircraft_wingspans.json')
 PARKINGS_JSON  = os.path.join(LEBL_DIR, 'parkings.json')
 
 # schengen list

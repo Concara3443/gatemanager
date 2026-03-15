@@ -1,7 +1,9 @@
 # airport data container
 import os
 
-AIRPORTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'airports')
+_HERE        = os.path.dirname(os.path.abspath(__file__))
+AIRPORTS_DIR = os.path.join(_HERE, '..', '..', 'airports')
+DATA_DIR     = os.path.join(_HERE, '..', '..', 'data')
 
 class AirportData:
     # load/hold data for specific airport
@@ -9,7 +11,7 @@ class AirportData:
         self.icao = icao.upper(); base = os.path.join(AIRPORTS_DIR, self.icao)
         from app import parking_finder as pf
         self.airlines  = pf.load_json(os.path.join(base, 'airlines.json'),  'airlines.json')
-        self.wingspans = pf.load_json(os.path.join(base, 'aircraft_wingspans.json'), 'aircraft_wingspans.json')
+        self.wingspans = pf.load_json(os.path.join(DATA_DIR, 'aircraft_wingspans.json'), 'aircraft_wingspans.json')
         self.parkings  = pf.load_json(os.path.join(base, 'parkings.json'),  'parkings.json')
         pf._build_dedicated(self.airlines); pf._build_suffix_map(self.wingspans)
 
