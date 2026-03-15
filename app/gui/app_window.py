@@ -13,7 +13,7 @@ def _pick_airport(parent, available):
     dlg.grab_set()
     dlg.focus_set()
 
-    result = [available[0]]
+    result = [None]
 
     tk.Label(dlg, text="Seleccionar aeropuerto", font=FONT_L,
              bg=C['bg3'], fg=C['accent']).pack(padx=30, pady=(20, 10))
@@ -59,11 +59,16 @@ class ParkingApp(tk.Tk):
         self.minsize(1020, 700)
         self.geometry('1120x760')
 
-        # select airport
+        # select airport — hide main window until selection is done
+        self.withdraw()
         available = AirportData.available()
         selected_icao = available[0] if available else ''
         if len(available) > 1:
             selected_icao = _pick_airport(self, available)
+            if selected_icao is None:
+                self.destroy()
+                return
+        self.deiconify()
         
         # load airport data
         airport = AirportData(selected_icao)
