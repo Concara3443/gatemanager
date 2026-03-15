@@ -1,0 +1,10 @@
+{
+  "name": "Barcelona El Prat",
+  "terminals": ["T1", "T2"],
+  "dedicated_airline_map": {
+    "IBE": "ibe_dedicated",
+    "EJU": "eju_ezy_ezs",
+    "EZY": "eju_ezy_ezs",
+    "EZS": "eju_ezy_ezs"
+  }
+}

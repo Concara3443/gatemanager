@@ -195,7 +195,16 @@ def _sort_key(pid, data, prefer_type, _schengen_flight):
     return (ws, n_excl, gate_pen, pid)
 
 
-def filter_parkings(parkings, terminal, airline_code, wingspan, schengen_flight, occupied):
+_STANDARD_SCHENGEN = frozenset({'schengen_only', 'non_schengen_only', 'mixed', 'ga', 'maintenance', 'cargo'})
+
+
+def filter_parkings(parkings, terminal, airline_code, wingspan, schengen_flight, occupied, dedicated_map=None):
+    # reverse map: schengen_category -> set of airlines allowed there
+    cat_airlines = {}
+    if dedicated_map:
+        for a, c in dedicated_map.items():
+            cat_airlines.setdefault(c, set()).add(a)
+
     result = {}
     for pid, data in parkings.items():
         if pid in occupied:
@@ -205,10 +214,10 @@ def filter_parkings(parkings, terminal, airline_code, wingspan, schengen_flight,
         stype = data.get('schengen', 'mixed')
         if stype in ('ga', 'maintenance', 'cargo'):
             continue
-        if stype == 'eju_ezy_ezs' and airline_code not in ('EJU', 'EZY', 'EZS'):
-            continue
-        if stype == 'ibe_dedicated' and airline_code != 'IBE':
-            continue
+        # any non-standard schengen type is a dedicated category
+        if stype not in _STANDARD_SCHENGEN:
+            if airline_code not in cat_airlines.get(stype, set()):
+                continue
         max_ws = data.get('max_wingspan')
         if max_ws is not None and max_ws < wingspan:
             continue

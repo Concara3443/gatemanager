@@ -10,6 +10,7 @@ class AirportData:
     def __init__(self, icao: str):
         self.icao = icao.upper(); base = os.path.join(AIRPORTS_DIR, self.icao)
         from app import parking_finder as pf
+        self.config    = pf.load_json(os.path.join(base, 'config.json'),    'config.json')
         self.airlines  = pf.load_json(os.path.join(base, 'airlines.json'),  'airlines.json')
         self.wingspans = pf.load_json(os.path.join(DATA_DIR, 'aircraft_wingspans.json'), 'aircraft_wingspans.json')
         self.parkings  = pf.load_json(os.path.join(base, 'parkings.json'),  'parkings.json')
