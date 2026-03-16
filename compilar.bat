@@ -23,6 +23,15 @@ for /d /r . %%d in (__pycache__) do (
     if exist "%%d" rmdir /s /q "%%d"
 )
 
+echo  Limpiando cache de PyInstaller...
+if exist "%LOCALAPPDATA%\pyinstaller" rmdir /s /q "%LOCALAPPDATA%\pyinstaller"
+if exist "%TEMP%\_MEI*" del /f /q "%TEMP%\_MEI*" 2>nul
+for /d %%d in ("%TEMP%\_MEI*") do rmdir /s /q "%%d" 2>nul
+
+echo.
+echo  Refrescando cache de iconos de Windows...
+ie4uinit.exe -show 2>nul || ie4uinit.exe -ClearIconCache 2>nul
+
 echo.
 echo  Listo. EXE generado en: dist\LEBL Parking.exe
 echo.
