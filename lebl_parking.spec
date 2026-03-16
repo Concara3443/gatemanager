@@ -17,6 +17,7 @@ a = Analysis(
         ('airports/LEPA/airlines.json',    'airports/LEPA'),
         ('airports/LEPA/parkings.json',    'airports/LEPA'),
         ('assets/splash.png',              'assets'),
+        ('assets/icon.png',                'assets'),
     ],
     hiddenimports=[],
     hookspath=[],
@@ -61,5 +62,6 @@ exe = EXE(
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
-    entitlements_file=None
+    entitlements_file=None,
+    icon='assets/icon.ico'
 )

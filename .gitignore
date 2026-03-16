@@ -181,5 +181,6 @@ cython_debug/
 .cursorindexingignore
 
 .c*
-/Aurora 3rd Parties Documentation _ IVAO Documentation Library_files
-Aurora 3rd Parties Documentation _ IVAO Documentation Library.html
+
+# Design source files (Photoshop, etc.)
+design/
