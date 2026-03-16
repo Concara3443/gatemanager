@@ -181,6 +181,7 @@ cython_debug/
 .cursorindexingignore
 
 .c*
+*txt
 
 # Design source files (Photoshop, etc.)
 design/
