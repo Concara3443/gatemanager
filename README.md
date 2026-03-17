@@ -11,10 +11,29 @@ Introduce aerolínea, aeronave y aeropuerto de origen — GateManager te sugiere
 
 **No tienes Python? Descarga el ejecutable directamente:**
 
-👉 [Descargar LEBL Parking.exe — v3.0](https://github.com/Concara3443/gatemanager/releases/latest/download/LEBL.Parking.exe)
+👉 [Descargar GateManager.exe — v3.0](https://github.com/Concara3443/gatemanager/releases/latest/download/GateManager.exe)
 
 1. Descarga el `.exe`
 2. Ejecútalo directamente — no requiere instalación ni Python
+
+---
+
+## Integración con Aurora (IVAO)
+
+Si tienes Aurora abierto con "3rd Party" activado, GateManager puede:
+- Leer automáticamente el plan de vuelo del tráfico seleccionado
+- Enviar el gate asignado de vuelta a Aurora
+
+### Conectar Aurora
+
+Para que GateManager pueda comunicarse con Aurora es necesario activar el acceso de terceros:
+
+1. En Aurora, ve a **PVD → Settings → Other → 3rd Party software access**
+2. Activa la opción **Permitir**
+
+> Para más detalles consulta el [Manual de usuario (PDF)](docs/manual_es.pdf).
+
+![Aurora conectado](assets/screenshots/aurora_connected.png)
 
 ---
 
@@ -110,25 +129,6 @@ gatemanager/
 ├── compilar.bat                  # script de compilación
 └── lebl_parking.spec             # configuración PyInstaller
 ```
-
----
-
-## Integración con Aurora (IVAO)
-
-Si tienes Aurora abierto con "3rd Party" activado, GateManager puede:
-- Leer automáticamente el plan de vuelo del tráfico seleccionado
-- Enviar el gate asignado de vuelta a Aurora
-
-### Conectar Aurora
-
-Para que GateManager pueda comunicarse con Aurora es necesario activar el acceso de terceros:
-
-1. En Aurora, ve a **PVD → Settings → Other → 3rd Party software access**
-2. Activa la opción **Permitir**
-
-> Para más detalles consulta el [Manual de usuario (PDF)](docs/manual_es.pdf).
-
-![Aurora conectado](assets/screenshots/aurora_connected.png)
 
 ---
 
