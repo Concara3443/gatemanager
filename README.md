@@ -119,7 +119,14 @@ Si tienes Aurora abierto con "3rd Party" activado, GateManager puede:
 - Leer automáticamente el plan de vuelo del tráfico seleccionado
 - Enviar el gate asignado de vuelta a Aurora
 
-No requiere configuración adicional.
+### Conectar Aurora
+
+Para que GateManager pueda comunicarse con Aurora es necesario activar el acceso de terceros:
+
+1. En Aurora, ve a **PVD → Settings → Other → 3rd Party software access**
+2. Activa la opción **Permitir**
+
+> Para más detalles consulta el [Manual de usuario (PDF)](docs/manual_es.pdf).
 
 ![Aurora conectado](assets/screenshots/aurora_connected.png)
 
