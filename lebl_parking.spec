@@ -50,7 +50,7 @@ exe = EXE(
     splash,
     splash.binaries,
     [],
-    name='LEBL Parking',
+    name='GateManager',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

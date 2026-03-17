@@ -33,6 +33,6 @@ echo  Refrescando cache de iconos de Windows...
 ie4uinit.exe -show 2>nul || ie4uinit.exe -ClearIconCache 2>nul
 
 echo.
-echo  Listo. EXE generado en: dist\LEBL Parking.exe
+echo  Listo. EXE generado en: dist\GateManager.exe
 echo.
 pause
