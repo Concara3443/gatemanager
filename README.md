@@ -18,6 +18,25 @@ Introduce aerolínea, aeronave y aeropuerto de origen — GateManager te sugiere
 
 ---
 
+## Integración con Aurora (IVAO)
+
+Si tienes Aurora abierto con "3rd Party" activado, GateManager puede:
+- Leer automáticamente el plan de vuelo del tráfico seleccionado
+- Enviar el gate asignado de vuelta a Aurora
+
+### Conectar Aurora
+
+Para que GateManager pueda comunicarse con Aurora es necesario activar el acceso de terceros:
+
+1. En Aurora, ve a **PVD → Settings → Other → 3rd Party software access**
+2. Activa la opción **Permitir**
+
+> Para más detalles consulta el [Manual de usuario (PDF)](docs/manual_es.pdf).
+
+![Aurora conectado](assets/screenshots/aurora_connected.png)
+
+---
+
 ## Capturas
 
 ![Ventana principal](assets/screenshots/main_window.png)
@@ -110,25 +129,6 @@ gatemanager/
 ├── compilar.bat                  # script de compilación
 └── lebl_parking.spec             # configuración PyInstaller
 ```
-
----
-
-## Integración con Aurora (IVAO)
-
-Si tienes Aurora abierto con "3rd Party" activado, GateManager puede:
-- Leer automáticamente el plan de vuelo del tráfico seleccionado
-- Enviar el gate asignado de vuelta a Aurora
-
-### Conectar Aurora
-
-Para que GateManager pueda comunicarse con Aurora es necesario activar el acceso de terceros:
-
-1. En Aurora, ve a **PVD → Settings → Other → 3rd Party software access**
-2. Activa la opción **Permitir**
-
-> Para más detalles consulta el [Manual de usuario (PDF)](docs/manual_es.pdf).
-
-![Aurora conectado](assets/screenshots/aurora_connected.png)
 
 ---
 
