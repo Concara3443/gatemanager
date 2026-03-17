@@ -11,7 +11,7 @@ Introduce aerolínea, aeronave y aeropuerto de origen — GateManager te sugiere
 
 **No tienes Python? Descarga el ejecutable directamente:**
 
-👉 [Descargar LEBL Parking.exe — v3.0](https://github.com/Concara3443/gatemanager/releases/latest/download/LEBL.Parking.exe)
+👉 [Descargar GateManager.exe — v3.0](https://github.com/Concara3443/gatemanager/releases/latest/download/GateManager.exe)
 
 1. Descarga el `.exe`
 2. Ejecútalo directamente — no requiere instalación ni Python
