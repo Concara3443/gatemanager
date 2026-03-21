@@ -48,4 +48,4 @@ El script realiza varias tareas por ti sin necesidad de entrada manual:
 El archivo `.json` final se generará **en la misma carpeta que el script** (`dev/`), facilitando su localización.
 
 ---
-*Desarrollado para GateManager v3.0*
+*Desarrollado para GateManager v3*

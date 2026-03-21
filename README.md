@@ -3,7 +3,7 @@
 Herramienta de asignación de parkings y gates para ATC virtual en IVAO.
 Introduce aerolínea, aeronave y aeropuerto de origen — GateManager te sugiere el stand más adecuado según terminal, envergadura y tipo de vuelo (Schengen / No Schengen).
 
-> **v3.0** — Soporte multi-aeropuerto · Solo GUI · Sin CLI
+> **v3** — Soporte multi-aeropuerto · Solo GUI · Sin CLI
 
 ## Descarga rápida
 
@@ -11,7 +11,7 @@ Introduce aerolínea, aeronave y aeropuerto de origen — GateManager te sugiere
 
 **No tienes Python? Descarga el ejecutable directamente:**
 
-👉 [Descargar GateManager.exe — v3.0](https://github.com/Concara3443/gatemanager/releases/latest/download/GateManager.exe)
+👉 [Descargar GateManager.exe](https://github.com/Concara3443/gatemanager/releases/latest/download/GateManager.exe)
 
 1. Descarga el `.exe`
 2. Ejecútalo directamente — no requiere instalación ni Python
