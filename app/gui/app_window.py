@@ -56,8 +56,8 @@ class ParkingApp(tk.Tk):
         super().__init__()
         self.title("Gate Manager  ·  v3.0")
         self.configure(bg=C['bg3'])
-        self.minsize(1020, 700)
-        self.geometry('1120x760')
+        self.minsize(1020, 760)
+        self.geometry('1120x820')
 
         # select airport — hide main window until selection is done
         self.withdraw()
