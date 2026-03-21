@@ -1,4 +1,4 @@
-# Adding a New Airport to Stand Manager
+# Adding a New Airport to Gate Manager
 
 This guide explains how to add a new airport from scratch. It is written for both
 human contributors and AI assistants. Follow every section in order - skipping
@@ -8,7 +8,7 @@ steps leads to silent failures at runtime.
 
 ## 1. Overview of the Data Model
 
-Stand Manager is entirely data-driven. The application code contains **no
+Gate Manager is entirely data-driven. The application code contains **no
 airport-specific logic**. Every airport is a folder under `airports/` containing
 three JSON files:
 

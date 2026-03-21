@@ -1,11 +1,11 @@
 @echo off
 chcp 65001 >nul
-title Stand Manager — Compilacion
+title Gate Manager — Compilacion
 
 cd /d "%~dp0"
 
 echo.
-echo  Compilando Stand Manager...
+echo  Compilando Gate Manager...
 echo  -----------------------------------------------
 
 pyinstaller lebl_parking.spec --clean -y
