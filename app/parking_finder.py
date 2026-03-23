@@ -3,6 +3,7 @@ import json
 import os
 import sys
 import re
+import random
 
 # Force UTF-8 output on Windows so box-drawing chars and colours work
 if sys.platform == 'win32' and sys.stdout is not None:
@@ -154,7 +155,7 @@ def _sort_key(pid, data, prefer_type, _schengen_flight):
         return (9999, 9999, 1, pid)
     preferred = (stype == prefer_type)
     gate_pen  = 0 if not remote else (0 if preferred else 1)
-    return (ws, n_excl, gate_pen, pid)
+    return (ws, n_excl, gate_pen, random.random())
 
 
 def filter_parkings(parkings, terminal, airline_code, wingspan, schengen_flight, occupied, dedicated_map=None):
