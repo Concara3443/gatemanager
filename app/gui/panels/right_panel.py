@@ -61,7 +61,15 @@ def build(app, parent):
     app.tree = ttk.Treeview(
         tf, columns=cols, show="headings", style="P.Treeview", selectmode="browse"
     )
-    cw = {"Stand": 62, "Score": 52, "Max WS": 68, "Tipo": 62, "Zona": 88, "Max Acft": 72, "Excluye": 150}
+    cw = {
+        "Stand": 62,
+        "Score": 52,
+        "Max WS": 68,
+        "Tipo": 62,
+        "Zona": 88,
+        "Max Acft": 72,
+        "Excluye": 150,
+    }
     for c in cols:
         app.tree.heading(c, text=c, anchor="w")
         app.tree.column(c, width=cw[c], anchor="w", minwidth=30)
@@ -133,10 +141,12 @@ def build(app, parent):
     # score label
     score_row = tk.Frame(io, bg=C["bg2"])
     score_row.pack(fill=tk.X, pady=(4, 0))
-    tk.Label(score_row, text="Score:", font=FONT_S, bg=C["bg2"], fg=C["fg_dim"], width=9, anchor="w").pack(
-        side=tk.LEFT
+    tk.Label(
+        score_row, text="Score:", font=FONT_S, bg=C["bg2"], fg=C["fg_dim"], width=9, anchor="w"
+    ).pack(side=tk.LEFT)
+    app._score_lbl = tk.Label(
+        score_row, text="—", font=FONT_S, bg=C["bg2"], fg=C["accent"], anchor="w"
     )
-    app._score_lbl = tk.Label(score_row, text="—", font=FONT_S, bg=C["bg2"], fg=C["accent"], anchor="w")
     app._score_lbl.pack(side=tk.LEFT, fill=tk.X, expand=True)
 
     # suitability checks

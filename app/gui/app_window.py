@@ -104,7 +104,7 @@ class ParkingApp(tk.Tk):
         self.current_dm: dict = {}
         self.all_sorted: list = []
         self._filter_dm: dict = {}  # full unfiltered results for instant filter
-        self.favorites: dict = {}   # {airline: set of stands}
+        self.favorites: dict = {}  # {airline: set of stands}
         self.sch_bool: bool = True
         self.acft_ws: float = 0.0
         self.selected_stand: str = ""
@@ -594,7 +594,9 @@ class ParkingApp(tk.Tk):
             else:
                 opts = "/".join(self.terminals) + "/CARGO"
                 ans = simpledialog.askstring(
-                    "Airline missing", f"'{airline}' missing in db.\nTerminal ({opts}):", parent=self
+                    "Airline missing",
+                    f"'{airline}' missing in db.\nTerminal ({opts}):",
+                    parent=self,
                 )
                 entered = (ans or self.terminals[0]).strip().upper()
                 self.airlines[airline] = entered
@@ -664,7 +666,10 @@ class ParkingApp(tk.Tk):
         # pre-compute scores; apply favorites bonus; sort by score desc, random tiebreaker
         air = self.v_airline.get().strip().upper()
         fav_stands = self.favorites.get(air, set())
-        scores = {p: pf.score_stand(dm[p], aws or 0.0, sch)[0] + (20 if p in fav_stands else 0) for p in dm}
+        scores = {
+            p: pf.score_stand(dm[p], aws or 0.0, sch)[0] + (20 if p in fav_stands else 0)
+            for p in dm
+        }
         self.all_sorted = sorted(dm, key=lambda p: (-scores[p], random.random()))
         for i in self.all_sorted:
             d = dm[i]
@@ -676,7 +681,13 @@ class ParkingApp(tk.Tk):
             )
             fit = aws and ws == aws
             is_fav = i in fav_stands
-            tag = "fav" if is_fav else ("perfect" if fit else ("fallbk" if fallback else ("remote" if rem else "gate")))
+            tag = (
+                "fav"
+                if is_fav
+                else (
+                    "perfect" if fit else ("fallbk" if fallback else ("remote" if rem else "gate"))
+                )
+            )
             sc = scores[i]
             self.tree.insert(
                 "",
@@ -754,7 +765,9 @@ class ParkingApp(tk.Tk):
 
         sc, tags = pf.score_stand(d, self.acft_ws, self.sch_bool)
         sc_color = C["green"] if sc >= 90 else (C["orange"] if sc >= 70 else C["red"])
-        self._score_lbl.config(text=f"{sc}  ·  {' · '.join(tags)}" if tags else str(sc), fg=sc_color)
+        self._score_lbl.config(
+            text=f"{sc}  ·  {' · '.join(tags)}" if tags else str(sc), fg=sc_color
+        )
 
         air, aws, sch = self.v_airline.get().strip().upper(), self.acft_ws, self.sch_bool
 
@@ -1027,7 +1040,7 @@ class ParkingApp(tk.Tk):
                 for item in names:
                     if not item.startswith(prefix):
                         continue
-                    filename = item[len(prefix):]
+                    filename = item[len(prefix) :]
                     if not filename or filename.endswith("/"):
                         continue
                     with zf.open(item) as src:
@@ -1062,7 +1075,10 @@ class ParkingApp(tk.Tk):
                 with open(path, encoding="utf-8") as f:
                     raw = json.load(f)
                 self.favorites = {k: set(v) for k, v in raw.items()}
-                self._log(f"Favoritos cargados ({sum(len(v) for v in self.favorites.values())} stands)", "info")
+                self._log(
+                    f"Favoritos cargados ({sum(len(v) for v in self.favorites.values())} stands)",
+                    "info",
+                )
             except Exception:
                 self.favorites = {}
 

@@ -67,9 +67,7 @@ def open(app):
     # footer btns
     bf = tk.Frame(win, bg=C["hdr"], pady=6)
     bf.pack(fill=tk.X)
-    _btn(bf, "Export CSV", lambda: _export_csv(app), bg="#1a2a1a").pack(
-        side=tk.LEFT, padx=(8, 4)
-    )
+    _btn(bf, "Export CSV", lambda: _export_csv(app), bg="#1a2a1a").pack(side=tk.LEFT, padx=(8, 4))
     _btn(bf, "Export JSON", lambda: _export_json(app), bg="#1a2a3a").pack(side=tk.LEFT, padx=4)
     _btn(bf, "Import JSON", lambda: _import_json(app), bg="#2a1a3a").pack(side=tk.LEFT, padx=4)
     _btn(bf, "Clear history", lambda: _clear_assignments(app), bg="#2a1a1a").pack(
