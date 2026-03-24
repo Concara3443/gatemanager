@@ -1,8 +1,9 @@
-import pdfplumber
 import json
-import sys
 import os
 import re
+import sys
+
+import pdfplumber
 
 # Directorio del script para guardar los outputs
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))

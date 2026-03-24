@@ -1,9 +1,9 @@
 # parking finder — shared logic (GUI only)
 import json
 import os
-import sys
-import re
 import random
+import re
+import sys
 
 # Force UTF-8 output on Windows so box-drawing chars and colours work
 if sys.platform == "win32" and sys.stdout is not None:

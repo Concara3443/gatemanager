@@ -13,8 +13,13 @@ line-length = 100
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I"]
-# E501 line-too-long: no se fuerza en este proyecto
-ignore = ["E501"]
+ignore = [
+    "E501",  # line-too-long: no se fuerza en este proyecto
+    "E402",  # module-import-not-at-top: intencional en app_window.py (tkinter lazy import)
+    "E722",  # bare-except: intencional en código existente
+    "E731",  # lambda-assignment: intencional en código existente
+    "E741",  # ambiguous-variable-name: variable `l` en código existente
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

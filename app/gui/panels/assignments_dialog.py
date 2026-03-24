@@ -1,8 +1,11 @@
 # assignments history dialog
+import csv
+import datetime
+import os
 import tkinter as tk
-from tkinter import ttk, messagebox
-import datetime, csv, os
-from app.theme import C, FONT_S, _btn
+from tkinter import messagebox, ttk
+
+from app.theme import FONT_S, C, _btn
 
 
 def open(app):

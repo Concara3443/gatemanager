@@ -1,8 +1,8 @@
 # right panel: table & details
 import tkinter as tk
 from tkinter import ttk
-from app.theme import C, FONT, FONT_S, _btn
-import app.parking_finder as pf
+
+from app.theme import FONT, FONT_S, C, _btn
 
 
 def build(app, parent):

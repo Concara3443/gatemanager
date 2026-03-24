@@ -1,5 +1,6 @@
 # airport data container
-import os, sys
+import os
+import sys
 
 
 def _resource(path):

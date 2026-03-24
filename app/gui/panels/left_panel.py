@@ -1,6 +1,7 @@
 # left panel: inputs & filters
 import tkinter as tk
-from app.theme import C, FONT, FONT_S, FONT_L, _btn, SegGroup
+
+from app.theme import FONT, FONT_L, FONT_S, C, SegGroup, _btn
 
 
 def build(app, parent):

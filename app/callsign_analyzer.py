@@ -1,5 +1,8 @@
 # check if callsign is private (GA) or commercial
-import json, re, os, sys
+import json
+import os
+import re
+import sys
 
 
 def _data_path():

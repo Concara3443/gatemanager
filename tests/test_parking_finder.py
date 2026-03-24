@@ -2,10 +2,7 @@
 
 from unittest.mock import patch
 
-import pytest
-
 import app.parking_finder as pf
-
 
 # ---------------------------------------------------------------------------
 # get_numeric_id

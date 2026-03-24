@@ -1,8 +1,9 @@
 # occupied stands dialog
 import tkinter as tk
 from tkinter import ttk
-from app.theme import C, FONT_S, _btn
+
 import app.parking_finder as pf
+from app.theme import FONT_S, C, _btn
 
 
 def open(app):

@@ -1,7 +1,9 @@
 # main app window
+import datetime
+import json
+import threading
 import tkinter as tk
-from tkinter import ttk, messagebox, simpledialog
-import threading, datetime, json, sys, os
+from tkinter import messagebox, simpledialog, ttk
 
 
 def _pick_airport(parent, available):
@@ -50,12 +52,12 @@ def _pick_airport(parent, available):
     return result[0]
 
 
-from app.theme import C, FONT, FONT_S, FONT_L, FONT_X, _btn, SegGroup
-from app.aurora_bridge import AuroraBridge, callsign_to_airline
 import app.parking_finder as pf
+from app.aurora_bridge import AuroraBridge, callsign_to_airline
 from app.callsign_analyzer import CallsignAnalyzer
 from app.core.airport import AirportData
-from app.gui.panels import left_panel, right_panel, assignments_dialog, occupied_dialog
+from app.gui.panels import assignments_dialog, left_panel, occupied_dialog, right_panel
+from app.theme import FONT, FONT_L, FONT_S, FONT_X, C, _btn
 
 
 class ParkingApp(tk.Tk):
