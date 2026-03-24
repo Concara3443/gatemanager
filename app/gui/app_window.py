@@ -561,13 +561,18 @@ class ParkingApp(tk.Tk):
         # standard
         terminals = pf.get_airline_terminals(self.airlines, airline)
         if terminals is None:
-            opts = "/".join(self.terminals) + "/CARGO"
-            ans = simpledialog.askstring(
-                "Airline missing", f"'{airline}' missing in db.\nTerminal ({opts}):", parent=self
-            )
-            entered = (ans or self.terminals[0]).strip().upper()
-            self.airlines[airline] = entered
-            terminals = [entered]
+            if len(self.terminals) == 1:
+                # single-terminal airport — no need to ask
+                terminals = [self.terminals[0]]
+                self.airlines[airline] = self.terminals[0]
+            else:
+                opts = "/".join(self.terminals) + "/CARGO"
+                ans = simpledialog.askstring(
+                    "Airline missing", f"'{airline}' missing in db.\nTerminal ({opts}):", parent=self
+                )
+                entered = (ans or self.terminals[0]).strip().upper()
+                self.airlines[airline] = entered
+                terminals = [entered]
         if terminals == ["CARGO"]:
             pool = {
                 i: d

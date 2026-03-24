@@ -24,7 +24,8 @@ class AirportData:
         from app import parking_finder as pf
 
         self.config = pf.load_json(os.path.join(base, "config.json"), "config.json")
-        self.airlines = pf.load_json(os.path.join(base, "airlines.json"), "airlines.json")
+        airlines_path = os.path.join(base, "airlines.json")
+        self.airlines = pf.load_json(airlines_path, "airlines.json") if os.path.exists(airlines_path) else {}
         self.wingspans = pf.load_json(
             os.path.join(DATA_DIR, "aircraft_wingspans.json"), "aircraft_wingspans.json"
         )
