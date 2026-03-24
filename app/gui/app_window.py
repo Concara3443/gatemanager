@@ -125,6 +125,7 @@ class ParkingApp(tk.Tk):
         # hotkeys
         self.bind("<F5>", lambda e: self._query_aurora())
         self.bind("<Return>", lambda e: self._assign_stand())
+        self.bind("<Control-z>", lambda e: self._undo_last())
         self.protocol("WM_DELETE_WINDOW", self._on_close)
 
     # UI setup
@@ -229,6 +230,9 @@ class ParkingApp(tk.Tk):
             side=tk.LEFT, padx=4
         )
         _btn(bar, "CLEAR ALL STANDS", self._clear_occupied, bg="#3d0a0a").pack(side=tk.LEFT, padx=4)
+        self.undo_btn = _btn(bar, "UNDO  ↩", self._undo_last, bg="#3d2200")
+        self.undo_btn.pack(side=tk.LEFT, padx=4)
+        self.undo_btn.config(state=tk.DISABLED)
 
     def _slabel(self, parent, text):
         tk.Label(
@@ -802,6 +806,7 @@ class ParkingApp(tk.Tk):
             self._record_assignment(cs, air, acft, dep, i, "ASIGNADO")
         self._refresh_assignments_panel()
         self._refresh_occupied_panel()
+        self.undo_btn.config(state=tk.NORMAL)
 
     # helpers
 
@@ -854,6 +859,27 @@ class ParkingApp(tk.Tk):
         self._update_occupied()
         self._refresh_occupied_panel()
         self._log("All stands cleared", "info")
+
+    def _undo_last(self):
+        active = ("ASIGNADO", "ASIGNADO(auto)", "PRE-ASIGNADO")
+        for r in reversed(self.assignments):
+            if r["status"] in active:
+                stand = r["stand"]
+                r["status"] = "ANULADO"
+                self.occupied.discard(stand)
+                self.occupied_by.pop(stand, None)
+                for ex in self.parkings.get(stand, {}).get("excludes", []):
+                    self.occupied.discard(ex)
+                self.preassigned.pop(r["cs"], None)
+                self._update_occupied()
+                self._refresh_occupied_panel()
+                self._refresh_assignments_panel()
+                self._log(f"[UNDO] Stand {stand} ({r['cs']}) liberado", "warn")
+                # disable button if no more active assignments remain
+                if not any(x["status"] in active for x in self.assignments):
+                    self.undo_btn.config(state=tk.DISABLED)
+                return
+        self._log("Nada que deshacer", "warn")
 
     def _release_dialog(self):
         s = simpledialog.askstring("Release stand", "Stand ID:", parent=self)
