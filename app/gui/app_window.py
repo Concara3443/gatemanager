@@ -236,6 +236,9 @@ class ParkingApp(tk.Tk):
         self.undo_btn = _btn(bar, "UNDO  ↩", self._undo_last, bg="#3d2200")
         self.undo_btn.pack(side=tk.LEFT, padx=4)
         self.undo_btn.config(state=tk.DISABLED)
+        _btn(bar, "+ Aeropuerto", self._install_airport_zip, bg="#1a3a2a").pack(
+            side=tk.RIGHT, padx=(4, 10)
+        )
 
     def _slabel(self, parent, text):
         tk.Label(
@@ -922,6 +925,74 @@ class ParkingApp(tk.Tk):
                     self.undo_btn.config(state=tk.DISABLED)
                 return
         self._log("Nada que deshacer", "warn")
+
+    def _install_airport_zip(self):
+        import shutil
+        import zipfile
+        from tkinter import filedialog
+
+        path = filedialog.askopenfilename(
+            title="Seleccionar ZIP de aeropuerto",
+            filetypes=[("ZIP", "*.zip"), ("All files", "*.*")],
+        )
+        if not path:
+            return
+
+        airports_dir = os.path.normpath(os.path.join(pf.BASE, "..", "airports"))
+
+        try:
+            with zipfile.ZipFile(path, "r") as zf:
+                names = zf.namelist()
+                top_dirs = {n.split("/")[0] for n in names if "/" in n}
+                root_files = [n for n in names if "/" not in n and n]
+
+                if len(top_dirs) == 1 and not root_files:
+                    icao = list(top_dirs)[0].upper()
+                    prefix = list(top_dirs)[0] + "/"
+                else:
+                    icao = simpledialog.askstring(
+                        "Código ICAO", "Código ICAO del aeropuerto (ej: LEMD):", parent=self
+                    )
+                    if not icao:
+                        return
+                    icao = icao.strip().upper()
+                    prefix = ""
+
+                for req in ("config.json", "parkings.json"):
+                    if prefix + req not in names:
+                        messagebox.showerror("Error", f"El ZIP no contiene {req}")
+                        return
+
+                dest = os.path.join(airports_dir, icao)
+                if os.path.exists(dest):
+                    if not messagebox.askyesno(
+                        "Aeropuerto existente", f"{icao} ya existe. ¿Sobreescribir?"
+                    ):
+                        return
+                    shutil.rmtree(dest)
+                os.makedirs(dest, exist_ok=True)
+
+                for item in names:
+                    if not item.startswith(prefix):
+                        continue
+                    filename = item[len(prefix):]
+                    if not filename or filename.endswith("/"):
+                        continue
+                    with zf.open(item) as src:
+                        with open(os.path.join(dest, filename), "wb") as dst:
+                            dst.write(src.read())
+
+            self._log(f"Aeropuerto {icao} instalado correctamente", "ok")
+            messagebox.showinfo(
+                "Instalado",
+                f"Aeropuerto {icao} instalado.\nReinicia GateManager para seleccionarlo.",
+            )
+        except zipfile.BadZipFile:
+            messagebox.showerror("Error", "El archivo no es un ZIP válido.")
+            self._log("Error: ZIP no válido", "error")
+        except Exception as e:
+            messagebox.showerror("Error", f"No se pudo instalar:\n{e}")
+            self._log(f"Error instalando aeropuerto: {e}", "error")
 
     def _release_dialog(self):
         s = simpledialog.askstring("Release stand", "Stand ID:", parent=self)

@@ -53,4 +53,11 @@ class AirportData:
     def available() -> list:
         if not os.path.isdir(AIRPORTS_DIR):
             return []
-        return [d for d in os.listdir(AIRPORTS_DIR) if os.path.isdir(os.path.join(AIRPORTS_DIR, d))]
+        result = []
+        for d in os.listdir(AIRPORTS_DIR):
+            base = os.path.join(AIRPORTS_DIR, d)
+            if os.path.isdir(base) and all(
+                os.path.exists(os.path.join(base, f)) for f in ("config.json", "parkings.json")
+            ):
+                result.append(d)
+        return result

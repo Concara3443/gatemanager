@@ -1,6 +1,20 @@
 # -*- mode: python ; coding: utf-8 -*-
+import os
 
 block_cipher = None
+
+# Incluir automáticamente todos los aeropuertos en airports/
+airports_datas = []
+airports_dir = os.path.join(os.path.dirname(os.path.abspath(SPEC)), 'airports')
+for icao in os.listdir(airports_dir):
+    icao_path = os.path.join(airports_dir, icao)
+    if not os.path.isdir(icao_path):
+        continue
+    for fname in os.listdir(icao_path):
+        if fname.endswith('.json'):
+            airports_datas.append(
+                (os.path.join(icao_path, fname), f'airports/{icao}')
+            )
 
 a = Analysis(
     ['LEBL Parking.pyw'],
@@ -10,15 +24,9 @@ a = Analysis(
         ('data/aircraft_wingspans.json',   'data'),
         ('data/cargo_airlines.json',       'data'),
         ('data/prefix_data.json',          'data'),
-        ('airports/LEBL/config.json',      'airports/LEBL'),
-        ('airports/LEBL/airlines.json',    'airports/LEBL'),
-        ('airports/LEBL/parkings.json',    'airports/LEBL'),
-        ('airports/LEPA/config.json',      'airports/LEPA'),
-        ('airports/LEPA/airlines.json',    'airports/LEPA'),
-        ('airports/LEPA/parkings.json',    'airports/LEPA'),
         ('assets/splash.png',              'assets'),
         ('assets/icon.png',                'assets'),
-    ],
+    ] + airports_datas,
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
