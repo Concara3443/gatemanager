@@ -11,6 +11,8 @@ jobs:
   build:
     name: Compilar GateManager.exe
     runs-on: windows-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
