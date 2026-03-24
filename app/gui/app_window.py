@@ -1,6 +1,7 @@
 # main app window
 import datetime
 import json
+import random
 import threading
 import tkinter as tk
 from tkinter import messagebox, simpledialog, ttk
@@ -629,8 +630,9 @@ class ParkingApp(tk.Tk):
         if not dm:
             self._clear_info()
             return
-        pref = "schengen_only" if sch else "non_schengen_only"
-        self.all_sorted = sorted(dm, key=lambda p: pf._sort_key(p, dm[p], pref, sch))
+        # pre-compute scores; sort by score desc, random tiebreaker for equal scores
+        scores = {p: pf.score_stand(dm[p], aws or 0.0, sch)[0] for p in dm}
+        self.all_sorted = sorted(dm, key=lambda p: (-scores[p], random.random()))
         for i in self.all_sorted:
             d = dm[i]
             ws, rem, exc, st = (
@@ -641,12 +643,14 @@ class ParkingApp(tk.Tk):
             )
             fit = aws and ws == aws
             tag = "perfect" if fit else ("fallbk" if fallback else ("remote" if rem else "gate"))
+            sc = scores[i]
             self.tree.insert(
                 "",
                 "end",
                 iid=i,
                 values=(
                     i,
+                    sc,
                     (f"{ws}m★" if fit else f"{ws}m") if ws else "?",
                     "Remote" if rem else "Gate",
                     pf.SCHENGEN_LABELS.get(st, st),
@@ -714,6 +718,10 @@ class ParkingApp(tk.Tk):
             text="OCCUPIED" if occ else "Free", fg=C["red"] if occ else C["green"]
         )
 
+        sc, tags = pf.score_stand(d, self.acft_ws, self.sch_bool)
+        sc_color = C["green"] if sc >= 90 else (C["orange"] if sc >= 70 else C["red"])
+        self._score_lbl.config(text=f"{sc}  ·  {' · '.join(tags)}" if tags else str(sc), fg=sc_color)
+
         air, aws, sch = self.v_airline.get().strip().upper(), self.acft_ws, self.sch_bool
 
         def _ok(t):
@@ -760,6 +768,7 @@ class ParkingApp(tk.Tk):
             v.config(text="—", fg=C["fg_dim"])
         for v in self._suit_rows.values():
             v.config(text="—", fg=C["fg_dim"])
+        self._score_lbl.config(text="—", fg=C["fg_dim"])
 
     # assign logic
 

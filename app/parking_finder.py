@@ -174,6 +174,49 @@ def schengen_ok(data, schengen_flight):
         return stype != "schengen_only"
 
 
+def score_stand(data, aircraft_ws, schengen_flight):
+    """Return (score 0-105, list of short reason strings)."""
+    score = 100
+    tags = []
+
+    ws = data.get("max_wingspan")
+    if ws is not None and aircraft_ws > 0:
+        margin = ws - aircraft_ws
+        if margin == 0:
+            score += 5
+            tags.append("exacto")
+        elif margin <= 5:
+            tags.append(f"+{margin:.0f}m")
+        elif margin <= 15:
+            score -= 5
+            tags.append(f"+{margin:.0f}m")
+        else:
+            score -= 15
+            tags.append(f"+{margin:.0f}m")
+
+    if data.get("remote", False):
+        score -= 15
+        tags.append("remoto")
+    else:
+        tags.append("gate")
+
+    stype = data.get("schengen", "mixed")
+    if stype == "mixed":
+        score -= 5
+        tags.append("mixta")
+    elif (schengen_flight and stype == "schengen_only") or (
+        not schengen_flight and stype == "non_schengen_only"
+    ):
+        tags.append("zona OK")
+
+    n_excl = len(data.get("excludes", []))
+    if n_excl > 0:
+        score -= n_excl * 3
+        tags.append(f"{n_excl} excl")
+
+    return max(0, min(105, score)), tags
+
+
 def _sort_key(pid, data, prefer_type, _schengen_flight):
     ws = data.get("max_wingspan")
     stype = data.get("schengen", "mixed")
