@@ -11,13 +11,11 @@
 - [x] Sistema de scoring — columna Score + razones en detalle
 - [x] Exportar / Importar sesión completa en JSON
 - [x] Instalación de aeropuertos por ZIP (botón "+ Aeropuerto")
-- [ ] Auto-assign con confirmación
+- [x] Auto-assign con confirmación
 
 ## 🏗️ Grande
-- [ ] Favoritos por aerolínea
-- [ ] Reglas por franja horaria (cerrar/reservar stands)
-- [ ] Arrivals vs Departures
-- [ ] Sincronización bidireccional con Aurora
+- [x] Favoritos por aerolínea
+- [x] Sincronización bidireccional con Aurora
 - [ ] Editor GUI de aeropuertos
 
 ## Extras completados
