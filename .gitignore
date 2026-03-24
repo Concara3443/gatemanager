@@ -182,6 +182,7 @@ cython_debug/
 
 .c*
 *txt
+!requirements-dev.txt
 
 # Design source files (Photoshop, etc.)
 design/
