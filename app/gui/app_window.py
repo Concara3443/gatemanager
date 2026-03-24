@@ -417,7 +417,8 @@ class ParkingApp(tk.Tk):
         sch_str = ("SCHENGEN" if sch else "NON-SCHENGEN") if sch is not None else ""
 
         # term / ga
-        term_over, ga_mode = self.seg["Terminal"].get(), self._ga_var.get()
+        term_over = self.seg["Terminal"].get() if "Terminal" in self.seg else "auto"
+        ga_mode = self._ga_var.get()
 
         # build pool
         pool, term, lbl, fallbk = self._build_pool(
