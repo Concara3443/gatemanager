@@ -57,6 +57,7 @@ Para que GateManager pueda comunicarse con Aurora es necesario activar el acceso
 |------|--------|------------|
 | LEBL | Barcelona El Prat | T1, T2, CARGO |
 | LEPA | Palma de Mallorca | A, B, C, D, CARGO |
+| LEBB | Bilbao | Terminal |
 
 ### Instalar un aeropuerto nuevo
 
