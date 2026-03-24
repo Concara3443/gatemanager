@@ -157,6 +157,17 @@ def build(app, parent):
         lbl.pack(side=tk.LEFT)
         app._suit_rows[k] = lbl
 
+    # auto-assign proposal banner (hidden by default)
+    app._proposal_frame = tk.Frame(right, bg="#1a3a1a", padx=8, pady=5)
+    app._proposal_lbl = tk.Label(
+        app._proposal_frame, text="", font=FONT_S, bg="#1a3a1a", fg=C["green"], anchor="w"
+    )
+    app._proposal_lbl.pack(side=tk.LEFT, fill=tk.X, expand=True)
+    _btn(app._proposal_frame, "Asignar ↵", app._proposal_confirm, bg=C["seg_on"]).pack(
+        side=tk.LEFT, padx=(4, 2)
+    )
+    _btn(app._proposal_frame, "Saltar", app._proposal_dismiss, bg="#3a1a1a").pack(side=tk.LEFT)
+
     # assign btn
     app.assign_btn = tk.Button(
         right,

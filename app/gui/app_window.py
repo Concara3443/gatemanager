@@ -113,6 +113,7 @@ class ParkingApp(tk.Tk):
 
         # poller
         self._auto_var = tk.BooleanVar(value=False)
+        self._auto_assign_var = tk.BooleanVar(value=False)
         self._last_polled: str = ""
         self._poll_job = None
         self.POLL_MS = 4000
@@ -183,7 +184,19 @@ class ParkingApp(tk.Tk):
             activeforeground=C["fg"],
             command=self._on_auto_toggle,
         )
-        self.auto_cb.pack(side=tk.LEFT, padx=(0, 16))
+        self.auto_cb.pack(side=tk.LEFT, padx=(0, 6))
+        self.auto_assign_cb = tk.Checkbutton(
+            rf,
+            text="Auto-asignar",
+            font=FONT_S,
+            variable=self._auto_assign_var,
+            bg=C["hdr"],
+            fg=C["fg_dim"],
+            selectcolor=C["bg2"],
+            activebackground=C["hdr"],
+            activeforeground=C["fg"],
+        )
+        self.auto_assign_cb.pack(side=tk.LEFT, padx=(0, 16))
 
         self.aurora_dot = tk.Label(rf, text="●", font=("Consolas", 14), bg=C["hdr"], fg=C["red"])
         self.aurora_dot.pack(side=tk.LEFT)
@@ -1099,6 +1112,7 @@ class ParkingApp(tk.Tk):
         if not cs or cs == self._last_polled:
             return
         self._last_polled = cs
+        self._proposal_dismiss()
         fp = self.aurora.get_flight_plan(cs)
         if not fp:
             return
@@ -1116,6 +1130,24 @@ class ParkingApp(tk.Tk):
         self.v_origin.set(dep)
         self._log(f"Auto: {cs} → {air} {acft}", "info")
         self._run_query(cs, air or None, acft or None, dep or None)
+        if self._auto_assign_var.get() and self.all_sorted:
+            top = self.all_sorted[0]
+            self._proposal_show(cs, top)
+
+    def _proposal_show(self, cs, stand):
+        sc = self._filter_dm.get(stand, {})
+        score, tags = pf.score_stand(sc, self.acft_ws, self.sch_bool)
+        reason = " · ".join(tags) if tags else ""
+        self._proposal_lbl.config(text=f"Propuesta: {cs} → {stand}  ({score})  {reason}")
+        self.selected_stand = stand
+        self._proposal_frame.pack(fill=tk.X, padx=8, pady=(0, 2), before=self.assign_btn)
+
+    def _proposal_confirm(self):
+        self._proposal_frame.pack_forget()
+        self._assign_stand()
+
+    def _proposal_dismiss(self):
+        self._proposal_frame.pack_forget()
 
     def _stop_poll(self):
         if self._poll_job:
