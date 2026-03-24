@@ -1,0 +1,498 @@
+{
+  "1": {
+    "max_acft": "B763",
+    "max_wingspan": 47.6,
+    "terminal": "Terminal",
+    "schengen": "schengen_only",
+    "excludes": [],
+    "remote": false
+  },
+  "2": {
+    "max_acft": "B763",
+    "max_wingspan": 47.6,
+    "terminal": "Terminal",
+    "schengen": "schengen_only",
+    "excludes": [],
+    "remote": false
+  },
+  "3": {
+    "max_acft": "B752",
+    "max_wingspan": 38.1,
+    "terminal": "Terminal",
+    "schengen": "schengen_only",
+    "excludes": [],
+    "remote": false
+  },
+  "4": {
+    "max_acft": "B752",
+    "max_wingspan": 38.1,
+    "terminal": "Terminal",
+    "schengen": "schengen_only",
+    "excludes": [],
+    "remote": false
+  },
+  "5": {
+    "max_acft": "B763",
+    "max_wingspan": 47.6,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [],
+    "remote": false
+  },
+  "6": {
+    "max_acft": "B764",
+    "max_wingspan": 51.9,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "6A"
+    ],
+    "remote": false
+  },
+  "6A": {
+    "max_acft": "A35K",
+    "max_wingspan": 64.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "6"
+    ],
+    "remote": false
+  },
+  "7": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "78"
+    ],
+    "remote": true
+  },
+  "8": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "78",
+      "89"
+    ],
+    "remote": true
+  },
+  "9": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "89"
+    ],
+    "remote": true
+  },
+  "10": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "111"
+    ],
+    "remote": true
+  },
+  "11": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "111"
+    ],
+    "remote": true
+  },
+  "12": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "H12"
+    ],
+    "remote": true
+  },
+  "13": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [],
+    "remote": true
+  },
+  "14": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [],
+    "remote": true
+  },
+  "15": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "15A"
+    ],
+    "remote": true
+  },
+  "15A": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "15"
+    ],
+    "remote": true
+  },
+  "16": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "16A"
+    ],
+    "remote": true
+  },
+  "16A": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "16"
+    ],
+    "remote": true
+  },
+  "17": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "17A"
+    ],
+    "remote": true
+  },
+  "17A": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "17"
+    ],
+    "remote": true
+  },
+  "18": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "19"
+    ],
+    "remote": true
+  },
+  "19": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "18"
+    ],
+    "remote": true
+  },
+  "20": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [],
+    "remote": true
+  },
+  "21": {
+    "max_acft": "CRJ9",
+    "max_wingspan": 24.9,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [],
+    "remote": true
+  },
+  "22": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "H22"
+    ],
+    "remote": true
+  },
+  "78": {
+    "max_acft": "B763",
+    "max_wingspan": 47.6,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "7",
+      "8"
+    ],
+    "remote": true
+  },
+  "89": {
+    "max_acft": "A359",
+    "max_wingspan": 64.7,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "8",
+      "9"
+    ],
+    "remote": true
+  },
+  "111": {
+    "max_acft": "A35K",
+    "max_wingspan": 64.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "10",
+      "11"
+    ],
+    "remote": true
+  },
+  "H12": {
+    "max_acft": "S61",
+    "max_wingspan": 22.1,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "12"
+    ],
+    "remote": true
+  },
+  "H22": {
+    "max_acft": "S61",
+    "max_wingspan": 22.1,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "22"
+    ],
+    "remote": true
+  },
+  "G1": {
+    "max_acft": "C210",
+    "max_wingspan": 11.2,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [],
+    "remote": true
+  },
+  "G2": {
+    "max_acft": "C210",
+    "max_wingspan": 11.2,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [],
+    "remote": true
+  },
+  "G3": {
+    "max_acft": "C210",
+    "max_wingspan": 11.2,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [],
+    "remote": true
+  },
+  "G4": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [],
+    "remote": true
+  },
+  "G5": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [],
+    "remote": true
+  },
+  "G6": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [],
+    "remote": true
+  },
+  "G7": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [],
+    "remote": true
+  },
+  "G8": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [],
+    "remote": true
+  },
+  "G9": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "G10A"
+    ],
+    "remote": true
+  },
+  "G10": {
+    "max_acft": "GLF4",
+    "max_wingspan": 23.7,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "G10A"
+    ],
+    "remote": true
+  },
+  "G10A": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "G9",
+      "G10"
+    ],
+    "remote": true
+  },
+  "G11": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "G12A"
+    ],
+    "remote": true
+  },
+  "G12": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "G12A",
+      "HG12"
+    ],
+    "remote": true
+  },
+  "G12A": {
+    "max_acft": "B763",
+    "max_wingspan": 47.6,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "G11",
+      "G12",
+      "G13",
+      "HG12",
+      "HG13"
+    ],
+    "remote": true
+  },
+  "G13": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "G12A",
+      "G14A",
+      "HG13"
+    ],
+    "remote": true
+  },
+  "G14": {
+    "max_acft": "A321",
+    "max_wingspan": 35.8,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "G14A",
+      "HG14"
+    ],
+    "remote": true
+  },
+  "G14A": {
+    "max_acft": "B763",
+    "max_wingspan": 47.6,
+    "terminal": "Terminal",
+    "schengen": "mixed",
+    "excludes": [
+      "G13",
+      "G14",
+      "HG13",
+      "HG14"
+    ],
+    "remote": true
+  },
+  "HG12": {
+    "max_acft": "S61",
+    "max_wingspan": 22.1,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "G12",
+      "G12A"
+    ],
+    "remote": true
+  },
+  "HG13": {
+    "max_acft": "S61",
+    "max_wingspan": 22.1,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "G12A",
+      "G13",
+      "G14A"
+    ],
+    "remote": true
+  },
+  "HG14": {
+    "max_acft": "S61",
+    "max_wingspan": 22.1,
+    "terminal": "Terminal",
+    "schengen": "ga",
+    "excludes": [
+      "G14",
+      "G14A"
+    ],
+    "remote": true
+  }
+}
