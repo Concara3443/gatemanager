@@ -100,6 +100,7 @@ class ParkingApp(tk.Tk):
         self.current_cs: str = ""
         self.current_dm: dict = {}
         self.all_sorted: list = []
+        self._filter_dm: dict = {}  # full unfiltered results for instant filter
         self.sch_bool: bool = True
         self.acft_ws: float = 0.0
         self.selected_stand: str = ""
@@ -119,6 +120,7 @@ class ParkingApp(tk.Tk):
         self.aurora = AuroraBridge()
 
         self._build_ui()
+        self.v_filter.trace_add("write", lambda *_: self._apply_filter())
         self._log("App started & initialized", "info")
         self._try_connect_aurora()
 
@@ -595,6 +597,32 @@ class ParkingApp(tk.Tk):
     # results table
 
     def _populate_table(self, dm, sch, aws, fallback=False):
+        self._filter_dm = dm
+        self.v_filter.set("")
+        self.v_filter_count.set("")
+        self._render_table(dm, sch, aws, fallback)
+
+    def _apply_filter(self):
+        if not self._filter_dm:
+            return
+        q = self.v_filter.get().strip().upper()
+        if not q:
+            filtered = self._filter_dm
+            self.v_filter_count.set("")
+        else:
+            filtered = {
+                pid: d
+                for pid, d in self._filter_dm.items()
+                if q in pid.upper()
+                or q in d.get("terminal", "").upper()
+                or q in pf.SCHENGEN_LABELS.get(d.get("schengen", ""), "").upper()
+                or q in d.get("max_acft", "").upper()
+            }
+            total = len(self._filter_dm)
+            self.v_filter_count.set(f"{len(filtered)}/{total}")
+        self._render_table(filtered, self.sch_bool, self.acft_ws)
+
+    def _render_table(self, dm, sch, aws, fallback=False):
         for r in self.tree.get_children():
             self.tree.delete(r)
         self.all_sorted = []

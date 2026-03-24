@@ -33,6 +33,28 @@ def build(app, parent):
     )
     style.map("P.Treeview", background=[("selected", "#1565c0")], foreground=[("selected", "#fff")])
 
+    # instant filter
+    ff = tk.Frame(right, bg=C["bg"])
+    ff.pack(fill=tk.X, padx=8, pady=(0, 3))
+    tk.Label(ff, text="Filtrar:", font=FONT_S, bg=C["bg"], fg=C["fg_dim"]).pack(side=tk.LEFT)
+    app.v_filter = tk.StringVar()
+    fe = tk.Entry(
+        ff,
+        textvariable=app.v_filter,
+        font=FONT,
+        bg=C["entry_bg"],
+        fg=C["fg"],
+        insertbackground=C["fg"],
+        relief=tk.FLAT,
+        bd=4,
+        width=14,
+    )
+    fe.pack(side=tk.LEFT, padx=(6, 4))
+    app.v_filter_count = tk.StringVar(value="")
+    tk.Label(ff, textvariable=app.v_filter_count, font=FONT_S, bg=C["bg"], fg=C["fg_dim"]).pack(
+        side=tk.LEFT
+    )
+
     tf = tk.Frame(right, bg=C["bg"])
     tf.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 4))
     cols = ("Stand", "Max WS", "Tipo", "Zona", "Max Acft", "Excluye")
