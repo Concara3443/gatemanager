@@ -117,7 +117,9 @@ class ParkingApp(tk.Tk):
         self._auto_assign_var = tk.BooleanVar(value=False)
         self._last_polled: str = ""
         self._poll_job = None
+        self._osync_job = None
         self.POLL_MS = 4000
+        self.OSYNC_MS = 30_000  # occupied-gates sync interval
 
         # bridge
         self.aurora = AuroraBridge()
@@ -293,12 +295,14 @@ class ParkingApp(tk.Tk):
         suffix = f"  ({self._my_callsign})" if self._my_callsign else ""
         self._log(f"Connected to Aurora  (localhost:1130){suffix}", "ok")
         self._sync_occupied_aurora()
+        self._start_osync()
         if self._auto_var.get():
             self._poll()
 
     def _on_aurora_fail(self):
         self.aurora_dot.config(fg=C["red"])
         self.aurora_lbl.config(text="Aurora disconnected", fg=C["red"])
+        self._stop_osync()
         self._log("Aurora not available — running standalone", "warn")
 
     # query ops
@@ -461,6 +465,7 @@ class ParkingApp(tk.Tk):
             extra.append("GA/Privado")
         elif type_f != "all":
             extra.append(type_f)
+
         self._log(
             f"{'FALLBACK  ' if fallbk else ''}{lbl}  →  {len(pool)} stands",
             "warn" if fallbk else "info",
@@ -829,7 +834,7 @@ class ParkingApp(tk.Tk):
             self.v_aircraft.get().strip().upper(),
             self.v_origin.get().strip().upper(),
         )
-        self.occupied_by[i] = {"cs": cs, "acft": acft, "airline": air}
+        self.occupied_by[i] = {"cs": cs, "acft": acft, "airline": air, "source": "manual"}
         term = pf.get_airline_terminal(self.airlines, air) or d.get("terminal", self.terminals[0])
         self._strip_update(
             cs, air, acft, dep, i, "SCHENGEN" if self.sch_bool else "NON-SCHENGEN", term
@@ -882,11 +887,10 @@ class ParkingApp(tk.Tk):
             self.occ_label.config(text="—")
 
     def _sync_occupied_aurora(self):
-        # get busy gates from aurora
+        # get busy gates from aurora (manual or auto)
         if not self.aurora.connected:
             self._log("Aurora disconnected", "warn")
             return
-        self._log("Querying Aurora for occupied gates…", "info")
 
         def _do():
             gs = self.aurora.get_occupied_gates()
@@ -894,28 +898,55 @@ class ParkingApp(tk.Tk):
 
         threading.Thread(target=_do, daemon=True).start()
 
-    def _apply_aurora_gates(self, gs):
-        if not gs:
-            self._log("Aurora: no traffic on ground with gate", "warn")
+    def _start_osync(self):
+        self._stop_osync()
+        self._osync_tick()
+
+    def _stop_osync(self):
+        if self._osync_job:
+            self.after_cancel(self._osync_job)
+            self._osync_job = None
+
+    def _osync_tick(self):
+        if not self.aurora.connected:
             return
-        add = []
-        for g, cs in gs.items():
-            g = g.strip().upper()
+        self._sync_occupied_aurora()
+        self._osync_job = self.after(self.OSYNC_MS, self._osync_tick)
+
+    def _apply_aurora_gates(self, gs):
+        aurora_now = {g.strip().upper(): cs for g, cs in gs.items()}
+        add, rem = [], []
+
+        # add new / update existing aurora gates
+        for g, cs in aurora_now.items():
             if g not in self.occupied:
                 self.occupied.add(g)
                 self.occupied_by[g] = {
                     "cs": cs,
                     "acft": "",
                     "airline": callsign_to_airline(cs) or "",
+                    "source": "aurora",
                 }
                 add.append(f"{g}({cs})")
+
+        # release aurora-sourced gates no longer reported by Aurora
+        for g in list(self.occupied):
+            if self.occupied_by.get(g, {}).get("source") == "aurora" and g not in aurora_now:
+                self.occupied.discard(g)
+                self.occupied_by.pop(g, None)
+                rem.append(g)
+
         self._update_occupied()
         self._refresh_occupied_panel()
         for it in list(self.tree.get_children()):
             if it in self.occupied:
                 self.tree.delete(it)
         if add:
-            self._log(f"Sync Aurora: {len(add)} gates → {', '.join(add)}", "ok")
+            self._log(f"Sync Aurora +{len(add)}: {', '.join(add)}", "ok")
+        if rem:
+            self._log(f"Sync Aurora -{len(rem)}: {', '.join(rem)} liberados", "info")
+        if not add and not rem:
+            self._log("Sync Aurora: sin cambios", "info")
 
     def _clear_occupied(self):
         self.occupied.clear()
@@ -1226,5 +1257,6 @@ class ParkingApp(tk.Tk):
 
     def _on_close(self):
         self._stop_poll()
+        self._stop_osync()
         self.aurora.disconnect()
         self.destroy()
