@@ -1,7 +1,9 @@
 # main app window
 import datetime
 import json
+import os
 import random
+import sys
 import threading
 import tkinter as tk
 from tkinter import messagebox, simpledialog, ttk
