@@ -1,6 +1,7 @@
 [project]
 name = "gatemanager"
-version = "3.0.2"
+version = "3"
+dynamic = []
 description = "Herramienta de asignación de parkings y gates para ATC virtual en IVAO"
 readme = "README.md"
 license = { text = "MIT" }

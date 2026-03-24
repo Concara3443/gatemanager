@@ -53,6 +53,7 @@ def _pick_airport(parent, available):
 
 
 import app.parking_finder as pf
+from app._version import __version__
 from app.aurora_bridge import AuroraBridge, callsign_to_airline
 from app.callsign_analyzer import CallsignAnalyzer
 from app.core.airport import AirportData
@@ -63,7 +64,7 @@ from app.theme import FONT, FONT_L, FONT_S, FONT_X, C, _btn
 class ParkingApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Gate Manager  ·  v3")
+        self.title(f"Gate Manager  ·  v{__version__}")
         self.configure(bg=C["bg3"])
         self.minsize(1020, 760)
         self.geometry("1120x820")
@@ -157,7 +158,7 @@ class ParkingApp(tk.Tk):
         tk.Label(tf, text="Gate Manager", font=FONT_X, bg=C["hdr"], fg=C["fg"]).pack(anchor="w")
         tk.Label(
             tf,
-            text=f"{self.airport_config.get('name', '')}  ·  IVAO Virtual ATC  ·  v3",
+            text=f"{self.airport_config.get('name', '')}  ·  IVAO Virtual ATC  ·  v{__version__}",
             font=FONT_S,
             bg=C["hdr"],
             fg=C["fg_dim"],
