@@ -5,9 +5,11 @@ Introduce aerolínea, aeronave y aeropuerto de origen — GateManager te sugiere
 
 > **v3** — Soporte multi-aeropuerto · Solo GUI · Sin CLI
 
-## Descarga rápida
-
 [![Última release](https://img.shields.io/github/v/release/Concara3443/gatemanager?label=Última%20versión&color=blue)](https://github.com/Concara3443/gatemanager/releases/latest)
+[![CI](https://github.com/Concara3443/gatemanager/actions/workflows/ci.yml/badge.svg)](https://github.com/Concara3443/gatemanager/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/Concara3443/gatemanager/branch/main/graph/badge.svg)](https://codecov.io/gh/Concara3443/gatemanager)
+
+## Descarga rápida
 
 **No tienes Python? Descarga el ejecutable directamente:**
 
