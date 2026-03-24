@@ -76,6 +76,8 @@ def build(app, parent):
     app.tree.tag_configure("fallbk", foreground="#ffee58")
     app.tree.bind("<<TreeviewSelect>>", app._on_stand_select)
     app.tree.bind("<Double-1>", lambda e: app._assign_stand())
+    app.tree.bind("<Button-3>", app._show_tree_context_menu)
+    app.tree.tag_configure("fav", foreground="#ffd54f")
 
     # quick search
     sh = tk.Frame(right, bg=C["bg"])

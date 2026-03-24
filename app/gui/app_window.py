@@ -102,6 +102,7 @@ class ParkingApp(tk.Tk):
         self.current_dm: dict = {}
         self.all_sorted: list = []
         self._filter_dm: dict = {}  # full unfiltered results for instant filter
+        self.favorites: dict = {}   # {airline: set of stands}
         self.sch_bool: bool = True
         self.acft_ws: float = 0.0
         self.selected_stand: str = ""
@@ -122,6 +123,7 @@ class ParkingApp(tk.Tk):
         self.aurora = AuroraBridge()
 
         self._build_ui()
+        self._load_favorites()
         self.v_filter.trace_add("write", lambda *_: self._apply_filter())
         self._log("App started & initialized", "info")
         self._try_connect_aurora()
@@ -652,8 +654,10 @@ class ParkingApp(tk.Tk):
         if not dm:
             self._clear_info()
             return
-        # pre-compute scores; sort by score desc, random tiebreaker for equal scores
-        scores = {p: pf.score_stand(dm[p], aws or 0.0, sch)[0] for p in dm}
+        # pre-compute scores; apply favorites bonus; sort by score desc, random tiebreaker
+        air = self.v_airline.get().strip().upper()
+        fav_stands = self.favorites.get(air, set())
+        scores = {p: pf.score_stand(dm[p], aws or 0.0, sch)[0] + (20 if p in fav_stands else 0) for p in dm}
         self.all_sorted = sorted(dm, key=lambda p: (-scores[p], random.random()))
         for i in self.all_sorted:
             d = dm[i]
@@ -664,7 +668,8 @@ class ParkingApp(tk.Tk):
                 d.get("schengen", "mixed"),
             )
             fit = aws and ws == aws
-            tag = "perfect" if fit else ("fallbk" if fallback else ("remote" if rem else "gate"))
+            is_fav = i in fav_stands
+            tag = "fav" if is_fav else ("perfect" if fit else ("fallbk" if fallback else ("remote" if rem else "gate")))
             sc = scores[i]
             self.tree.insert(
                 "",
@@ -1007,6 +1012,71 @@ class ParkingApp(tk.Tk):
         except Exception as e:
             messagebox.showerror("Error", f"No se pudo instalar:\n{e}")
             self._log(f"Error instalando aeropuerto: {e}", "error")
+
+    # favorites
+
+    def _favorites_path(self):
+        if getattr(sys, "_MEIPASS", None):
+            base = os.path.join(os.path.dirname(sys.executable), "airports", self.airport_icao)
+        else:
+            base = os.path.join(pf.BASE, "..", "airports", self.airport_icao)
+        return os.path.normpath(os.path.join(base, "favorites.json"))
+
+    def _load_favorites(self):
+        path = self._favorites_path()
+        if os.path.exists(path):
+            try:
+                with open(path, encoding="utf-8") as f:
+                    raw = json.load(f)
+                self.favorites = {k: set(v) for k, v in raw.items()}
+                self._log(f"Favoritos cargados ({sum(len(v) for v in self.favorites.values())} stands)", "info")
+            except Exception:
+                self.favorites = {}
+
+    def _save_favorites(self):
+        path = self._favorites_path()
+        try:
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump({k: sorted(v) for k, v in self.favorites.items()}, f, indent=2)
+        except Exception as e:
+            self._log(f"Error guardando favoritos: {e}", "warn")
+
+    def _toggle_favorite(self, stand):
+        air = self.v_airline.get().strip().upper()
+        if not air:
+            self._log("Introduce una aerolínea para guardar favoritos", "warn")
+            return
+        favs = self.favorites.setdefault(air, set())
+        if stand in favs:
+            favs.discard(stand)
+            self._log(f"Fav quitado: {air} → {stand}", "info")
+        else:
+            favs.add(stand)
+            self._log(f"Fav guardado: {air} → {stand}", "ok")
+        if not favs:
+            del self.favorites[air]
+        self._save_favorites()
+        self._apply_filter()
+
+    def _show_tree_context_menu(self, event):
+        iid = self.tree.identify_row(event.y)
+        if not iid:
+            return
+        self.tree.selection_set(iid)
+        air = self.v_airline.get().strip().upper()
+        is_fav = iid in self.favorites.get(air, set())
+        menu = tk.Menu(self, tearoff=0, bg=C["bg2"], fg=C["fg"], activebackground=C["hdr"])
+        lbl = f"Quitar favorito  {iid}" if is_fav else f"Marcar favorito  {iid}"
+        menu.add_command(label=lbl, command=lambda: self._toggle_favorite(iid))
+        if air and self.favorites.get(air):
+            menu.add_separator()
+            favs_str = ", ".join(sorted(self.favorites[air]))
+            menu.add_command(
+                label=f"Favoritos de {air}: {favs_str}",
+                state="disabled",
+            )
+        menu.tk_popup(event.x_root, event.y_root)
 
     def _release_dialog(self):
         s = simpledialog.askstring("Release stand", "Stand ID:", parent=self)
