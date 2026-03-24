@@ -104,8 +104,9 @@ def build(app, parent):
     filter_rows = [
         ("Tipo", [("all", "All"), ("gates", "Gates"), ("remote", "Remote")]),
         ("Schengen", [("auto", "Auto"), ("yes", "SCH"), ("no", "No-SCH")]),
-        ("Terminal", term_opts),
     ]
+    if len(app.terminals) > 1:
+        filter_rows.append(("Terminal", term_opts))
     app.seg = {}
     for l, opts in filter_rows:
         row = tk.Frame(flt, bg=C["bg2"])
