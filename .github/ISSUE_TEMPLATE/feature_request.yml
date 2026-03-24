@@ -1,0 +1,34 @@
+name: "Solicitud de mejora"
+description: "Propón una nueva funcionalidad o mejora"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "¿Tienes una idea para mejorar GateManager? Cuéntanos."
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: "¿Qué problema resuelve?"
+      description: "Describe la situación o limitación actual."
+      placeholder: "Cuando hago X, me gustaría poder Y pero actualmente..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: "Solución propuesta"
+      description: "¿Cómo te imaginas que debería funcionar?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Alternativas que has considerado"
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: "Información adicional o capturas"

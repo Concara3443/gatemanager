@@ -1,0 +1,17 @@
+version: 2
+updates:
+  # Actualizar GitHub Actions automáticamente
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "chore"
+
+  # Actualizar PyInstaller y otras herramientas de build
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "chore"

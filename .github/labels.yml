@@ -1,0 +1,42 @@
+# Etiquetas estándar del proyecto.
+# Se aplican automáticamente con el workflow .github/workflows/labels.yml
+
+- name: "bug"
+  color: "d73a4a"
+  description: "Algo no funciona como se espera"
+
+- name: "enhancement"
+  color: "a2eeef"
+  description: "Nueva funcionalidad o mejora"
+
+- name: "docs"
+  color: "0075ca"
+  description: "Mejoras o correcciones de documentación"
+
+- name: "good first issue"
+  color: "7057ff"
+  description: "Buena tarea para quien empieza a contribuir"
+
+- name: "help wanted"
+  color: "008672"
+  description: "Se agradece ayuda extra"
+
+- name: "data"
+  color: "e4e669"
+  description: "Cambios en datos de aeropuertos (JSON)"
+
+- name: "chore"
+  color: "fef2c0"
+  description: "Mantenimiento: CI, dependencias, configuración"
+
+- name: "wontfix"
+  color: "ffffff"
+  description: "No se va a corregir"
+
+- name: "duplicate"
+  color: "cfd3d7"
+  description: "Este issue o PR ya existe"
+
+- name: "question"
+  color: "d876e3"
+  description: "Solicitud de información o aclaración"

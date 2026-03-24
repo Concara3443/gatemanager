@@ -1,0 +1,62 @@
+name: "Bug"
+description: "Algo no funciona como se espera"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Gracias por reportar un bug. Rellena la información de abajo para que podamos reproducirlo."
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "¿Qué ocurre?"
+      description: "Descripción clara y concisa del problema."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Pasos para reproducirlo"
+      placeholder: |
+        1. Abrir GateManager con aeropuerto LEBL
+        2. Introducir aerolínea IBE, aeronave A320, origen LEMD
+        3. Pulsar Consultar
+        4. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Comportamiento esperado"
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Capturas de pantalla (si aplica)"
+
+  - type: dropdown
+    id: version
+    attributes:
+      label: "Versión"
+      options:
+        - "GateManager.exe (última release)"
+        - "Ejecutando desde Python"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: "Sistema operativo"
+      placeholder: "Windows 11"
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: "Información adicional"
