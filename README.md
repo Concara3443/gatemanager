@@ -58,7 +58,13 @@ Para que GateManager pueda comunicarse con Aurora es necesario activar el acceso
 | LEBL | Barcelona El Prat | T1, T2, CARGO |
 | LEPA | Palma de Mallorca | A, B, C, D, CARGO |
 
-Añadir un nuevo aeropuerto es tan sencillo como crear una carpeta `airports/ICAO/` con tres archivos JSON. Ver [docs/ADDING_AN_AIRPORT.md](docs/ADDING_AN_AIRPORT.md).
+### Instalar un aeropuerto nuevo
+
+**Desde la app** (recomendado): pulsa **"+ Aeropuerto"** en la barra inferior, selecciona el `.zip` del aeropuerto y reinicia.
+
+**Manualmente**: crea una carpeta `airports/ICAO/` con `config.json` y `parkings.json` (y opcionalmente `airlines.json`).
+
+Ver la guía completa en [docs/ADDING_AN_AIRPORT.md](docs/ADDING_AN_AIRPORT.md), incluyendo cómo empaquetar y distribuir aeropuertos como ZIP.
 
 ---
 

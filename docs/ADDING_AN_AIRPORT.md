@@ -659,3 +659,44 @@ Use these templates as starting points.
     }
 }
 ```
+
+---
+
+## Distribuir un aeropuerto como ZIP
+
+Una vez que tienes los tres archivos JSON listos puedes empaquetar el aeropuerto
+en un ZIP para compartirlo o instalarlo con el botón **"+ Aeropuerto"** de la app.
+
+### Estructura del ZIP
+
+El ZIP debe contener una carpeta con el código ICAO en mayúsculas en la raíz:
+
+```
+LEMD.zip
+└── LEMD/
+    ├── config.json
+    ├── parkings.json
+    └── airlines.json      <- opcional
+```
+
+> Si los archivos van directamente en la raíz del ZIP (sin carpeta), la app
+> pedirá el código ICAO al instalarlo.
+
+### Instalar desde la app
+
+1. Abre GateManager.
+2. Pulsa **"+ Aeropuerto"** en la barra inferior.
+3. Selecciona el `.zip`.
+4. Reinicia GateManager — el nuevo aeropuerto aparecerá en el selector.
+
+### Validar antes de distribuir
+
+Antes de empaquetar, comprueba que los datos son correctos con:
+
+```bash
+python dev/validate_airport.py LEMD
+```
+
+El script detecta: archivos faltantes, stands con `excludes` que no existen,
+`max_acft` desconocidos, terminales no definidas en `config.json`, y asimetrías
+en los `excludes`.
