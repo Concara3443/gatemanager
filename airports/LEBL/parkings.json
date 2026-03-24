@@ -1,34 +1,4 @@
 {
-  "X1": {
-    "max_acft": "A321",
-    "max_wingspan": 35.8,
-    "terminal": "T2",
-    "schengen": "schengen_only",
-    "excludes": [
-      "124A"
-    ],
-    "remote": false
-  },
-  "X2": {
-    "max_acft": "A321",
-    "max_wingspan": 35.8,
-    "terminal": "T2",
-    "schengen": "schengen_only",
-    "excludes": [
-      "119A"
-    ],
-    "remote": false
-  },
-  "X3": {
-    "max_acft": "A321",
-    "max_wingspan": 35.8,
-    "terminal": "T2",
-    "schengen": "schengen_only",
-    "excludes": [
-      "113A"
-    ],
-    "remote": false
-  },
   "01": {
     "max_acft": "C560",
     "max_wingspan": 15.9,
