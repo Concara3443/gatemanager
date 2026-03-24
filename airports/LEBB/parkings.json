@@ -383,7 +383,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "Terminal",
-    "schengen": "mixed",
+    "schengen": "ga",
     "excludes": [
       "G9",
       "G10"
@@ -394,7 +394,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "Terminal",
-    "schengen": "mixed",
+    "schengen": "ga",
     "excludes": [
       "G12A"
     ],
@@ -404,7 +404,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "Terminal",
-    "schengen": "mixed",
+    "schengen": "ga",
     "excludes": [
       "G12A",
       "HG12"
@@ -415,7 +415,7 @@
     "max_acft": "B763",
     "max_wingspan": 47.6,
     "terminal": "Terminal",
-    "schengen": "mixed",
+    "schengen": "ga",
     "excludes": [
       "G11",
       "G12",
@@ -429,7 +429,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "Terminal",
-    "schengen": "mixed",
+    "schengen": "ga",
     "excludes": [
       "G12A",
       "G14A",
@@ -441,7 +441,7 @@
     "max_acft": "A321",
     "max_wingspan": 35.8,
     "terminal": "Terminal",
-    "schengen": "mixed",
+    "schengen": "ga",
     "excludes": [
       "G14A",
       "HG14"
@@ -452,7 +452,7 @@
     "max_acft": "B763",
     "max_wingspan": 47.6,
     "terminal": "Terminal",
-    "schengen": "mixed",
+    "schengen": "ga",
     "excludes": [
       "G13",
       "G14",
