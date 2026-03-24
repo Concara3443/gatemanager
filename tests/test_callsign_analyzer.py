@@ -1,4 +1,5 @@
 """Tests unitarios para app/callsign_analyzer.py."""
+
 import os
 from unittest.mock import patch
 
@@ -14,6 +15,7 @@ def analyzer():
     """CallsignAnalyzer usando el prefix_data.json real del proyecto."""
     with patch("app.callsign_analyzer._data_path", return_value=_REAL_PREFIX_DATA):
         from app.callsign_analyzer import CallsignAnalyzer
+
         return CallsignAnalyzer()
 
 

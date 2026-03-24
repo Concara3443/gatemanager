@@ -1,4 +1,5 @@
 """Tests unitarios para app/parking_finder.py (lógica pura, sin GUI)."""
+
 from unittest.mock import patch
 
 import pytest
@@ -9,6 +10,7 @@ import app.parking_finder as pf
 # ---------------------------------------------------------------------------
 # get_numeric_id
 # ---------------------------------------------------------------------------
+
 
 class TestGetNumericId:
     def test_stand_with_number(self):
@@ -30,6 +32,7 @@ class TestGetNumericId:
 # ---------------------------------------------------------------------------
 # schengen_ok
 # ---------------------------------------------------------------------------
+
 
 class TestSchengenOk:
     def test_mixed_schengen_flight(self):
@@ -65,9 +68,15 @@ class TestSchengenOk:
 # _sort_key
 # ---------------------------------------------------------------------------
 
+
 class TestSortKey:
     def test_normal_stand(self):
-        data = {"max_wingspan": 36.0, "schengen": "mixed", "excludes": ["102", "103"], "remote": False}
+        data = {
+            "max_wingspan": 36.0,
+            "schengen": "mixed",
+            "excludes": ["102", "103"],
+            "remote": False,
+        }
         with patch("app.parking_finder.random.random", return_value=0.42):
             key = pf._sort_key("101", data, "mixed", True)
         assert key == (36.0, 2, 0, 0.42)
@@ -104,12 +113,17 @@ class TestSortKey:
 # ---------------------------------------------------------------------------
 
 PARKINGS = {
-    "101": {"max_wingspan": 36.0, "terminal": "T1", "schengen": "mixed",          "remote": False},
-    "102": {"max_wingspan": 24.0, "terminal": "T1", "schengen": "schengen_only",   "remote": False},
-    "103": {"max_wingspan": 36.0, "terminal": "T2", "schengen": "mixed",           "remote": False},
-    "104": {"max_wingspan": 36.0, "terminal": "T1", "schengen": "non_schengen_only","remote": False},
-    "105": {"max_wingspan": 36.0, "terminal": "T1", "schengen": "ga",              "remote": False},
-    "106": {"max_wingspan": 36.0, "terminal": "T1", "schengen": "ibe_dedicated",   "remote": False},
+    "101": {"max_wingspan": 36.0, "terminal": "T1", "schengen": "mixed", "remote": False},
+    "102": {"max_wingspan": 24.0, "terminal": "T1", "schengen": "schengen_only", "remote": False},
+    "103": {"max_wingspan": 36.0, "terminal": "T2", "schengen": "mixed", "remote": False},
+    "104": {
+        "max_wingspan": 36.0,
+        "terminal": "T1",
+        "schengen": "non_schengen_only",
+        "remote": False,
+    },
+    "105": {"max_wingspan": 36.0, "terminal": "T1", "schengen": "ga", "remote": False},
+    "106": {"max_wingspan": 36.0, "terminal": "T1", "schengen": "ibe_dedicated", "remote": False},
 }
 
 
@@ -143,11 +157,13 @@ class TestFilterParkings:
 
     def test_dedicated_excluded_if_airline_not_in_map(self):
         # ibe_dedicated stand 106 should be excluded for airline VLG (not in map)
-        result = pf.filter_parkings(PARKINGS, "T1", "VLG", 36.0, True, set(),
-                                    dedicated_map={"IBE": "ibe_dedicated"})
+        result = pf.filter_parkings(
+            PARKINGS, "T1", "VLG", 36.0, True, set(), dedicated_map={"IBE": "ibe_dedicated"}
+        )
         assert "106" not in result
 
     def test_dedicated_included_if_airline_in_map(self):
-        result = pf.filter_parkings(PARKINGS, "T1", "IBE", 36.0, True, set(),
-                                    dedicated_map={"IBE": "ibe_dedicated"})
+        result = pf.filter_parkings(
+            PARKINGS, "T1", "IBE", 36.0, True, set(), dedicated_map={"IBE": "ibe_dedicated"}
+        )
         assert "106" in result
