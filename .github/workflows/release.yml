@@ -23,13 +23,17 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-dev.txt
 
-      - name: Instalar PyInstaller
-        run: pip install pyinstaller
+      - name: Instalar PyInstaller y dependencias
+        run: pip install pyinstaller pillow
 
       - name: Compilar ejecutable
         run: pyinstaller lebl_parking.spec --clean -y
+
+      - name: Verificar exe generado
+        run: dir dist\GateManager.exe
 
       - name: Subir GateManager.exe a la release
         uses: softprops/action-gh-release@v2
         with:
           files: dist/GateManager.exe
+          token: ${{ secrets.GITHUB_TOKEN }}
