@@ -33,7 +33,7 @@ jobs:
         run: dir dist\GateManager.exe
 
       - name: Subir GateManager.exe a la release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: dist/GateManager.exe
           token: ${{ secrets.GITHUB_TOKEN }}
