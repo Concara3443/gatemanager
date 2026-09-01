@@ -186,3 +186,6 @@ cython_debug/
 
 # Design source files (Photoshop, etc.)
 design/
+
+# Instrucciones locales para Claude Code (no se commitean)
+CLAUDE.md
