@@ -60,14 +60,18 @@ def validate(icao, wingspans):
     base = os.path.join(AIRPORTS_DIR, icao)
 
     # --- load files ---
-    for fname in ("config.json", "airlines.json", "parkings.json"):
+    for fname in ("config.json", "parkings.json"):
         if not os.path.exists(os.path.join(base, fname)):
             r.err(f"Falta el archivo {fname}")
+    # airlines.json es opcional: AirportData lo carga como {} si no existe
+    airlines_path = os.path.join(base, "airlines.json")
+    if not os.path.exists(airlines_path):
+        r.warn("Falta airlines.json (opcional)")
     if r.errors:
         return r
 
     config = _load(os.path.join(base, "config.json"))
-    airlines = _load(os.path.join(base, "airlines.json"))
+    airlines = _load(airlines_path) if os.path.exists(airlines_path) else {}
     parkings = _load(os.path.join(base, "parkings.json"))
 
     terminals = config.get("terminals", [])

@@ -674,8 +674,7 @@
     "schengen": "schengen_only",
     "excludes": [
       "113",
-      "114",
-      "X3"
+      "114"
     ],
     "remote": false
   },
@@ -738,8 +737,7 @@
     "schengen": "non_schengen_only",
     "excludes": [
       "119",
-      "120",
-      "X2"
+      "120"
     ],
     "remote": false
   },
@@ -801,8 +799,7 @@
     "schengen": "non_schengen_only",
     "excludes": [
       "124",
-      "125",
-      "X1"
+      "125"
     ],
     "remote": false
   },
