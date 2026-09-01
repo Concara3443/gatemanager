@@ -1,0 +1,5 @@
+# Dependencias para compilar GateManager.exe (release.yml).
+# Separadas de requirements-dev.txt para que Dependabot las vigile:
+# antes se instalaban sin pinear y el build podía romper solo.
+pyinstaller>=6.22.2
+pillow>=12.3.0

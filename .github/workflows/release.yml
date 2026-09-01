@@ -21,10 +21,10 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: requirements-dev.txt
+          cache-dependency-path: requirements-build.txt
 
       - name: Instalar PyInstaller y dependencias
-        run: pip install pyinstaller pillow
+        run: pip install -r requirements-build.txt
 
       - name: Compilar ejecutable
         run: pyinstaller lebl_parking.spec --clean -y
